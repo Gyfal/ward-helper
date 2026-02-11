@@ -1,0 +1,38 @@
+{
+	"private": true,
+	"name": "ward-helper",
+	"version": "1.0.0",
+	"main": "src/index.ts",
+	"description": "Ward helper",
+	"author": "GyFaL",
+	"devDependencies": {
+		"@eslint/compat": "^1.2.4",
+		"@eslint/eslintrc": "^3.2.0",
+		"@eslint/js": "^9.17.0",
+		"@typescript-eslint/eslint-plugin": "^8.18.0",
+		"@typescript-eslint/parser": "^8.18.0",
+		"eslint": "^9.17.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-import": "^2.31.0",
+		"eslint-plugin-prettier": "^5.2.1",
+		"eslint-plugin-simple-import-sort": "^12.1.0",
+		"eslint-plugin-unicorn": "^53.0.0",
+		"eslint-plugin-unused-imports": "^3.2.0",
+		"madge": "^7.0.0",
+		"prettier": "^3.3.1",
+		"typescript": "^5.6.3"
+	},
+	"scripts": {
+		"check-types": "npx tsc",
+		"check-types-watch": "npx tsc --watch",
+		"upgrade-pack": "yarn upgrade-interactive --latest",
+		"check-circular": "npx madge --circular index.ts",
+		"lint": "eslint . --fix"
+	},
+	"license": "GPL-3.0-or-later",
+	"repository": {
+		"type": "git",
+		"directory": "/",
+		"url": "https://github.com/GyFaL/ward-helper.git"
+	}
+}
