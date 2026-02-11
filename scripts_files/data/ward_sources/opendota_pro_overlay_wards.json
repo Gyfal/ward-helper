@@ -1,0 +1,77 @@
+[
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -561.906,
+    "y": 227.0,
+    "z": 256.0,
+    "renderX": 48.29,
+    "renderY": 49.31,
+    "minimapX": 123.6,
+    "minimapY": 129.8,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -266.75,
+    "y": -970.688,
+    "z": 256.0,
+    "renderX": 49.19,
+    "renderY": 52.96,
+    "minimapX": 125.9,
+    "minimapY": 120.4,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 3809.187,
+    "y": -3997.75,
+    "z": 256.0,
+    "renderX": 61.62,
+    "renderY": 62.2,
+    "minimapX": 157.8,
+    "minimapY": 96.8,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -4922.25,
+    "y": 4040.719,
+    "z": 256.0,
+    "renderX": 34.98,
+    "renderY": 37.67,
+    "minimapX": 89.5,
+    "minimapY": 159.6,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -4200.156,
+    "y": 4636.312,
+    "z": 256.0,
+    "renderX": 37.18,
+    "renderY": 35.85,
+    "minimapX": 95.2,
+    "minimapY": 164.2,
+    "count": 1
+  }
+]

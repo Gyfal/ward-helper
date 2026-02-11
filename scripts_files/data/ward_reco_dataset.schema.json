@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ward_reco_dataset.schema.json",
+  "title": "Ward Recommendation Dataset",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at_utc",
+    "source",
+    "config",
+    "summary",
+    "spots",
+    "recommendation_view"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer"
+    },
+    "generated_at_utc": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "required": ["cache_dir", "matches_used"],
+      "properties": {
+        "cache_dir": { "type": "string" },
+        "matches_used": { "type": "integer" }
+      }
+    },
+    "config": {
+      "type": "object",
+      "required": ["quick_deward_sec", "success_lifetime_sec", "time_buckets"],
+      "properties": {
+        "quick_deward_sec": { "type": "integer" },
+        "success_lifetime_sec": { "type": "integer" },
+        "time_buckets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "min_sec", "max_sec"],
+            "properties": {
+              "id": { "type": "string" },
+              "min_sec": { "type": "integer" },
+              "max_sec": { "type": ["integer", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "total_placements",
+        "observer_placements",
+        "sentry_placements",
+        "spots_count"
+      ],
+      "properties": {
+        "total_placements": { "type": "integer" },
+        "observer_placements": { "type": "integer" },
+        "sentry_placements": { "type": "integer" },
+        "spots_count": { "type": "integer" }
+      }
+    },
+    "popular_spots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "spot_id",
+          "type",
+          "team",
+          "time_bucket",
+          "match_coverage",
+          "placements",
+          "quick_deward_rate",
+          "score"
+        ],
+        "properties": {
+          "spot_id": { "type": "string" },
+          "type": { "type": "string" },
+          "team": { "type": "string" },
+          "time_bucket": { "type": "string" },
+          "match_coverage": { "type": "number" },
+          "placements": { "type": "integer" },
+          "quick_deward_rate": { "type": "number" },
+          "score": { "type": "number" }
+        }
+      }
+    },
+    "spots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "spot_id",
+          "type",
+          "team",
+          "time_bucket",
+          "cell",
+          "vec_avg",
+          "minimap_avg",
+          "stats",
+          "context_profile"
+        ],
+        "properties": {
+          "spot_id": { "type": "string" },
+          "type": { "type": "string", "enum": ["Observer", "Sentry"] },
+          "team": { "type": "string", "enum": ["radiant", "dire"] },
+          "time_bucket": { "type": "string" },
+          "cell": {
+            "type": "object",
+            "required": ["x", "y"],
+            "properties": {
+              "x": { "type": "integer" },
+              "y": { "type": "integer" }
+            }
+          },
+          "vec_avg": {
+            "type": "object",
+            "required": ["x", "y"],
+            "properties": {
+              "x": { "type": "number" },
+              "y": { "type": "number" }
+            }
+          },
+          "minimap_avg": {
+            "type": "object",
+            "required": ["x", "y"],
+            "properties": {
+              "x": { "type": "number" },
+              "y": { "type": "number" }
+            }
+          },
+          "world_avg": {
+            "type": "object",
+            "required": ["x", "y"],
+            "properties": {
+              "x": { "type": "number" },
+              "y": { "type": "number" }
+            }
+          },
+          "stats": {
+            "type": "object",
+            "required": [
+              "matches_seen",
+              "placements",
+              "pick_rate_per_match",
+              "match_coverage",
+              "median_lifetime_sec",
+              "quick_deward_rate",
+              "success_rate",
+              "score"
+            ],
+            "properties": {
+              "matches_seen": { "type": "integer" },
+              "placements": { "type": "integer" },
+              "pick_rate_per_match": { "type": "number" },
+              "match_coverage": { "type": "number" },
+              "median_lifetime_sec": { "type": "number" },
+              "p25_lifetime_sec": { "type": "number" },
+              "p75_lifetime_sec": { "type": "number" },
+              "quick_deward_rate": { "type": "number" },
+              "success_rate": { "type": "number" },
+              "score": { "type": "number" }
+            }
+          },
+          "flags": {
+            "type": "object",
+            "required": ["is_popular", "observer_risky_quick_deward"],
+            "properties": {
+              "is_popular": { "type": "boolean" },
+              "observer_risky_quick_deward": { "type": "boolean" }
+            }
+          },
+          "context_profile": {
+            "type": "object",
+            "required": [
+              "avg_gold_adv_for_team",
+              "avg_kill_adv_for_team",
+              "avg_tower_diff_for_team",
+              "gold_adv_buckets"
+            ],
+            "properties": {
+              "avg_gold_adv_for_team": { "type": "number" },
+              "avg_kill_adv_for_team": { "type": "number" },
+              "avg_tower_diff_for_team": { "type": "number" },
+              "gold_adv_buckets": {
+                "type": "object",
+                "additionalProperties": { "type": "integer" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "recommendation_view": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "team", "time_bucket", "top_spots"],
+        "properties": {
+          "type": { "type": "string" },
+          "team": { "type": "string" },
+          "time_bucket": { "type": "string" },
+          "top_spots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["spot_id", "score", "match_coverage", "quick_deward_rate", "is_popular"],
+              "properties": {
+                "spot_id": { "type": "string" },
+                "score": { "type": "number" },
+                "match_coverage": { "type": "number" },
+                "quick_deward_rate": { "type": "number" },
+                "is_popular": { "type": "boolean" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

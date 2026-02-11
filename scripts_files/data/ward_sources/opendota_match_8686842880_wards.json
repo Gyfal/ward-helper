@@ -1,0 +1,362 @@
+[
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -5654.173,
+    "y": 3763.402,
+    "z": 256.0,
+    "renderX": 84.661,
+    "renderY": 133.846,
+    "minimapX": 84.5,
+    "minimapY": 157.3,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -3898.054,
+    "y": 6035.15,
+    "z": 256.0,
+    "renderX": 137.877,
+    "renderY": 68.939,
+    "minimapX": 97.7,
+    "minimapY": 173.4,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -3578.759,
+    "y": -6141.984,
+    "z": 256.0,
+    "renderX": 147.553,
+    "renderY": 416.857,
+    "minimapX": 100.1,
+    "minimapY": 87.1,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -3312.68,
+    "y": 4158.488,
+    "z": 256.0,
+    "renderX": 155.616,
+    "renderY": 122.557,
+    "minimapX": 102.1,
+    "minimapY": 160.1,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -1849.247,
+    "y": 4313.701,
+    "z": 256.0,
+    "renderX": 199.962,
+    "renderY": 118.123,
+    "minimapX": 113.1,
+    "minimapY": 161.2,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -1210.658,
+    "y": -5196.598,
+    "z": 256.0,
+    "renderX": 219.313,
+    "renderY": 389.846,
+    "minimapX": 117.9,
+    "minimapY": 93.8,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -1157.443,
+    "y": -5168.378,
+    "z": 256.0,
+    "renderX": 220.926,
+    "renderY": 389.039,
+    "minimapX": 118.3,
+    "minimapY": 94.0,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -957.883,
+    "y": -3291.717,
+    "z": 256.0,
+    "renderX": 226.973,
+    "renderY": 335.42,
+    "minimapX": 119.8,
+    "minimapY": 107.3,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -452.334,
+    "y": -116.913,
+    "z": 256.0,
+    "renderX": 242.293,
+    "renderY": 244.712,
+    "minimapX": 123.6,
+    "minimapY": 129.8,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -425.726,
+    "y": -116.913,
+    "z": 256.0,
+    "renderX": 243.099,
+    "renderY": 244.712,
+    "minimapX": 123.8,
+    "minimapY": 129.8,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -399.118,
+    "y": -145.134,
+    "z": 256.0,
+    "renderX": 243.906,
+    "renderY": 245.518,
+    "minimapX": 124.0,
+    "minimapY": 129.6,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -146.343,
+    "y": -1443.276,
+    "z": 256.0,
+    "renderX": 251.565,
+    "renderY": 282.608,
+    "minimapX": 125.9,
+    "minimapY": 120.4,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 1184.05,
+    "y": 3579.969,
+    "z": 256.0,
+    "renderX": 291.88,
+    "renderY": 139.087,
+    "minimapX": 135.9,
+    "minimapY": 156.0,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 4536.643,
+    "y": -5126.047,
+    "z": 256.0,
+    "renderX": 393.474,
+    "renderY": 387.83,
+    "minimapX": 161.1,
+    "minimapY": 94.3,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -6292.762,
+    "y": 5767.055,
+    "z": 256.0,
+    "renderX": 65.31,
+    "renderY": 76.598,
+    "minimapX": 79.7,
+    "minimapY": 171.5,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -5627.565,
+    "y": 2691.024,
+    "z": 256.0,
+    "renderX": 85.468,
+    "renderY": 164.485,
+    "minimapX": 84.7,
+    "minimapY": 149.7,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -4988.976,
+    "y": 4087.937,
+    "z": 256.0,
+    "renderX": 104.819,
+    "renderY": 124.573,
+    "minimapX": 89.5,
+    "minimapY": 159.6,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -4949.065,
+    "y": 4638.236,
+    "z": 256.0,
+    "renderX": 106.028,
+    "renderY": 108.85,
+    "minimapX": 89.8,
+    "minimapY": 163.5,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -4230.652,
+    "y": 4737.008,
+    "z": 256.0,
+    "renderX": 127.798,
+    "renderY": 106.028,
+    "minimapX": 95.2,
+    "minimapY": 164.2,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -3552.151,
+    "y": -6156.094,
+    "z": 256.0,
+    "renderX": 148.359,
+    "renderY": 417.26,
+    "minimapX": 100.3,
+    "minimapY": 87.0,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -2434.62,
+    "y": 4610.016,
+    "z": 256.0,
+    "renderX": 182.224,
+    "renderY": 109.657,
+    "minimapX": 108.7,
+    "minimapY": 163.3,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -1197.354,
+    "y": -5154.268,
+    "z": 256.0,
+    "renderX": 219.717,
+    "renderY": 388.636,
+    "minimapX": 118.0,
+    "minimapY": 94.1,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -1184.05,
+    "y": -5196.598,
+    "z": 256.0,
+    "renderX": 220.12,
+    "renderY": 389.846,
+    "minimapX": 118.1,
+    "minimapY": 93.8,
+    "count": 1
+  },
+  {
+    "teams": [
+      "Radiant",
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 4097.613,
+    "y": -4773.291,
+    "z": 256.0,
+    "renderX": 380.17,
+    "renderY": 377.751,
+    "minimapX": 157.8,
+    "minimapY": 96.8,
+    "count": 1
+  }
+]

@@ -1,0 +1,1762 @@
+[
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 512.0,
+    "y": 1792.0,
+    "z": 256.0,
+    "minimapX": 136.0,
+    "minimapY": 156.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 2304.0,
+    "y": 384.0,
+    "z": 256.0,
+    "minimapX": 164.0,
+    "minimapY": 134.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -640.0,
+    "y": -128.0,
+    "z": 256.0,
+    "minimapX": 118.0,
+    "minimapY": 126.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 1536.0,
+    "y": -2048.0,
+    "z": 256.0,
+    "minimapX": 152.0,
+    "minimapY": 96.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -1152.0,
+    "y": 128.0,
+    "z": 256.0,
+    "minimapX": 110.0,
+    "minimapY": 130.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -768.0,
+    "y": 1024.0,
+    "z": 256.0,
+    "minimapX": 116.0,
+    "minimapY": 144.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -320.0,
+    "y": -512.0,
+    "z": 256.0,
+    "minimapX": 123.0,
+    "minimapY": 120.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 256.0,
+    "y": -768.0,
+    "z": 256.0,
+    "minimapX": 132.0,
+    "minimapY": 116.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 256.0,
+    "y": -192.0,
+    "z": 256.0,
+    "minimapX": 132.0,
+    "minimapY": 125.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 2112.0,
+    "y": -2048.0,
+    "z": 256.0,
+    "minimapX": 161.0,
+    "minimapY": 96.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -1728.0,
+    "y": -64.0,
+    "z": 256.0,
+    "minimapX": 101.0,
+    "minimapY": 127.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -704.0,
+    "y": 1344.0,
+    "z": 256.0,
+    "minimapX": 117.0,
+    "minimapY": 149.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -2048.0,
+    "y": 128.0,
+    "z": 256.0,
+    "minimapX": 96.0,
+    "minimapY": 130.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 1088.0,
+    "y": -1024.0,
+    "z": 256.0,
+    "minimapX": 145.0,
+    "minimapY": 112.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -1984.0,
+    "y": 1792.0,
+    "z": 256.0,
+    "minimapX": 97.0,
+    "minimapY": 156.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 1408.0,
+    "y": 0.0,
+    "z": 256.0,
+    "minimapX": 150.0,
+    "minimapY": 128.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -2816.0,
+    "y": 1536.0,
+    "z": 256.0,
+    "minimapX": 84.0,
+    "minimapY": 152.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -3520.0,
+    "y": 3328.0,
+    "z": 256.0,
+    "minimapX": 73.0,
+    "minimapY": 180.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 2304.0,
+    "y": -960.0,
+    "z": 256.0,
+    "minimapX": 164.0,
+    "minimapY": 113.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 3904.0,
+    "y": 320.0,
+    "z": 256.0,
+    "minimapX": 189.0,
+    "minimapY": 133.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 128.0,
+    "y": -1152.0,
+    "z": 256.0,
+    "minimapX": 130.0,
+    "minimapY": 110.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 0.0,
+    "y": -128.0,
+    "z": 256.0,
+    "minimapX": 128.0,
+    "minimapY": 126.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -2432.0,
+    "y": 1152.0,
+    "z": 256.0,
+    "minimapX": 90.0,
+    "minimapY": 146.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 1408.0,
+    "y": -768.0,
+    "z": 256.0,
+    "minimapX": 150.0,
+    "minimapY": 116.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 2112.0,
+    "y": 1664.0,
+    "z": 256.0,
+    "minimapX": 161.0,
+    "minimapY": 154.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 576.0,
+    "y": -1536.0,
+    "z": 256.0,
+    "minimapX": 137.0,
+    "minimapY": 104.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 3520.0,
+    "y": -3328.0,
+    "z": 256.0,
+    "minimapX": 183.0,
+    "minimapY": 76.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -1664.0,
+    "y": 320.0,
+    "z": 256.0,
+    "minimapX": 102.0,
+    "minimapY": 133.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 2176.0,
+    "y": -1664.0,
+    "z": 256.0,
+    "minimapX": 162.0,
+    "minimapY": 102.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -192.0,
+    "y": -2432.0,
+    "z": 256.0,
+    "minimapX": 125.0,
+    "minimapY": 90.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -128.0,
+    "y": 1152.0,
+    "z": 256.0,
+    "minimapX": 126.0,
+    "minimapY": 146.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 1664.0,
+    "y": 192.0,
+    "z": 256.0,
+    "minimapX": 154.0,
+    "minimapY": 131.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 448.0,
+    "y": 3712.0,
+    "z": 256.0,
+    "minimapX": 135.0,
+    "minimapY": 186.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 3072.0,
+    "y": 1280.0,
+    "z": 256.0,
+    "minimapX": 176.0,
+    "minimapY": 148.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -256.0,
+    "y": -768.0,
+    "z": 256.0,
+    "minimapX": 124.0,
+    "minimapY": 116.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -1408.0,
+    "y": 832.0,
+    "z": 256.0,
+    "minimapX": 106.0,
+    "minimapY": 141.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -2944.0,
+    "y": 2624.0,
+    "z": 256.0,
+    "minimapX": 82.0,
+    "minimapY": 169.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 640.0,
+    "y": 768.0,
+    "z": 256.0,
+    "minimapX": 138.0,
+    "minimapY": 140.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -640.0,
+    "y": 2944.0,
+    "z": 256.0,
+    "minimapX": 118.0,
+    "minimapY": 174.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": -3392.0,
+    "y": 4032.0,
+    "z": 256.0,
+    "minimapX": 75.0,
+    "minimapY": 191.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -2176.0,
+    "y": -512.0,
+    "z": 256.0,
+    "minimapX": 94.0,
+    "minimapY": 120.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 640.0,
+    "y": -256.0,
+    "z": 256.0,
+    "minimapX": 138.0,
+    "minimapY": 124.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -256.0,
+    "y": 128.0,
+    "z": 256.0,
+    "minimapX": 124.0,
+    "minimapY": 130.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -1984.0,
+    "y": 1792.0,
+    "z": 256.0,
+    "minimapX": 97.0,
+    "minimapY": 156.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 2752.0,
+    "y": -2752.0,
+    "z": 256.0,
+    "minimapX": 171.0,
+    "minimapY": 85.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 2432.0,
+    "y": -1152.0,
+    "z": 256.0,
+    "minimapX": 166.0,
+    "minimapY": 110.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 2368.0,
+    "y": -2624.0,
+    "z": 256.0,
+    "minimapX": 165.0,
+    "minimapY": 87.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 1152.0,
+    "y": -2816.0,
+    "z": 256.0,
+    "minimapX": 146.0,
+    "minimapY": 84.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -1792.0,
+    "y": 512.0,
+    "z": 256.0,
+    "minimapX": 100.0,
+    "minimapY": 136.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -576.0,
+    "y": 1856.0,
+    "z": 256.0,
+    "minimapX": 119.0,
+    "minimapY": 157.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -640.0,
+    "y": -2176.0,
+    "z": 256.0,
+    "minimapX": 118.0,
+    "minimapY": 94.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -2752.0,
+    "y": -1600.0,
+    "z": 256.0,
+    "minimapX": 85.0,
+    "minimapY": 103.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 2048.0,
+    "y": -2944.0,
+    "z": 256.0,
+    "minimapX": 160.0,
+    "minimapY": 82.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 1856.0,
+    "y": -320.0,
+    "z": 256.0,
+    "minimapX": 157.0,
+    "minimapY": 123.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 2304.0,
+    "y": 384.0,
+    "z": 256.0,
+    "minimapX": 164.0,
+    "minimapY": 134.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 1984.0,
+    "y": -1920.0,
+    "z": 256.0,
+    "minimapX": 159.0,
+    "minimapY": 98.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -3136.0,
+    "y": 2432.0,
+    "z": 256.0,
+    "minimapX": 79.0,
+    "minimapY": 166.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -2240.0,
+    "y": 2304.0,
+    "z": 256.0,
+    "minimapX": 93.0,
+    "minimapY": 164.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -768.0,
+    "y": 3840.0,
+    "z": 256.0,
+    "minimapX": 116.0,
+    "minimapY": 188.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 128.0,
+    "y": -832.0,
+    "z": 256.0,
+    "minimapX": 130.0,
+    "minimapY": 115.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -2240.0,
+    "y": -2496.0,
+    "z": 256.0,
+    "minimapX": 93.0,
+    "minimapY": 89.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 64.0,
+    "y": -1920.0,
+    "z": 256.0,
+    "minimapX": 129.0,
+    "minimapY": 98.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -1280.0,
+    "y": 960.0,
+    "z": 256.0,
+    "minimapX": 108.0,
+    "minimapY": 143.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 1408.0,
+    "y": -768.0,
+    "z": 256.0,
+    "minimapX": 150.0,
+    "minimapY": 116.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -1280.0,
+    "y": -2048.0,
+    "z": 256.0,
+    "minimapX": 108.0,
+    "minimapY": 96.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -1280.0,
+    "y": -384.0,
+    "z": 256.0,
+    "minimapX": 108.0,
+    "minimapY": 122.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -4032.0,
+    "y": 1664.0,
+    "z": 256.0,
+    "minimapX": 65.0,
+    "minimapY": 154.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -1792.0,
+    "y": -3200.0,
+    "z": 256.0,
+    "minimapX": 100.0,
+    "minimapY": 78.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -832.0,
+    "y": 0.0,
+    "z": 256.0,
+    "minimapX": 115.0,
+    "minimapY": 128.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 640.0,
+    "y": -2304.0,
+    "z": 256.0,
+    "minimapX": 138.0,
+    "minimapY": 92.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -3520.0,
+    "y": 1664.0,
+    "z": 256.0,
+    "minimapX": 73.0,
+    "minimapY": 154.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -1600.0,
+    "y": -192.0,
+    "z": 256.0,
+    "minimapX": 103.0,
+    "minimapY": 125.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -960.0,
+    "y": -1472.0,
+    "z": 256.0,
+    "minimapX": 113.0,
+    "minimapY": 105.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 320.0,
+    "y": -192.0,
+    "z": 256.0,
+    "minimapX": 133.0,
+    "minimapY": 125.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -3008.0,
+    "y": 1920.0,
+    "z": 256.0,
+    "minimapX": 81.0,
+    "minimapY": 158.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 1088.0,
+    "y": -2368.0,
+    "z": 256.0,
+    "minimapX": 145.0,
+    "minimapY": 91.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -128.0,
+    "y": -1280.0,
+    "z": 256.0,
+    "minimapX": 126.0,
+    "minimapY": 108.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 1536.0,
+    "y": -2048.0,
+    "z": 256.0,
+    "minimapX": 152.0,
+    "minimapY": 96.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 0.0,
+    "y": -64.0,
+    "z": 256.0,
+    "minimapX": 128.0,
+    "minimapY": 127.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": -384.0,
+    "y": 576.0,
+    "z": 256.0,
+    "minimapX": 122.0,
+    "minimapY": 137.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 2304.0,
+    "y": 384.0,
+    "z": 256.0,
+    "minimapX": 164.0,
+    "minimapY": 134.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 512.0,
+    "y": 1792.0,
+    "z": 256.0,
+    "minimapX": 136.0,
+    "minimapY": 156.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -768.0,
+    "y": 1024.0,
+    "z": 256.0,
+    "minimapX": 116.0,
+    "minimapY": 144.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -640.0,
+    "y": 320.0,
+    "z": 256.0,
+    "minimapX": 118.0,
+    "minimapY": 133.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -2112.0,
+    "y": 2304.0,
+    "z": 256.0,
+    "minimapX": 95.0,
+    "minimapY": 164.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -1984.0,
+    "y": 128.0,
+    "z": 256.0,
+    "minimapX": 97.0,
+    "minimapY": 130.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 1984.0,
+    "y": -2176.0,
+    "z": 256.0,
+    "minimapX": 159.0,
+    "minimapY": 94.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 1600.0,
+    "y": -384.0,
+    "z": 256.0,
+    "minimapX": 153.0,
+    "minimapY": 122.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 3136.0,
+    "y": 1024.0,
+    "z": 256.0,
+    "minimapX": 177.0,
+    "minimapY": 144.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -1920.0,
+    "y": 2688.0,
+    "z": 256.0,
+    "minimapX": 98.0,
+    "minimapY": 170.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 1792.0,
+    "y": -2560.0,
+    "z": 256.0,
+    "minimapX": 156.0,
+    "minimapY": 88.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -1280.0,
+    "y": 2304.0,
+    "z": 256.0,
+    "minimapX": 108.0,
+    "minimapY": 164.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -576.0,
+    "y": 1600.0,
+    "z": 256.0,
+    "minimapX": 119.0,
+    "minimapY": 153.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 384.0,
+    "y": -384.0,
+    "z": 256.0,
+    "minimapX": 134.0,
+    "minimapY": 122.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -2880.0,
+    "y": 1792.0,
+    "z": 256.0,
+    "minimapX": 83.0,
+    "minimapY": 156.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 256.0,
+    "y": -128.0,
+    "z": 256.0,
+    "minimapX": 132.0,
+    "minimapY": 126.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 3072.0,
+    "y": 320.0,
+    "z": 256.0,
+    "minimapX": 176.0,
+    "minimapY": 133.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 2880.0,
+    "y": 1408.0,
+    "z": 256.0,
+    "minimapX": 173.0,
+    "minimapY": 150.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -768.0,
+    "y": 1408.0,
+    "z": 256.0,
+    "minimapX": 116.0,
+    "minimapY": 150.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -3072.0,
+    "y": 384.0,
+    "z": 256.0,
+    "minimapX": 80.0,
+    "minimapY": 134.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 2240.0,
+    "y": -1792.0,
+    "z": 256.0,
+    "minimapX": 163.0,
+    "minimapY": 100.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 1984.0,
+    "y": -2752.0,
+    "z": 256.0,
+    "minimapX": 159.0,
+    "minimapY": 85.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 2240.0,
+    "y": -2560.0,
+    "z": 256.0,
+    "minimapX": 163.0,
+    "minimapY": 88.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -1984.0,
+    "y": 2048.0,
+    "z": 256.0,
+    "minimapX": 97.0,
+    "minimapY": 160.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 1344.0,
+    "y": -64.0,
+    "z": 256.0,
+    "minimapX": 149.0,
+    "minimapY": 127.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -3648.0,
+    "y": 3392.0,
+    "z": 256.0,
+    "minimapX": 71.0,
+    "minimapY": 181.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 3648.0,
+    "y": -3392.0,
+    "z": 256.0,
+    "minimapX": 185.0,
+    "minimapY": 75.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -512.0,
+    "y": -64.0,
+    "z": 256.0,
+    "minimapX": 120.0,
+    "minimapY": 127.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 2432.0,
+    "y": -1088.0,
+    "z": 256.0,
+    "minimapX": 166.0,
+    "minimapY": 111.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 3904.0,
+    "y": 320.0,
+    "z": 256.0,
+    "minimapX": 189.0,
+    "minimapY": 133.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 256.0,
+    "y": 1984.0,
+    "z": 256.0,
+    "minimapX": 132.0,
+    "minimapY": 159.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 2176.0,
+    "y": 1792.0,
+    "z": 256.0,
+    "minimapX": 162.0,
+    "minimapY": 156.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 192.0,
+    "y": -1664.0,
+    "z": 256.0,
+    "minimapX": 131.0,
+    "minimapY": 102.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -2560.0,
+    "y": 1152.0,
+    "z": 256.0,
+    "minimapX": 88.0,
+    "minimapY": 146.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 320.0,
+    "y": -640.0,
+    "z": 256.0,
+    "minimapX": 133.0,
+    "minimapY": 118.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -256.0,
+    "y": -256.0,
+    "z": 256.0,
+    "minimapX": 124.0,
+    "minimapY": 124.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -2368.0,
+    "y": 3456.0,
+    "z": 256.0,
+    "minimapX": 91.0,
+    "minimapY": 182.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -384.0,
+    "y": 576.0,
+    "z": 256.0,
+    "minimapX": 122.0,
+    "minimapY": 137.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": -832.0,
+    "y": -896.0,
+    "z": 256.0,
+    "minimapX": 115.0,
+    "minimapY": 114.0
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 1536.0,
+    "y": 1600.0,
+    "z": 256.0,
+    "minimapX": 152.0,
+    "minimapY": 153.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 1536.0,
+    "y": -384.0,
+    "z": 256.0,
+    "minimapX": 152.0,
+    "minimapY": 122.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -2048.0,
+    "y": 2240.0,
+    "z": 256.0,
+    "minimapX": 96.0,
+    "minimapY": 163.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -2560.0,
+    "y": 2304.0,
+    "z": 256.0,
+    "minimapX": 88.0,
+    "minimapY": 164.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 576.0,
+    "y": -192.0,
+    "z": 256.0,
+    "minimapX": 137.0,
+    "minimapY": 125.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -640.0,
+    "y": -2176.0,
+    "z": 256.0,
+    "minimapX": 118.0,
+    "minimapY": 94.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -2176.0,
+    "y": -512.0,
+    "z": 256.0,
+    "minimapX": 94.0,
+    "minimapY": 120.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 2368.0,
+    "y": -2176.0,
+    "z": 256.0,
+    "minimapX": 165.0,
+    "minimapY": 94.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 1856.0,
+    "y": -2496.0,
+    "z": 256.0,
+    "minimapX": 157.0,
+    "minimapY": 89.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 2624.0,
+    "y": -1600.0,
+    "z": 256.0,
+    "minimapX": 169.0,
+    "minimapY": 103.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 2304.0,
+    "y": -960.0,
+    "z": 256.0,
+    "minimapX": 164.0,
+    "minimapY": 113.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -960.0,
+    "y": 1152.0,
+    "z": 256.0,
+    "minimapX": 113.0,
+    "minimapY": 146.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 640.0,
+    "y": -1536.0,
+    "z": 256.0,
+    "minimapX": 138.0,
+    "minimapY": 104.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -3136.0,
+    "y": 640.0,
+    "z": 256.0,
+    "minimapX": 79.0,
+    "minimapY": 138.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 512.0,
+    "y": 384.0,
+    "z": 256.0,
+    "minimapX": 136.0,
+    "minimapY": 134.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -1280.0,
+    "y": -768.0,
+    "z": 256.0,
+    "minimapX": 108.0,
+    "minimapY": 116.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -2048.0,
+    "y": -2880.0,
+    "z": 256.0,
+    "minimapX": 96.0,
+    "minimapY": 83.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -2880.0,
+    "y": 2432.0,
+    "z": 256.0,
+    "minimapX": 83.0,
+    "minimapY": 166.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 128.0,
+    "y": -320.0,
+    "z": 256.0,
+    "minimapX": 130.0,
+    "minimapY": 123.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 2624.0,
+    "y": -2112.0,
+    "z": 256.0,
+    "minimapX": 169.0,
+    "minimapY": 95.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 1472.0,
+    "y": 0.0,
+    "z": 256.0,
+    "minimapX": 151.0,
+    "minimapY": 128.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -256.0,
+    "y": 320.0,
+    "z": 256.0,
+    "minimapX": 124.0,
+    "minimapY": 133.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -832.0,
+    "y": -384.0,
+    "z": 256.0,
+    "minimapX": 115.0,
+    "minimapY": 122.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 512.0,
+    "y": 1792.0,
+    "z": 256.0,
+    "minimapX": 136.0,
+    "minimapY": 156.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -640.0,
+    "y": -1280.0,
+    "z": 256.0,
+    "minimapX": 118.0,
+    "minimapY": 108.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 2304.0,
+    "y": 384.0,
+    "z": 256.0,
+    "minimapX": 164.0,
+    "minimapY": 134.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -2112.0,
+    "y": -832.0,
+    "z": 256.0,
+    "minimapX": 95.0,
+    "minimapY": 115.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -2112.0,
+    "y": 2880.0,
+    "z": 256.0,
+    "minimapX": 95.0,
+    "minimapY": 173.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -1600.0,
+    "y": 2496.0,
+    "z": 256.0,
+    "minimapX": 103.0,
+    "minimapY": 167.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -256.0,
+    "y": 3520.0,
+    "z": 256.0,
+    "minimapX": 124.0,
+    "minimapY": 183.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 960.0,
+    "y": 576.0,
+    "z": 256.0,
+    "minimapX": 143.0,
+    "minimapY": 137.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -192.0,
+    "y": -192.0,
+    "z": 256.0,
+    "minimapX": 125.0,
+    "minimapY": 125.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 384.0,
+    "y": -1728.0,
+    "z": 256.0,
+    "minimapX": 134.0,
+    "minimapY": 101.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 128.0,
+    "y": -640.0,
+    "z": 256.0,
+    "minimapX": 130.0,
+    "minimapY": 118.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 128.0,
+    "y": -1856.0,
+    "z": 256.0,
+    "minimapX": 130.0,
+    "minimapY": 99.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -896.0,
+    "y": -2048.0,
+    "z": 256.0,
+    "minimapX": 114.0,
+    "minimapY": 96.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -3072.0,
+    "y": 1600.0,
+    "z": 256.0,
+    "minimapX": 80.0,
+    "minimapY": 153.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -3072.0,
+    "y": 2752.0,
+    "z": 256.0,
+    "minimapX": 80.0,
+    "minimapY": 171.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": -3328.0,
+    "y": 256.0,
+    "z": 256.0,
+    "minimapX": 76.0,
+    "minimapY": 132.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 320.0,
+    "y": -896.0,
+    "z": 256.0,
+    "minimapX": 133.0,
+    "minimapY": 114.0
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 1856.0,
+    "y": -2112.0,
+    "z": 256.0,
+    "minimapX": 157.0,
+    "minimapY": 95.0
+  }
+]
