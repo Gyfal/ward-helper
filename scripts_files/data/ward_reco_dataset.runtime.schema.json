@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ward_reco_dataset.runtime.schema.json",
+  "title": "Ward Recommendation Dataset (Runtime)",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at_utc",
+    "dataset_type",
+    "source",
+    "config",
+    "summary",
+    "spots"
+  ],
+  "properties": {
+    "schema_version": { "type": "integer" },
+    "generated_at_utc": { "type": "string" },
+    "dataset_type": { "type": "string", "const": "runtime" },
+    "source": {
+      "type": "object",
+      "required": ["matches_used", "mode"],
+      "properties": {
+        "matches_used": { "type": "integer" },
+        "mode": { "type": "string" }
+      }
+    },
+    "config": {
+      "type": "object",
+      "required": ["grouping_mode", "cluster_radius_world", "time_buckets"],
+      "properties": {
+        "grouping_mode": { "type": "string" },
+        "cluster_radius_world": { "type": "number" },
+        "time_buckets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "min_sec", "max_sec"],
+            "properties": {
+              "id": { "type": "string" },
+              "min_sec": { "type": "integer" },
+              "max_sec": { "type": ["integer", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "total_placements",
+        "observer_placements",
+        "sentry_placements",
+        "spots_count"
+      ],
+      "properties": {
+        "total_placements": { "type": "integer" },
+        "observer_placements": { "type": "integer" },
+        "sentry_placements": { "type": "integer" },
+        "spots_count": { "type": "integer" }
+      }
+    },
+    "spots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "spot_id",
+          "type",
+          "team",
+          "time_bucket",
+          "cell",
+          "world_avg",
+          "stats",
+          "flags",
+          "context_profile"
+        ],
+        "properties": {
+          "spot_id": { "type": "string" },
+          "type": { "type": "string", "enum": ["Observer", "Sentry"] },
+          "team": { "type": "string", "enum": ["radiant", "dire"] },
+          "time_bucket": { "type": "string" },
+          "cell": {
+            "type": "object",
+            "required": ["x", "y"],
+            "properties": {
+              "x": { "type": "integer" },
+              "y": { "type": "integer" }
+            }
+          },
+          "world_avg": {
+            "type": "object",
+            "required": ["x", "y"],
+            "properties": {
+              "x": { "type": "number" },
+              "y": { "type": "number" }
+            }
+          },
+          "stats": {
+            "type": "object",
+            "required": ["matches_seen", "placements", "score", "radius_p50", "radius_p90"],
+            "properties": {
+              "matches_seen": { "type": "integer" },
+              "placements": { "type": "integer" },
+              "score": { "type": "number" },
+              "radius_p50": { "type": "number" },
+              "radius_p90": { "type": "number" }
+            }
+          },
+          "flags": {
+            "type": "object",
+            "required": ["observer_risky_quick_deward"],
+            "properties": {
+              "observer_risky_quick_deward": { "type": "boolean" }
+            }
+          },
+          "context_profile": {
+            "type": "object",
+            "required": [
+              "avg_tower_diff_for_team",
+              "tower_destroyed_own_rate",
+              "tower_destroyed_enemy_rate"
+            ],
+            "properties": {
+              "avg_tower_diff_for_team": { "type": "number" },
+              "tower_destroyed_own_rate": {
+                "type": "object",
+                "additionalProperties": { "type": "number" }
+              },
+              "tower_destroyed_enemy_rate": {
+                "type": "object",
+                "additionalProperties": { "type": "number" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,8 +1,4 @@
-import {
-	InputManager,
-	VKeys,
-	VMouseKeys
-} from "github.com/octarine-public/wrapper/index"
+import { InputManager, VKeys, VMouseKeys } from "github.com/octarine-public/wrapper/index"
 
 export class InputEdgeTracker {
 	private readonly keyWasDown = new Map<number, boolean>()

@@ -1,14 +1,11 @@
 import {
 	GetPositionHeight,
-	Utils,
+	Utils as WrapperUtils,
 	Vector2
 } from "github.com/octarine-public/wrapper/index"
 
-import {
-	REMOTE_SOURCE_KEYS,
-	REMOTE_SOURCE_PATHS,
-	RemoteSourceKey
-} from "./RemoteSources"
+import { REMOTE_SOURCE_KEYS, REMOTE_SOURCE_PATHS, RemoteSourceKey } from "./RemoteSources"
+import { isObjectRecord, normalizeTowerKey } from "./Utils"
 import {
 	DEFAULT_WARD_TEAMS,
 	WardPoint,
@@ -19,10 +16,6 @@ import {
 } from "./WardTypes"
 export type RemoteWardSourceKey = RemoteSourceKey
 export const REMOTE_WARD_SOURCE_KEYS = [...REMOTE_SOURCE_KEYS]
-
-function isObject(value: unknown): value is Record<string, unknown> {
-	return typeof value === "object" && value !== null
-}
 
 function parseDatasetTeam(value: unknown): WardTeam[] {
 	if (value === "radiant") {
@@ -66,23 +59,8 @@ function parseTeams(value: unknown): WardTeam[] {
 	return teams
 }
 
-function normalizeTowerKey(value: unknown): string | undefined {
-	if (typeof value !== "string") {
-		return undefined
-	}
-	const raw = value.trim().toLowerCase()
-	if (raw.length === 0) {
-		return undefined
-	}
-	const m = raw.match(/^(top|mid|bot)[_ -]?t([1-4])$/)
-	if (m !== null) {
-		return `${m[1]}_t${m[2]}`
-	}
-	return undefined
-}
-
 function parseTowerRateMap(value: unknown): Record<string, number> | undefined {
-	if (!isObject(value)) {
+	if (!isObjectRecord(value)) {
 		return undefined
 	}
 	const out: Record<string, number> = {}
@@ -115,7 +93,7 @@ function resolveWardZ(x: number, y: number, rawZ: unknown): number {
 }
 
 function parseWardPoint(value: unknown): Nullable<WardPoint> {
-	if (!isObject(value)) {
+	if (!isObjectRecord(value)) {
 		return undefined
 	}
 	const x = Number(value.x)
@@ -145,6 +123,10 @@ function parseWardPoint(value: unknown): Nullable<WardPoint> {
 	const hasMatchesSeen = Number.isFinite(matchesSeen)
 	const placements = Number(value.placements)
 	const hasPlacements = Number.isFinite(placements)
+	const radiusP50 = Number(value.radiusP50 ?? value.radius_p50)
+	const hasRadiusP50 = Number.isFinite(radiusP50)
+	const radiusP90 = Number(value.radiusP90 ?? value.radius_p90)
+	const hasRadiusP90 = Number.isFinite(radiusP90)
 	const score = Number(value.score)
 	const hasScore = Number.isFinite(score)
 	const scoreBase = Number(value.scoreBase)
@@ -183,6 +165,8 @@ function parseWardPoint(value: unknown): Nullable<WardPoint> {
 		towerDestroyedEnemyRate,
 		matchesSeen: hasMatchesSeen ? matchesSeen : undefined,
 		placements: hasPlacements ? placements : undefined,
+		radiusP50: hasRadiusP50 ? radiusP50 : undefined,
+		radiusP90: hasRadiusP90 ? radiusP90 : undefined,
 		score: hasScore ? score : undefined,
 		scoreBase: hasScoreBase ? scoreBase : undefined,
 		scoreRuntime: hasScoreRuntime ? scoreRuntime : undefined,
@@ -218,7 +202,7 @@ function normalizeWardArray(source: unknown): WardPoint[] {
 }
 
 function parseWardRecoDataset(source: unknown): WardPoint[] {
-	if (!isObject(source)) {
+	if (!isObjectRecord(source)) {
 		return []
 	}
 
@@ -231,7 +215,7 @@ function parseWardRecoDataset(source: unknown): WardPoint[] {
 	const seen = new Set<string>()
 	for (let i = 0; i < spotsRaw.length; i++) {
 		const spot = spotsRaw[i]
-		if (!isObject(spot)) {
+		if (!isObjectRecord(spot)) {
 			continue
 		}
 		const spotID = spot.spot_id
@@ -243,10 +227,10 @@ function parseWardRecoDataset(source: unknown): WardPoint[] {
 			continue
 		}
 
-		const world = isObject(spot.world_avg) ? spot.world_avg : {}
-		const stats = isObject(spot.stats) ? spot.stats : {}
-		const flags = isObject(spot.flags) ? spot.flags : {}
-		const cell = isObject(spot.cell) ? spot.cell : {}
+		const world = isObjectRecord(spot.world_avg) ? spot.world_avg : {}
+		const stats = isObjectRecord(spot.stats) ? spot.stats : {}
+		const flags = isObjectRecord(spot.flags) ? spot.flags : {}
+		const cell = isObjectRecord(spot.cell) ? spot.cell : {}
 		const x = Number(world.x)
 		const y = Number(world.y)
 		if (!Number.isFinite(x) || !Number.isFinite(y)) {
@@ -265,7 +249,7 @@ function parseWardRecoDataset(source: unknown): WardPoint[] {
 			typeof spot.time_bucket === "string" && spot.time_bucket.length > 0
 				? spot.time_bucket
 				: undefined
-		const context = isObject(spot.context_profile) ? spot.context_profile : {}
+		const context = isObjectRecord(spot.context_profile) ? spot.context_profile : {}
 		const towerDiffAvg = Number(context.avg_tower_diff_for_team)
 		const towerDestroyedOwnRate = parseTowerRateMap(context.tower_destroyed_own_rate)
 		const towerDestroyedEnemyRate = parseTowerRateMap(
@@ -273,6 +257,8 @@ function parseWardRecoDataset(source: unknown): WardPoint[] {
 		)
 		const matchesSeen = Number(stats.matches_seen)
 		const placements = Number(stats.placements)
+		const radiusP50 = Number(stats.radius_p50)
+		const radiusP90 = Number(stats.radius_p90)
 		const observerRiskyQuickDeward = Boolean(flags.observer_risky_quick_deward)
 
 		wards.push({
@@ -287,6 +273,8 @@ function parseWardRecoDataset(source: unknown): WardPoint[] {
 			towerDestroyedEnemyRate,
 			matchesSeen: Number.isFinite(matchesSeen) ? matchesSeen : undefined,
 			placements: Number.isFinite(placements) ? placements : undefined,
+			radiusP50: Number.isFinite(radiusP50) ? radiusP50 : undefined,
+			radiusP90: Number.isFinite(radiusP90) ? radiusP90 : undefined,
 			score: Number.isFinite(score) ? score : undefined,
 			observerRiskyQuickDeward,
 			type,
@@ -305,7 +293,7 @@ export class WardDataLoader {
 		if (Array.isArray(source)) {
 			return normalizeWardArray(source)
 		}
-		if (!isObject(source)) {
+		if (!isObjectRecord(source)) {
 			return []
 		}
 		return normalizeWardArray(source.wards)
@@ -314,7 +302,7 @@ export class WardDataLoader {
 	public static LoadRemoteWards(source: RemoteWardSourceKey = "opendota"): WardPoint[] {
 		const path = REMOTE_SOURCE_PATHS[source] ?? REMOTE_SOURCE_PATHS.opendota
 		try {
-			const raw = Utils.readJSON<unknown>(path)
+			const raw = WrapperUtils.readJSON<unknown>(path)
 			if (source === "ward_reco_dynamic") {
 				const fromDataset = parseWardRecoDataset(raw)
 				if (fromDataset.length > 0) {
@@ -323,10 +311,7 @@ export class WardDataLoader {
 			}
 			return WardDataLoader.Normalize(raw)
 		} catch (error) {
-			console.error(
-				`[ward-helper] failed load remote wards: ${path}`,
-				error
-			)
+			console.error(`[ward-helper] failed load remote wards: ${path}`, error)
 			return []
 		}
 	}
@@ -334,7 +319,7 @@ export class WardDataLoader {
 	public static LoadStaticCustomWards(): WardPoint[] {
 		try {
 			return WardDataLoader.Normalize(
-				Utils.readJSON<unknown>("data/custom_wards.json")
+				WrapperUtils.readJSON<unknown>("data/custom_wards.json")
 			)
 		} catch {
 			return []

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "ward_reco_dataset.schema.json",
-  "title": "Ward Recommendation Dataset",
+  "title": "Ward Recommendation Dataset (Full)",
   "type": "object",
   "required": [
     "schema_version",
@@ -10,6 +10,7 @@
     "config",
     "summary",
     "spots",
+    "popular_spots",
     "recommendation_view"
   ],
   "properties": {
@@ -21,18 +22,32 @@
     },
     "source": {
       "type": "object",
-      "required": ["cache_dir", "matches_used"],
+      "required": ["cache_dir", "demos_dir", "matches_used", "mode"],
       "properties": {
         "cache_dir": { "type": "string" },
-        "matches_used": { "type": "integer" }
+        "demos_dir": { "type": "string" },
+        "matches_used": { "type": "integer" },
+        "mode": { "type": "string" }
       }
     },
     "config": {
       "type": "object",
-      "required": ["quick_deward_sec", "success_lifetime_sec", "time_buckets"],
+      "required": [
+        "quick_deward_sec",
+        "success_lifetime_sec",
+        "observer_max_quick_deward_rate",
+        "popular_min_match_coverage",
+        "grouping_mode",
+        "cluster_radius_world",
+        "time_buckets"
+      ],
       "properties": {
         "quick_deward_sec": { "type": "integer" },
         "success_lifetime_sec": { "type": "integer" },
+        "observer_max_quick_deward_rate": { "type": "number" },
+        "popular_min_match_coverage": { "type": "number" },
+        "grouping_mode": { "type": "string" },
+        "cluster_radius_world": { "type": "number" },
         "time_buckets": {
           "type": "array",
           "items": {
@@ -100,7 +115,9 @@
           "cell",
           "vec_avg",
           "minimap_avg",
+          "world_avg",
           "stats",
+          "flags",
           "context_profile"
         ],
         "properties": {
@@ -147,7 +164,11 @@
               "placements",
               "pick_rate_per_match",
               "match_coverage",
+              "radius_p50",
+              "radius_p90",
               "median_lifetime_sec",
+              "p25_lifetime_sec",
+              "p75_lifetime_sec",
               "quick_deward_rate",
               "success_rate",
               "score"
@@ -157,6 +178,8 @@
               "placements": { "type": "integer" },
               "pick_rate_per_match": { "type": "number" },
               "match_coverage": { "type": "number" },
+              "radius_p50": { "type": "number" },
+              "radius_p90": { "type": "number" },
               "median_lifetime_sec": { "type": "number" },
               "p25_lifetime_sec": { "type": "number" },
               "p75_lifetime_sec": { "type": "number" },
@@ -179,7 +202,9 @@
               "avg_gold_adv_for_team",
               "avg_kill_adv_for_team",
               "avg_tower_diff_for_team",
-              "gold_adv_buckets"
+              "gold_adv_buckets",
+              "tower_destroyed_own_rate",
+              "tower_destroyed_enemy_rate"
             ],
             "properties": {
               "avg_gold_adv_for_team": { "type": "number" },
@@ -188,6 +213,14 @@
               "gold_adv_buckets": {
                 "type": "object",
                 "additionalProperties": { "type": "integer" }
+              },
+              "tower_destroyed_own_rate": {
+                "type": "object",
+                "additionalProperties": { "type": "number" }
+              },
+              "tower_destroyed_enemy_rate": {
+                "type": "object",
+                "additionalProperties": { "type": "number" }
               }
             }
           }

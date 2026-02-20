@@ -15,14 +15,18 @@
 		"forceConsistentCasingInFileNames": true,
 		"lib": [
 			"ESNext"
-		]
+		],
 	},
 	"include": [
 		"./**/*.ts",
 		"../../**/*.d.ts"
 	],
 	"exclude": [
+		"tools/**/*",
 		"node_modules/**/*",
-		"scripts_files/**/*"
+		"scripts_files/**/*",
+		"../deadlock-sdk/**/*",
+		"../../octarine-internal/**/*",
+		"../../octarine-web/**/*",
 	]
 }

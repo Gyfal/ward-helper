@@ -16,6 +16,7 @@ import {
 	WardTeams,
 	WardType
 } from "../model/WardTypes"
+import { DEBUG_PHASE_BUCKETS } from "./constants"
 import { createBuilderSection } from "./sections/builder"
 import {
 	createDebugSection,
@@ -24,7 +25,6 @@ import {
 	MenuReadModel
 } from "./sections/debug"
 import { createMainSection } from "./sections/main"
-import { DEBUG_PHASE_BUCKETS } from "./constants"
 
 const DEFAULT_REMOTE_SOURCE_INDEX = REMOTE_SOURCE_KEYS.indexOf("ward_reco_dynamic")
 const DESCRIPTION_PRESETS = [
@@ -562,7 +562,8 @@ export class MenuManager {
 
 		if (preset.localTeam !== undefined) {
 			this.DebugLocalTeamOverride.value = true
-			this.DebugLocalTeam.SelectedID = preset.localTeam === WardTeams.Radiant ? 1 : 2
+			this.DebugLocalTeam.SelectedID =
+				preset.localTeam === WardTeams.Radiant ? 1 : 2
 			this.DebugLocalTeam.Update()
 		}
 	}

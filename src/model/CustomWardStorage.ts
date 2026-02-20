@@ -1,19 +1,8 @@
+import { parseConfigRecord } from "./Utils"
 import { WardDataLoader } from "./WardDataLoader"
 import { WardPoint } from "./WardTypes"
 
 const CUSTOM_WARDS_STORAGE_KEY = "ward-helper.custom-wards.v1"
-
-function parseConfig(rawConfig: string): Record<string, unknown> {
-	try {
-		const parsed = JSON.parse(rawConfig) as unknown
-		if (typeof parsed === "object" && parsed !== null) {
-			return parsed as Record<string, unknown>
-		}
-	} catch (error) {
-		console.error("[ward-helper] invalid config json", error)
-	}
-	return {}
-}
 
 export class CustomWardStorage {
 	private saveQueue: Promise<void> = Promise.resolve()
@@ -21,7 +10,7 @@ export class CustomWardStorage {
 	public async Load(): Promise<WardPoint[]> {
 		try {
 			const raw = await readConfig()
-			const config = parseConfig(raw)
+			const config = parseConfigRecord(raw)
 			const configWards = WardDataLoader.Normalize(config[CUSTOM_WARDS_STORAGE_KEY])
 			if (configWards.length !== 0) {
 				return configWards
@@ -48,7 +37,7 @@ export class CustomWardStorage {
 		this.saveQueue = this.saveQueue
 			.then(async () => {
 				const raw = await readConfig()
-				const config = parseConfig(raw)
+				const config = parseConfigRecord(raw)
 				config[CUSTOM_WARDS_STORAGE_KEY] = payload
 				writeConfig(JSON.stringify(config))
 			})

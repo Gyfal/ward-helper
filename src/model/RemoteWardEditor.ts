@@ -49,11 +49,7 @@ export class RemoteWardEditor {
 	public FinishRemoteDrag(): boolean {
 		const id = this.state.draggedRemoteWardID
 		const preview = this.state.draggedRemoteWardPreview
-		if (
-			id >= 0 &&
-			id < this.state.remoteWards.length &&
-			preview !== undefined
-		) {
+		if (id >= 0 && id < this.state.remoteWards.length && preview !== undefined) {
 			this.RestoreWard(this.state.remoteWards[id], preview)
 			this.ResetDragState()
 			return true
@@ -65,11 +61,7 @@ export class RemoteWardEditor {
 	public CancelRemoteDrag() {
 		const id = this.state.draggedRemoteWardID
 		const snapshot = this.state.draggedRemoteWardSnapshot
-		if (
-			id >= 0 &&
-			id < this.state.remoteWards.length &&
-			snapshot !== undefined
-		) {
+		if (id >= 0 && id < this.state.remoteWards.length && snapshot !== undefined) {
 			this.RestoreWard(this.state.remoteWards[id], snapshot)
 		}
 		this.ResetDragState()

@@ -1,9 +1,6 @@
 import { Menu } from "github.com/octarine-public/wrapper/index"
 
-import {
-	DEFAULT_WARD_DESCRIPTION,
-	WARD_TEAM_OPTION_VALUES
-} from "../../model/WardTypes"
+import { DEFAULT_WARD_DESCRIPTION, WARD_TEAM_OPTION_VALUES } from "../../model/WardTypes"
 
 export interface BuilderSectionControls {
 	BuilderMode: Menu.Toggle
@@ -45,10 +42,7 @@ export function createBuilderSection(
 			"Left mouse"
 		),
 		SaveRemoteButton: builderTree.AddButton("Save remote pool edits"),
-		WardType: builderTree.AddDropdown("Ward type", [
-			"Observer Ward",
-			"Sentry Ward"
-		]),
+		WardType: builderTree.AddDropdown("Ward type", ["Observer Ward", "Sentry Ward"]),
 		TeamType: builderTree.AddDropdown("Team", [...WARD_TEAM_OPTION_VALUES], 2),
 		ShowCustomWards: builderTree.AddToggle("Show custom wards", true),
 		AddWardBind: builderTree.AddKeybind("Add ward at cursor", "F5"),
@@ -56,10 +50,9 @@ export function createBuilderSection(
 		SaveCustomButton: builderTree.AddButton("Save custom wards"),
 		ShowInfoButton: builderTree.AddButton("Show wards info"),
 		WardList: builderTree.AddDropdown("Select ward", ["No wards available"]),
-		DescriptionPreset: builderTree.AddDropdown(
-			"Description preset",
-			[...descriptionPresets]
-		),
+		DescriptionPreset: builderTree.AddDropdown("Description preset", [
+			...descriptionPresets
+		]),
 		ApplyDescriptionButton: builderTree.AddButton("Apply description"),
 		DeleteWardButton: builderTree.AddButton("Delete selected ward"),
 		DuplicateWardButton: builderTree.AddButton("Duplicate selected ward"),

@@ -1,5 +1,12 @@
 import { Vector3 } from "github.com/octarine-public/wrapper/index"
 
+import {
+	compareMetricAsc,
+	compareMetricDesc,
+	firstNonZeroComparison,
+	normalizeTowerKey,
+	parseBucketStartMinute
+} from "./Utils"
 import { RemoteWardSourceKey } from "./WardDataLoader"
 import {
 	DEFAULT_WARD_TEAMS,
@@ -17,11 +24,11 @@ const CONTEXT_LEVEL_ORDER: Record<string, number> = {
 }
 const PLACED_WARD_SKIP_RADIUS = 260
 const COUNTER_SENTRY_DISTANCE_FALLOFF = 6
-const ADAPTIVE_SPACING_BY_MINUTE: ReadonlyArray<{
+const ADAPTIVE_SPACING_BY_MINUTE: readonly {
 	fromMin: number
 	minCellDistance: number
 	minMinimapDistance: number
-}> = [
+}[] = [
 	{ fromMin: 0, minCellDistance: 2.5, minMinimapDistance: 5.0 },
 	{ fromMin: 10, minCellDistance: 2.0, minMinimapDistance: 4.2 },
 	{ fromMin: 20, minCellDistance: 1.8, minMinimapDistance: 3.6 },
@@ -215,9 +222,7 @@ export class VisibleWardSelector {
 		return out
 	}
 
-	private buildDynamicVisibleWards(
-		context: VisibleWardSelectorContext
-	): WardPoint[] {
+	private buildDynamicVisibleWards(context: VisibleWardSelectorContext): WardPoint[] {
 		const localTeam = context.localTeam
 		if (localTeam === undefined) {
 			this.lastDebugStats = {
@@ -374,7 +379,8 @@ export class VisibleWardSelector {
 			timeFilteredOut: context.remoteWards.length - candidate.length,
 			teamFilteredOut: Math.max(
 				0,
-				candidate.length - (ownObserver.length + ownSentry.length + enemyObserver.length)
+				candidate.length -
+					(ownObserver.length + ownSentry.length + enemyObserver.length)
 			),
 			placedFilteredOut: 0,
 			remoteVisible: out.length,
@@ -405,17 +411,19 @@ export class VisibleWardSelector {
 	}
 
 	private compareWardByPopularity(a: WardPoint, b: WardPoint): number {
-		const placementsA = Number(a.placements ?? 0)
-		const placementsB = Number(b.placements ?? 0)
-		if (placementsB !== placementsA) {
-			return placementsB - placementsA
-		}
-		const matchesA = Number(a.matchesSeen ?? 0)
-		const matchesB = Number(b.matchesSeen ?? 0)
-		if (matchesB !== matchesA) {
-			return matchesB - matchesA
-		}
-		return this.compareWardByRank(a, b)
+		const byPopularity = firstNonZeroComparison(
+			compareMetricDesc(a.placements, b.placements),
+			compareMetricDesc(a.matchesSeen, b.matchesSeen),
+			compareMetricAsc(
+				this.getWardRadiusForSort(a, "p90"),
+				this.getWardRadiusForSort(b, "p90")
+			),
+			compareMetricAsc(
+				this.getWardRadiusForSort(a, "p50"),
+				this.getWardRadiusForSort(b, "p50")
+			)
+		)
+		return byPopularity !== 0 ? byPopularity : this.compareWardByRank(a, b)
 	}
 
 	private decorateWardWithContextRuntime(
@@ -447,7 +455,10 @@ export class VisibleWardSelector {
 		)
 		const runtimeScore =
 			baseScore *
-			(1 + Math.max(0, context.dynamicTowerFitWeight) * metrics.fit * metrics.confidence)
+			(1 +
+				Math.max(0, context.dynamicTowerFitWeight) *
+					metrics.fit *
+					metrics.confidence)
 
 		let contextLevel: WardPoint["contextLevel"] = "base"
 		if (hasContext && context.useTowerStateFilter) {
@@ -487,14 +498,14 @@ export class VisibleWardSelector {
 		const enemyRates = ward.towerDestroyedEnemyRate ?? {}
 		const signals: number[] = []
 		for (let i = 0; i < missingOwnTowers.length; i++) {
-			const key = this.normalizeTowerKey(missingOwnTowers[i])
+			const key = normalizeTowerKey(missingOwnTowers[i])
 			if (key === undefined) {
 				continue
 			}
 			signals.push(Number(ownRates[key] ?? 0))
 		}
 		for (let i = 0; i < missingEnemyTowers.length; i++) {
-			const key = this.normalizeTowerKey(missingEnemyTowers[i])
+			const key = normalizeTowerKey(missingEnemyTowers[i])
 			if (key === undefined) {
 				continue
 			}
@@ -503,7 +514,8 @@ export class VisibleWardSelector {
 		const targetCount = signals.length
 		const fit =
 			targetCount > 0
-				? signals.reduce((acc, value) => acc + Math.max(0, value), 0) / targetCount
+				? signals.reduce((acc, value) => acc + Math.max(0, value), 0) /
+					targetCount
 				: 0
 		const matchedCount =
 			targetCount > 0
@@ -526,21 +538,6 @@ export class VisibleWardSelector {
 			supportMatches,
 			confidence
 		}
-	}
-
-	private normalizeTowerKey(value: string | undefined): string | undefined {
-		if (value === undefined) {
-			return undefined
-		}
-		const raw = value.trim().toLowerCase()
-		if (raw.length === 0) {
-			return undefined
-		}
-		const match = raw.match(/^(top|mid|bot)[_ -]?t([1-4])$/)
-		if (match === null) {
-			return undefined
-		}
-		return `${match[1]}_t${match[2]}`
 	}
 
 	private buildCounterSentryCandidates(
@@ -605,7 +602,14 @@ export class VisibleWardSelector {
 			if (need <= 0) {
 				continue
 			}
-			if (this.isWardBlockedByDedupeRules(ward, out, minCellDistance, minMinimapDistance)) {
+			if (
+				this.isWardBlockedByDedupeRules(
+					ward,
+					out,
+					minCellDistance,
+					minMinimapDistance
+				)
+			) {
 				continue
 			}
 			if (this.isRegionQuotaReached(ward, out, regionQuota, regionSize)) {
@@ -620,7 +624,14 @@ export class VisibleWardSelector {
 			if (out.indexOf(ward) >= 0) {
 				continue
 			}
-			if (this.isWardBlockedByDedupeRules(ward, out, minCellDistance, minMinimapDistance)) {
+			if (
+				this.isWardBlockedByDedupeRules(
+					ward,
+					out,
+					minCellDistance,
+					minMinimapDistance
+				)
+			) {
 				continue
 			}
 			if (this.isRegionQuotaReached(ward, out, regionQuota, regionSize)) {
@@ -700,6 +711,11 @@ export class VisibleWardSelector {
 		return Number.isFinite(score) ? score : Number.NEGATIVE_INFINITY
 	}
 
+	private getWardRadiusForSort(ward: WardPoint, level: "p50" | "p90"): number {
+		const raw = Number(level === "p90" ? ward.radiusP90 : ward.radiusP50)
+		return Number.isFinite(raw) && raw >= 0 ? raw : Number.POSITIVE_INFINITY
+	}
+
 	private hasWardTeam(ward: WardPoint, team: WardTeam): boolean {
 		const teams = ward.teams ?? DEFAULT_WARD_TEAMS
 		for (let i = 0; i < teams.length; i++) {
@@ -771,8 +787,11 @@ export class VisibleWardSelector {
 		return false
 	}
 
-	private getAdaptiveSpacing(bucket: string): { minCellDistance: number; minMinimapDistance: number } {
-		const startMin = this.parseBucketStartMinute(bucket)
+	private getAdaptiveSpacing(bucket: string): {
+		minCellDistance: number
+		minMinimapDistance: number
+	} {
+		const startMin = parseBucketStartMinute(bucket)
 		if (startMin === undefined) {
 			return DEFAULT_ADAPTIVE_SPACING
 		}
@@ -789,24 +808,6 @@ export class VisibleWardSelector {
 			minCellDistance: selected.minCellDistance,
 			minMinimapDistance: selected.minMinimapDistance
 		}
-	}
-
-	private parseBucketStartMinute(bucket: string): number | undefined {
-		const normalized = String(bucket ?? "").trim().toLowerCase()
-		if (normalized.length === 0) {
-			return undefined
-		}
-		const rangeMatch = normalized.match(/^(\d+)[_-](\d+)$/)
-		if (rangeMatch !== null) {
-			const start = Number(rangeMatch[1])
-			return Number.isFinite(start) ? start : undefined
-		}
-		const plusMatch = normalized.match(/^(\d+)[_ -]?plus$/)
-		if (plusMatch !== null) {
-			const start = Number(plusMatch[1])
-			return Number.isFinite(start) ? start : undefined
-		}
-		return undefined
 	}
 
 	private getLaneQuotaLanes(context: VisibleWardSelectorContext): string[] {
