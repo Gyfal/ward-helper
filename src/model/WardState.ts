@@ -1,7 +1,6 @@
 import { WardPoint } from "./WardTypes"
 
 export class WardState {
-
 	public remoteWards: WardPoint[] = []
 	public customWards: WardPoint[] = []
 	public hoveredWard?: WardPoint

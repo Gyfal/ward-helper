@@ -8,12 +8,12 @@ import {
 	RendererSDK,
 	Team,
 	Tower,
-	WardObserver,
-	WardTrueSight,
+	Vector2,
+	Vector3,
 	VKeys,
 	VMouseKeys,
-	Vector2,
-	Vector3
+	WardObserver,
+	WardTrueSight
 } from "github.com/octarine-public/wrapper/index"
 
 import { GUIHelper } from "../gui"
@@ -24,11 +24,11 @@ import { PlaceHelper } from "./PlaceHelper"
 import { RemoteWardEditor } from "./RemoteWardEditor"
 import { RemoteWardStorage } from "./RemoteWardStorage"
 import { TooltipAnimator } from "./TooltipAnimator"
+import { VisibleWardSelector } from "./VisibleWardSelector"
 import { RemoteWardSourceKey, WardDataLoader } from "./WardDataLoader"
 import { WardDebugOverlay } from "./WardDebugOverlay"
 import { WardListPresenter } from "./WardListPresenter"
 import { WardRenderer } from "./WardRenderer"
-import { VisibleWardSelector } from "./VisibleWardSelector"
 import { WardState } from "./WardState"
 import {
 	DEFAULT_WARD_DESCRIPTION,
@@ -70,8 +70,8 @@ export class WardSpawnerModel {
 	private readonly state = new WardState()
 	private readonly storage = new CustomWardStorage()
 	private readonly remoteStorage = new RemoteWardStorage()
-	private readonly placeHelper = new PlaceHelper()
-	private readonly debugOverlay = new WardDebugOverlay()
+	private readonly placeHelper: PlaceHelper
+	private readonly debugOverlay: WardDebugOverlay
 	private readonly tooltipAnimator = new TooltipAnimator()
 	private readonly input = new InputEdgeTracker()
 	private readonly visibleWardSelector = new VisibleWardSelector()
@@ -83,7 +83,14 @@ export class WardSpawnerModel {
 		public readonly menu: MenuManager,
 		public readonly gui: GUIHelper
 	) {
-		this.renderer = new WardRenderer(this.menu, this.state, this.tooltipAnimator)
+		this.placeHelper = new PlaceHelper(this.gui)
+		this.debugOverlay = new WardDebugOverlay(this.gui)
+		this.renderer = new WardRenderer(
+			this.menu,
+			this.state,
+			this.tooltipAnimator,
+			this.gui
+		)
 		this.menu.SetRemoteWardStats("Loaded remote wards: 0")
 		this.RefreshWardList(0)
 	}
@@ -124,10 +131,7 @@ export class WardSpawnerModel {
 
 	private handleRemoteSource() {
 		const selectedSource = this.menu.SelectedRemoteSource
-		if (
-			this.state.isRemoteLoaded &&
-			this.state.remoteSourceKey === selectedSource
-		) {
+		if (this.state.isRemoteLoaded && this.state.remoteSourceKey === selectedSource) {
 			return
 		}
 		this.remoteEditor.ResetDragState()
@@ -135,9 +139,7 @@ export class WardSpawnerModel {
 		this.state.remoteWards = baseRemote
 		this.state.remoteSourceKey = selectedSource
 		this.state.isRemoteLoaded = true
-		this.menu.SetRemoteWardStats(
-			`Loaded remote wards: ${baseRemote.length}`
-		)
+		this.menu.SetRemoteWardStats(`Loaded remote wards: ${baseRemote.length}`)
 		const token = ++this.remoteLoadToken
 		void this.remoteStorage.Load(selectedSource).then(edited => {
 			if (token !== this.remoteLoadToken) {
@@ -147,9 +149,7 @@ export class WardSpawnerModel {
 				return
 			}
 			this.state.remoteWards = edited
-			this.menu.SetRemoteWardStats(
-				`Loaded remote wards: ${edited.length} (edited)`
-			)
+			this.menu.SetRemoteWardStats(`Loaded remote wards: ${edited.length} (edited)`)
 		})
 	}
 
@@ -211,7 +211,10 @@ export class WardSpawnerModel {
 			this.DuplicateSelectedWard()
 		}
 		if (this.menu.ConsumeExportRequest()) {
-			console.log("[ward-helper] custom wards json:", JSON.stringify(this.state.customWards))
+			console.log(
+				"[ward-helper] custom wards json:",
+				JSON.stringify(this.state.customWards)
+			)
 		}
 	}
 
@@ -222,11 +225,17 @@ export class WardSpawnerModel {
 			return
 		}
 
-		if (this.input.IsKeyJustPressed(VK_ESCAPE) && this.state.draggedRemoteWardID >= 0) {
+		if (
+			this.input.IsKeyJustPressed(VK_ESCAPE) &&
+			this.state.draggedRemoteWardID >= 0
+		) {
 			this.remoteEditor.CancelRemoteDrag()
 			return
 		}
-		if (this.input.IsKeyJustPressed(VK_DELETE) || this.input.IsKeyJustPressed(VK_BACKSPACE)) {
+		if (
+			this.input.IsKeyJustPressed(VK_DELETE) ||
+			this.input.IsKeyJustPressed(VK_BACKSPACE)
+		) {
 			if (this.remoteEditor.DeleteRemoteHoveredOrDraggedWard()) {
 				this.SaveRemoteWards()
 			}
@@ -388,16 +397,14 @@ export class WardSpawnerModel {
 		return { missingOwn: direMissing, missingEnemy: radiantMissing }
 	}
 
-	private ParseTowerContextKey(
-		tower: Tower
-	): { team: Team; key: string } | undefined {
+	private ParseTowerContextKey(tower: Tower): { team: Team; key: string } | undefined {
 		const anyTower = tower as unknown as Record<string, unknown>
 		const candidates = [
-			anyTower["Name"],
-			anyTower["UnitName"],
-			anyTower["ClassName"],
-			anyTower["NetworkName"],
-			anyTower["ModelName"]
+			anyTower.Name,
+			anyTower.UnitName,
+			anyTower.ClassName,
+			anyTower.NetworkName,
+			anyTower.ModelName
 		]
 		for (let i = 0; i < candidates.length; i++) {
 			const raw = candidates[i]
@@ -485,7 +492,9 @@ export class WardSpawnerModel {
 					) {
 						continue
 					}
-					out.push(new Vector3(ward.Position.x, ward.Position.y, ward.Position.z))
+					out.push(
+						new Vector3(ward.Position.x, ward.Position.y, ward.Position.z)
+					)
 				}
 				return out
 			}
@@ -726,5 +735,4 @@ export class WardSpawnerModel {
 			)
 		}
 	}
-
 }

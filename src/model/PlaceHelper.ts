@@ -7,9 +7,12 @@ import {
 	Vector3
 } from "github.com/octarine-public/wrapper/index"
 
+import { GUIHelper } from "../gui"
 import { WardPoint, WardTypes } from "./WardTypes"
 
 export class PlaceHelper {
+	constructor(private readonly gui: GUIHelper) {}
+
 	public TryPlaceWard(wards: WardPoint[], iconSize: number) {
 		const hero = LocalPlayer?.Hero
 		if (hero === undefined || wards.length === 0) {
@@ -20,7 +23,11 @@ export class PlaceHelper {
 		const sentryWard = hero.GetItemByName("item_ward_sentry", true)
 		const wardDispenser = hero.GetItemByName("item_ward_dispenser", true)
 
-		if (observerWard === undefined && sentryWard === undefined && wardDispenser === undefined) {
+		if (
+			observerWard === undefined &&
+			sentryWard === undefined &&
+			wardDispenser === undefined
+		) {
 			return false
 		}
 
@@ -72,14 +79,7 @@ export class PlaceHelper {
 			screenPosition.y - renderOffset + bounceOffset
 		)
 
-		const halfWidth = iconSize / 1.5
-		const halfHeight = iconSize / 1.5
-		return (
-			cursor.x >= animated.x - halfWidth &&
-			cursor.x <= animated.x + halfWidth &&
-			cursor.y >= animated.y - halfHeight &&
-			cursor.y <= animated.y + halfHeight
-		)
+		const halfSize = iconSize / 1.5
+		return this.gui.IsHovered(animated, cursor, halfSize)
 	}
-
 }

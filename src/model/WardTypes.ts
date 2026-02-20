@@ -30,6 +30,8 @@ export interface WardPoint {
 	towerDestroyedEnemyRate?: Record<string, number>
 	matchesSeen?: number
 	placements?: number
+	radiusP50?: number
+	radiusP90?: number
 	score?: number
 	scoreBase?: number
 	scoreRuntime?: number

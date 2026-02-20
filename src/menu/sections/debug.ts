@@ -1,12 +1,7 @@
 import { Menu } from "github.com/octarine-public/wrapper/index"
 
 import { RemoteSourceKey } from "../../model/RemoteSources"
-import {
-	WardTeam,
-	WardTeamOption,
-	WardTeams,
-	WardType
-} from "../../model/WardTypes"
+import { WardTeam, WardTeamOption, WardTeams, WardType } from "../../model/WardTypes"
 import {
 	DEBUG_PHASE_BUCKETS,
 	DEBUG_PHASE_VALUES,
@@ -74,13 +69,7 @@ export const DEBUG_TOWER_TEMPLATE_IDS = {
 
 const DEBUG_LOCAL_TEAM_VALUES = ["Auto", "Radiant", "Dire"] as const
 
-const QUICK_SCENARIO_PHASES = [
-	"0_10",
-	"10_20",
-	"20_35",
-	"35_50",
-	"50_plus"
-] as const
+const QUICK_SCENARIO_PHASES = ["0_10", "10_20", "20_35", "35_50", "50_plus"] as const
 
 type QuickScenarioPhase = (typeof QUICK_SCENARIO_PHASES)[number]
 type QuickScenarioTeam = "radiant" | "dire"
@@ -126,11 +115,15 @@ function makeScenarioPreset(
 	}
 }
 
-export const DEBUG_SCENARIO_PRESETS: ReadonlyArray<DebugScenarioPreset> = [
+export const DEBUG_SCENARIO_PRESETS: readonly DebugScenarioPreset[] = [
 	{ label: "None" },
 	...buildPhaseScenarioPresets("baseline", DEBUG_TOWER_TEMPLATE_IDS.None, false),
 	...buildPhaseScenarioPresets("own_mid23", DEBUG_TOWER_TEMPLATE_IDS.OwnMid23, true),
-	...buildPhaseScenarioPresets("both_all123", DEBUG_TOWER_TEMPLATE_IDS.BothAll123, true),
+	...buildPhaseScenarioPresets(
+		"both_all123",
+		DEBUG_TOWER_TEMPLATE_IDS.BothAll123,
+		true
+	),
 	...buildPhaseScenarioPresets(
 		"own_bot23_enemy_top2",
 		DEBUG_TOWER_TEMPLATE_IDS.OwnBot23EnemyTop2,
@@ -138,14 +131,12 @@ export const DEBUG_SCENARIO_PRESETS: ReadonlyArray<DebugScenarioPreset> = [
 	)
 ]
 
-const DEBUG_SCENARIO_VALUES = DEBUG_SCENARIO_PRESETS.map(
-	preset => preset.label
-)
+const DEBUG_SCENARIO_VALUES = DEBUG_SCENARIO_PRESETS.map(preset => preset.label)
 
-const DEBUG_TOWER_TEMPLATE_PRESETS: ReadonlyArray<{
+const DEBUG_TOWER_TEMPLATE_PRESETS: readonly {
 	own: string[]
 	enemy: string[]
-}> = [
+}[] = [
 	{ own: [], enemy: [] },
 	{ own: ["top_t1", "top_t2", "top_t3"], enemy: [] },
 	{ own: ["mid_t1", "mid_t2", "mid_t3"], enemy: [] },
@@ -163,8 +154,28 @@ const DEBUG_TOWER_TEMPLATE_PRESETS: ReadonlyArray<{
 	{ own: ["mid_t1", "mid_t2", "mid_t3"], enemy: ["mid_t1", "mid_t2", "mid_t3"] },
 	{ own: ["bot_t1", "bot_t2", "bot_t3"], enemy: ["bot_t1", "bot_t2", "bot_t3"] },
 	{
-		own: ["top_t1", "top_t2", "top_t3", "mid_t1", "mid_t2", "mid_t3", "bot_t1", "bot_t2", "bot_t3"],
-		enemy: ["top_t1", "top_t2", "top_t3", "mid_t1", "mid_t2", "mid_t3", "bot_t1", "bot_t2", "bot_t3"]
+		own: [
+			"top_t1",
+			"top_t2",
+			"top_t3",
+			"mid_t1",
+			"mid_t2",
+			"mid_t3",
+			"bot_t1",
+			"bot_t2",
+			"bot_t3"
+		],
+		enemy: [
+			"top_t1",
+			"top_t2",
+			"top_t3",
+			"mid_t1",
+			"mid_t2",
+			"mid_t3",
+			"bot_t1",
+			"bot_t2",
+			"bot_t3"
+		]
 	},
 	{ own: ["bot_t2", "bot_t3"], enemy: [] },
 	{ own: ["top_t2", "top_t3"], enemy: [] },
@@ -211,9 +222,7 @@ export interface DebugSectionControls {
 	debugAliveEnemyToggles: Map<DebugTowerAliveKey, Menu.Toggle>
 }
 
-export function createDebugSection(
-	debugTree: any
-): DebugSectionControls {
+export function createDebugSection(debugTree: any): DebugSectionControls {
 	const debugAliveTree = debugTree.AddNode("Alive towers")
 	debugAliveTree.SortNodes = false
 	const aliveByTierNodes = {
@@ -272,27 +281,60 @@ export function createDebugSection(
 		DynamicAdaptiveSpacing: debugTree.AddToggle("Adaptive spacing", true),
 		DynamicTopPerType: debugTree.AddSlider("Top spots per type", 10, 1, 30),
 		DynamicExcludeRiskyObserver: debugTree.AddToggle("Hide risky obs", true),
-		DynamicMinCellDistanceTenths: debugTree.AddSlider("Min cell dist x0.1", 15, 0, 60),
-		DynamicMinMinimapDistanceTenths: debugTree.AddSlider("Min map dist x0.1", 25, 0, 100),
+		DynamicMinCellDistanceTenths: debugTree.AddSlider(
+			"Min cell dist x0.1",
+			15,
+			0,
+			60
+		),
+		DynamicMinMinimapDistanceTenths: debugTree.AddSlider(
+			"Min map dist x0.1",
+			25,
+			0,
+			100
+		),
 		DynamicRegionQuota: debugTree.AddSlider("Region quota", 3, 0, 8),
 		DynamicRegionSize: debugTree.AddSlider("Region size", 42, 8, 96),
 		DynamicLaneQuotaMin: debugTree.AddSlider("Lane quota min", 2, 0, 6),
-		DynamicLaneQuotaUse: debugTree.AddDropdown("Lane quota use", ["Own", "Enemy", "Both"]),
+		DynamicLaneQuotaUse: debugTree.AddDropdown("Lane quota use", [
+			"Own",
+			"Enemy",
+			"Both"
+		]),
 		DynamicLaneBand: debugTree.AddSlider("Lane band", 18, 4, 64),
 		DynamicDedupeRadius3D: debugTree.AddSlider("3D dedupe radius", 500, 0, 2000),
-		DynamicTowerFitWeightTenths: debugTree.AddSlider("Tower fit weight x0.1", 15, 0, 50),
+		DynamicTowerFitWeightTenths: debugTree.AddSlider(
+			"Tower fit weight x0.1",
+			15,
+			0,
+			50
+		),
 		DynamicMinTowerFitPercent: debugTree.AddSlider("Min tower fit %", 20, 0, 100),
-		DynamicMinContextSupportPlacements: debugTree.AddSlider("Min support placements", 12, 0, 120),
-		DynamicConfidencePlacementsRef: debugTree.AddSlider("Conf placements ref", 30, 1, 200),
+		DynamicMinContextSupportPlacements: debugTree.AddSlider(
+			"Min support placements",
+			12,
+			0,
+			120
+		),
+		DynamicConfidencePlacementsRef: debugTree.AddSlider(
+			"Conf placements ref",
+			30,
+			1,
+			200
+		),
 		DynamicConfidenceMatchesRef: debugTree.AddSlider("Conf matches ref", 20, 1, 200),
 		CursorPositionOverlay: debugTree.AddToggle("Cursor debug", true),
 		DebugPhaseOverride: debugTree.AddToggle("Phase override", false),
 		DebugPhase: debugTree.AddDropdown("Phase", [...DEBUG_PHASE_VALUES]),
-		DebugScenarioPreset: debugTree.AddDropdown("Quick scenario", [...DEBUG_SCENARIO_VALUES]),
+		DebugScenarioPreset: debugTree.AddDropdown("Quick scenario", [
+			...DEBUG_SCENARIO_VALUES
+		]),
 		DebugLocalTeamOverride: debugTree.AddToggle("Local team override", false),
 		DebugLocalTeam: debugTree.AddDropdown("Local team", [...DEBUG_LOCAL_TEAM_VALUES]),
 		DebugTowerTemplateOverride: debugTree.AddToggle("Tower template override", false),
-		DebugTowerTemplate: debugTree.AddDropdown("Tower template", [...DEBUG_TOWER_TEMPLATE_VALUES]),
+		DebugTowerTemplate: debugTree.AddDropdown("Tower template", [
+			...DEBUG_TOWER_TEMPLATE_VALUES
+		]),
 		DebugAliveTowersOverride: debugTree.AddToggle("Alive towers override", false),
 		debugAliveOwnToggles,
 		debugAliveEnemyToggles
@@ -303,14 +345,8 @@ export function createDebugSection(
 		const [lane, tier] = key.split("_")
 		const laneNodes = laneNodesByTier[tier as keyof typeof laneNodesByTier]
 		const laneNode = laneNodes[lane as keyof typeof laneNodes]
-		debugAliveOwnToggles.set(
-			key,
-			laneNode.AddToggle("Own alive", true)
-		)
-		debugAliveEnemyToggles.set(
-			key,
-			laneNode.AddToggle("Enemy alive", true)
-		)
+		debugAliveOwnToggles.set(key, laneNode.AddToggle("Own alive", true))
+		debugAliveEnemyToggles.set(key, laneNode.AddToggle("Enemy alive", true))
 	}
 
 	return controls
@@ -421,9 +457,7 @@ export class DebugMenuModel {
 		}
 	}
 
-	private collectAliveTowers(
-		source: Map<DebugTowerAliveKey, Menu.Toggle>
-	): string[] {
+	private collectAliveTowers(source: Map<DebugTowerAliveKey, Menu.Toggle>): string[] {
 		const out: string[] = []
 		for (const [key, toggle] of source.entries()) {
 			if (toggle.value) {

@@ -1,19 +1,8 @@
-import { WardDataLoader, RemoteWardSourceKey } from "./WardDataLoader"
+import { parseConfigRecord } from "./Utils"
+import { RemoteWardSourceKey, WardDataLoader } from "./WardDataLoader"
 import { WardPoint } from "./WardTypes"
 
 const REMOTE_WARDS_STORAGE_KEY = "ward-helper.remote-wards.v1"
-
-function parseConfig(rawConfig: string): Record<string, unknown> {
-	try {
-		const parsed = JSON.parse(rawConfig) as unknown
-		if (typeof parsed === "object" && parsed !== null) {
-			return parsed as Record<string, unknown>
-		}
-	} catch (error) {
-		console.error("[ward-helper] invalid config json", error)
-	}
-	return {}
-}
 
 function serializeWard(ward: WardPoint) {
 	return {
@@ -28,6 +17,8 @@ function serializeWard(ward: WardPoint) {
 		towerDestroyedEnemyRate: ward.towerDestroyedEnemyRate,
 		matchesSeen: ward.matchesSeen,
 		placements: ward.placements,
+		radiusP50: ward.radiusP50,
+		radiusP90: ward.radiusP90,
 		score: ward.score,
 		scoreBase: ward.scoreBase,
 		scoreRuntime: ward.scoreRuntime,
@@ -50,7 +41,7 @@ export class RemoteWardStorage {
 	public async Load(source: RemoteWardSourceKey): Promise<WardPoint[] | undefined> {
 		try {
 			const raw = await readConfig()
-			const config = parseConfig(raw)
+			const config = parseConfigRecord(raw)
 			const storage = config[REMOTE_WARDS_STORAGE_KEY]
 			if (typeof storage !== "object" || storage === null) {
 				return undefined
@@ -70,7 +61,7 @@ export class RemoteWardStorage {
 		this.saveQueue = this.saveQueue
 			.then(async () => {
 				const raw = await readConfig()
-				const config = parseConfig(raw)
+				const config = parseConfigRecord(raw)
 				const key = source as unknown as string
 				const current = config[REMOTE_WARDS_STORAGE_KEY]
 				const storage =

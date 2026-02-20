@@ -4,33 +4,34 @@ import {
 	GetPositionHeight,
 	GUIInfo,
 	InputManager,
-	MinimapSDK,
 	LocalPlayer,
+	MinimapSDK,
 	ParticleAttachment,
 	ParticlesSDK,
 	RendererSDK,
-	VKeys,
 	Vector2,
-	Vector3
+	Vector3,
+	VKeys
 } from "github.com/octarine-public/wrapper/index"
 
+import { GUIHelper } from "../gui"
 import { MenuManager } from "../menu"
 import { TooltipAnimator } from "./TooltipAnimator"
+import { approach } from "./Utils"
 import { WardState } from "./WardState"
-import { WardPoint, WardTypes } from "./WardTypes"
+import { WardPoint, WardType, WardTypes } from "./WardTypes"
 
-const OBSERVER_ICON =
-	"panorama/images/emoticons/observer_ward_png.vtex_c"
-const SENTRY_ICON =
-	"panorama/images/emoticons/sentry_ward_png.vtex_c"
+const OBSERVER_ICON = "panorama/images/emoticons/observer_ward_png.vtex_c"
+const SENTRY_ICON = "panorama/images/emoticons/sentry_ward_png.vtex_c"
 const TOOLTIP_TEXT_FALLBACK = "No description"
-const ICON_HEIGHT_SCALE = 1.8
+const ICON_HEIGHT_SCALE = 1
 const WARD_PULSE_RADIUS_BASE = 30
 const WARD_PULSE_Z_OFFSET = 8
 const WARD_PARTICLE_ALPHA = 180
 const CIRCLE_PARTICLE_PATH = "particles/range_display/range_display_normal.vpcf"
 const PANEL_ROUND_DIAMETER = 11
 const PANEL_ACCENT_HEIGHT = 3
+const WARD_UI_VERTICAL_OFFSET = 34
 
 interface TooltipSizeCacheEntry {
 	text: string
@@ -57,18 +58,15 @@ export class WardRenderer {
 	constructor(
 		private readonly menu: MenuManager,
 		private readonly state: WardState,
-		private readonly tooltipAnimator: TooltipAnimator
+		private readonly tooltipAnimator: TooltipAnimator,
+		private readonly gui: GUIHelper
 	) {}
 
 	public Draw(wards: WardPoint[]) {
 		this.state.hoveredWard = undefined
 		const targetAlpha =
 			this.menu.OnlyAlt.value && !InputManager.IsKeyDown(VKeys.MENU) ? 0 : 1
-		this.state.alphaAnimation = this.Approach(
-			this.state.alphaAnimation,
-			targetAlpha,
-			0.1
-		)
+		this.state.alphaAnimation = approach(this.state.alphaAnimation, targetAlpha, 0.1)
 
 		if (this.state.alphaAnimation <= 0) {
 			this.state.hoveredWard = undefined
@@ -88,8 +86,7 @@ export class WardRenderer {
 					: ward
 			const world = new Vector3(drawWard.x, drawWard.y, drawWard.z)
 			const w2s = RendererSDK.WorldToScreen(world)
-			const isVisibleOnScreen =
-				w2s !== undefined && RendererSDK.IsInScreenArea(w2s)
+			const isVisibleOnScreen = w2s !== undefined && RendererSDK.IsInScreenArea(w2s)
 			renderEntries.push({
 				ward,
 				drawWard,
@@ -102,7 +99,11 @@ export class WardRenderer {
 
 		for (let i = 0; i < renderEntries.length; i++) {
 			const entry = renderEntries[i]
-			this.ensureWardParticleCreated(entry.drawWard, entry.particleKey, nextParticleKeys)
+			this.ensureWardParticleCreated(
+				entry.drawWard,
+				entry.particleKey,
+				nextParticleKeys
+			)
 		}
 
 		let hoveredWard: Nullable<WardPoint>
@@ -158,24 +159,23 @@ export class WardRenderer {
 		const iconSize = this.menu.IconSize.value
 		const iconWidth = iconSize
 		const iconHeight = iconSize * ICON_HEIGHT_SCALE
-		const renderOffset = 15
-		const basePosition = new Vector2(w2s.x, w2s.y - renderOffset)
+		const basePosition = new Vector2(w2s.x, w2s.y - WARD_UI_VERTICAL_OFFSET)
 		const iconPositionCenter = basePosition
 
 		const baseWidth = iconSize * 1.8
 		const baseHalfWidth = baseWidth / 2
 		const baseHalfHeight = iconSize / 1.5
 		const hoverHalfSize = Math.max(iconWidth, iconHeight) * 0.65
-		const isHovered = this.IsHovered(basePosition, cursor, hoverHalfSize)
+		const isHovered = this.gui.IsHovered(basePosition, cursor, hoverHalfSize)
 
 		let panelWidth = baseWidth
 		let textProgress = 0
 
 		if (isHovered) {
-			const tooltipText = this.GetWardTooltipText(ward)
+			const tooltipLabel = this.GetWardTooltipText(ward)
 			const targetWidth = this.GetTooltipTargetWidth(
 				key,
-				tooltipText,
+				tooltipLabel,
 				this.menu.TooltipSize.value,
 				iconSize
 			)
@@ -198,7 +198,6 @@ export class WardRenderer {
 		const panelSize = new Vector2(panelWidth, baseHalfHeight * 2)
 		const bgAlpha = Math.floor(170 * this.state.alphaAnimation)
 		const iconAlpha = Math.floor(255 * this.state.alphaAnimation)
-		const arrowAlpha = Math.floor(120 * this.state.alphaAnimation)
 		const borderColor = new Color(
 			255,
 			255,
@@ -235,27 +234,11 @@ export class WardRenderer {
 			iconPositionCenter.y - iconHeight / 2
 		)
 		const iconColor = new Color(iconAlpha, iconAlpha, iconAlpha, iconAlpha)
-		RendererSDK.Image(
-			ward.type === WardTypes.Observer ? OBSERVER_ICON : SENTRY_ICON,
+		this.gui.DrawAnimatedImage(
+			this.GetWardIconPath(ward.type),
 			iconPosition,
-			-1,
 			new Vector2(iconWidth, iconHeight),
 			iconColor
-		)
-
-		const arrowSize = iconSize * 0.4
-		const arrowY = iconPositionCenter.y + iconSize / 2 + 10
-		RendererSDK.Line(
-			new Vector2(basePosition.x - arrowSize / 2 - 2, arrowY - arrowSize / 2),
-			new Vector2(basePosition.x, arrowY + arrowSize / 2),
-			new Color(255, 255, 255, arrowAlpha),
-			2
-		)
-		RendererSDK.Line(
-			new Vector2(basePosition.x, arrowY + arrowSize / 2),
-			new Vector2(basePosition.x + arrowSize / 2 + 2, arrowY - arrowSize / 2),
-			new Color(255, 255, 255, arrowAlpha),
-			2
 		)
 
 		if (!isHovered) {
@@ -292,17 +275,16 @@ export class WardRenderer {
 			return
 		}
 		const minimapPos = MinimapSDK.WorldToMinimap(this.GetMinimapWorldPosition(ward))
-		const size = this.GetMinimapIconSize()
+		const rawSize = Math.max(10, this.menu.IconSize.value * 0.6)
+		const size = this.gui.GetScaledVector(rawSize, rawSize)
 		const position = minimapPos.Subtract(size.DivideScalar(2))
 		const alpha = Math.floor(255 * this.state.alphaAnimation)
 		const iconColor = new Color(alpha, alpha, alpha, alpha)
-		RendererSDK.Image(
-			ward.type === WardTypes.Observer ? OBSERVER_ICON : SENTRY_ICON,
-			position,
-			-1,
-			size,
-			iconColor
-		)
+		this.gui.DrawAnimatedImage(this.GetWardIconPath(ward.type), position, size, iconColor)
+	}
+
+	private GetWardIconPath(type: WardType) {
+		return type === WardTypes.Observer ? OBSERVER_ICON : SENTRY_ICON
 	}
 
 	private ensureWardParticleCreated(
@@ -392,7 +374,7 @@ export class WardRenderer {
 		) {
 			return cached.width + iconSize + 20
 		}
-		const textSize = RendererSDK.GetTextSize(
+		const textWidth = this.gui.GetTextWidth(
 			tooltipText,
 			"MuseoSansEx",
 			tooltipSize,
@@ -402,9 +384,9 @@ export class WardRenderer {
 		this.tooltipSizeCache.set(key, {
 			text: tooltipText,
 			size: tooltipSize,
-			width: textSize.x
+			width: textWidth
 		})
-		return textSize.x + iconSize + 20
+		return textWidth + iconSize + 20
 	}
 
 	private GetWardTooltipText(ward: WardPoint): string {
@@ -423,37 +405,10 @@ export class WardRenderer {
 	}
 
 	private GetMinimapWorldPosition(ward: WardPoint): Vector3 {
-		if (
-			Number.isFinite(ward.x) &&
-			Number.isFinite(ward.y)
-		) {
+		if (Number.isFinite(ward.x) && Number.isFinite(ward.y)) {
 			return new Vector3(ward.x, ward.y, ward.z)
 		}
 		// For minimap rendering rely on world coordinates only.
 		return new Vector3(0, 0, ward.z)
-	}
-
-	private GetMinimapIconSize(): Vector2 {
-		const size = Math.max(10, this.menu.IconSize.value * 0.6)
-		return GUIInfo.ScaleVector(size, size)
-	}
-
-	private Approach(current: number, target: number, speed: number) {
-		if (current < target) {
-			return Math.min(current + speed, target)
-		}
-		if (current > target) {
-			return Math.max(current - speed, target)
-		}
-		return current
-	}
-
-	private IsHovered(center: Vector2, cursor: Vector2, halfSize: number) {
-		return (
-			cursor.x >= center.x - halfSize &&
-			cursor.x <= center.x + halfSize &&
-			cursor.y >= center.y - halfSize &&
-			cursor.y <= center.y + halfSize
-		)
 	}
 }

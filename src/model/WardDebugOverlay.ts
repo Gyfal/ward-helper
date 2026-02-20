@@ -1,6 +1,5 @@
 import {
 	Color,
-	GUIInfo,
 	GetPositionHeight,
 	InputManager,
 	Rectangle,
@@ -9,18 +8,21 @@ import {
 	Vector3
 } from "github.com/octarine-public/wrapper/index"
 
-const MINIMAP_512_CENTER = 256
-const WORLD_UNITS_PER_MINIMAP_512 = 32
+import { GUIHelper } from "../gui"
 
 export class WardDebugOverlay {
+	constructor(private readonly gui: GUIHelper) {}
+
 	public DrawCursorDebug() {
 		const cursorWorld = InputManager.CursorOnWorld
-		const cursorGround = GetPositionHeight(
-			new Vector2(cursorWorld.x, cursorWorld.y)
+		const cursorGround = GetPositionHeight(new Vector2(cursorWorld.x, cursorWorld.y))
+		const minimapX = this.gui.WorldToMinimap512(cursorWorld.x)
+		const minimapY = this.gui.WorldToMinimap512(cursorWorld.y)
+		const textAnchor = this.GetCursorTextAnchor(
+			cursorWorld.x,
+			cursorWorld.y,
+			cursorGround
 		)
-		const minimapX = this.WorldToMinimap512(cursorWorld.x)
-		const minimapY = this.WorldToMinimap512(cursorWorld.y)
-		const textAnchor = this.GetCursorTextAnchor(cursorWorld.x, cursorWorld.y, cursorGround)
 
 		RendererSDK.FilledCircle(
 			InputManager.CursorOnScreen,
@@ -46,9 +48,7 @@ export class WardDebugOverlay {
 
 	public DrawTextNearCursorWorld(text: string, yOffset: number) {
 		const cursorWorld = InputManager.CursorOnWorld
-		const cursorGround = GetPositionHeight(
-			new Vector2(cursorWorld.x, cursorWorld.y)
-		)
+		const cursorGround = GetPositionHeight(new Vector2(cursorWorld.x, cursorWorld.y))
 		this.DrawTextNearWorld(
 			text,
 			new Vector3(cursorWorld.x, cursorWorld.y, cursorGround),
@@ -58,12 +58,6 @@ export class WardDebugOverlay {
 
 	public DrawTextNearWorld(text: string, world: Vector3, yOffset: number) {
 		this.DrawWorldTextLine(text, world, yOffset)
-	}
-
-	private WorldToMinimap512(worldCoordinate: number) {
-		const minimapCoordinate =
-			worldCoordinate / WORLD_UNITS_PER_MINIMAP_512 + MINIMAP_512_CENTER
-		return Math.max(0, Math.min(512, minimapCoordinate))
 	}
 
 	private GetCursorTextAnchor(x: number, y: number, z: number) {
@@ -89,14 +83,8 @@ export class WardDebugOverlay {
 		if (w2s === undefined) {
 			return
 		}
-		const size =
-			GUIInfo !== undefined
-				? GUIInfo.ScaleVector(360, 24)
-				: new Vector2(360, 24)
-		const linePos = new Vector2(
-			w2s.x - size.x / 2,
-			w2s.y + yOffset
-		)
+		const size = this.gui.GetScaledVector(360, 24)
+		const linePos = new Vector2(w2s.x - size.x / 2, w2s.y + yOffset)
 		const rect = new Rectangle(linePos, linePos.Add(size))
 		RendererSDK.TextByFlags(text, rect, Color.White, 3)
 	}

@@ -1,9 +1,6 @@
 import "./translations"
 
-import {
-	EventsSDK,
-	GameState,
-} from "github.com/octarine-public/wrapper/index"
+import { EventsSDK, GameState } from "github.com/octarine-public/wrapper/index"
 
 import { GUIHelper } from "./gui"
 import { MenuManager } from "./menu"
