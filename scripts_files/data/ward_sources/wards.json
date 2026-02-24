@@ -4,858 +4,1833 @@
       "Radiant"
     ],
     "type": "Observer",
-    "x": 512.0,
-    "y": 1792.0,
+    "x": 249.95275590551182,
+    "y": 286.23622047244095,
     "z": 256.0,
-    "minimapX": 136.0,
-    "minimapY": 156.0
+    "minimapX": 126.0,
+    "minimapY": 120.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
   },
   {
     "teams": [
       "Radiant"
     ],
     "type": "Observer",
-    "x": 2304.0,
-    "y": 384.0,
-    "z": 256.0,
-    "minimapX": 164.0,
-    "minimapY": 134.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -640.0,
-    "y": -128.0,
-    "z": 256.0,
-    "minimapX": 118.0,
-    "minimapY": 126.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 1536.0,
-    "y": -2048.0,
-    "z": 256.0,
-    "minimapX": 152.0,
-    "minimapY": 96.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -1152.0,
-    "y": 128.0,
-    "z": 256.0,
-    "minimapX": 110.0,
-    "minimapY": 130.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -768.0,
-    "y": 1024.0,
-    "z": 256.0,
-    "minimapX": 116.0,
-    "minimapY": 144.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -320.0,
-    "y": -512.0,
-    "z": 256.0,
-    "minimapX": 123.0,
-    "minimapY": 120.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 256.0,
-    "y": -768.0,
-    "z": 256.0,
-    "minimapX": 132.0,
-    "minimapY": 116.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 256.0,
-    "y": -192.0,
-    "z": 256.0,
-    "minimapX": 132.0,
-    "minimapY": 125.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 2112.0,
-    "y": -2048.0,
-    "z": 256.0,
-    "minimapX": 161.0,
-    "minimapY": 96.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -1728.0,
-    "y": -64.0,
-    "z": 256.0,
-    "minimapX": 101.0,
-    "minimapY": 127.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -704.0,
-    "y": 1344.0,
-    "z": 256.0,
-    "minimapX": 117.0,
-    "minimapY": 149.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -2048.0,
-    "y": 128.0,
-    "z": 256.0,
-    "minimapX": 96.0,
-    "minimapY": 130.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 1088.0,
-    "y": -1024.0,
-    "z": 256.0,
-    "minimapX": 145.0,
-    "minimapY": 112.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -1984.0,
-    "y": 1792.0,
-    "z": 256.0,
-    "minimapX": 97.0,
-    "minimapY": 156.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 1408.0,
-    "y": 0.0,
-    "z": 256.0,
-    "minimapX": 150.0,
-    "minimapY": 128.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -2816.0,
-    "y": 1536.0,
-    "z": 256.0,
-    "minimapX": 84.0,
-    "minimapY": 152.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -3520.0,
-    "y": 3328.0,
-    "z": 256.0,
-    "minimapX": 73.0,
-    "minimapY": 180.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 2304.0,
-    "y": -960.0,
-    "z": 256.0,
-    "minimapX": 164.0,
-    "minimapY": 113.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 3904.0,
-    "y": 320.0,
-    "z": 256.0,
-    "minimapX": 189.0,
-    "minimapY": 133.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 128.0,
-    "y": -1152.0,
-    "z": 256.0,
-    "minimapX": 130.0,
-    "minimapY": 110.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 0.0,
-    "y": -128.0,
-    "z": 256.0,
-    "minimapX": 128.0,
-    "minimapY": 126.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -2432.0,
-    "y": 1152.0,
+    "x": 104.81889763779527,
+    "y": 181.41732283464566,
     "z": 256.0,
     "minimapX": 90.0,
-    "minimapY": 146.0
+    "minimapY": 146.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
   },
   {
     "teams": [
       "Radiant"
     ],
     "type": "Observer",
-    "x": 1408.0,
-    "y": -768.0,
+    "x": 290.26771653543307,
+    "y": 334.61417322834643,
     "z": 256.0,
-    "minimapX": 150.0,
-    "minimapY": 116.0
+    "minimapX": 136.0,
+    "minimapY": 108.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
   },
   {
     "teams": [
       "Radiant"
     ],
     "type": "Observer",
-    "x": 2112.0,
-    "y": 1664.0,
+    "x": 173.35433070866142,
+    "y": 193.51181102362204,
     "z": 256.0,
-    "minimapX": 161.0,
-    "minimapY": 154.0
+    "minimapX": 107.0,
+    "minimapY": 143.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
   },
   {
     "teams": [
       "Radiant"
     ],
     "type": "Observer",
-    "x": 576.0,
-    "y": -1536.0,
-    "z": 256.0,
-    "minimapX": 137.0,
-    "minimapY": 104.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 3520.0,
-    "y": -3328.0,
-    "z": 256.0,
-    "minimapX": 183.0,
-    "minimapY": 76.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -1664.0,
-    "y": 320.0,
-    "z": 256.0,
-    "minimapX": 102.0,
-    "minimapY": 133.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 2176.0,
-    "y": -1664.0,
+    "x": 395.0866141732283,
+    "y": 395.0866141732283,
     "z": 256.0,
     "minimapX": 162.0,
-    "minimapY": 102.0
+    "minimapY": 93.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
   },
   {
     "teams": [
       "Radiant"
     ],
     "type": "Observer",
-    "x": -192.0,
-    "y": -2432.0,
+    "x": 378.96062992125985,
+    "y": 378.96062992125985,
     "z": 256.0,
-    "minimapX": 125.0,
-    "minimapY": 90.0
+    "minimapX": 158.0,
+    "minimapY": 97.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
   },
   {
     "teams": [
       "Radiant"
     ],
     "type": "Observer",
-    "x": -128.0,
-    "y": 1152.0,
-    "z": 256.0,
-    "minimapX": 126.0,
-    "minimapY": 146.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 1664.0,
-    "y": 192.0,
-    "z": 256.0,
-    "minimapX": 154.0,
-    "minimapY": 131.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 448.0,
-    "y": 3712.0,
-    "z": 256.0,
-    "minimapX": 135.0,
-    "minimapY": 186.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 3072.0,
-    "y": 1280.0,
-    "z": 256.0,
-    "minimapX": 176.0,
-    "minimapY": 148.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -256.0,
-    "y": -768.0,
-    "z": 256.0,
-    "minimapX": 124.0,
-    "minimapY": 116.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -1408.0,
-    "y": 832.0,
-    "z": 256.0,
-    "minimapX": 106.0,
-    "minimapY": 141.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -2944.0,
-    "y": 2624.0,
-    "z": 256.0,
-    "minimapX": 82.0,
-    "minimapY": 169.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": 640.0,
-    "y": 768.0,
-    "z": 256.0,
-    "minimapX": 138.0,
-    "minimapY": 140.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -640.0,
-    "y": 2944.0,
-    "z": 256.0,
-    "minimapX": 118.0,
-    "minimapY": 174.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Observer",
-    "x": -3392.0,
-    "y": 4032.0,
-    "z": 256.0,
-    "minimapX": 75.0,
-    "minimapY": 191.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -2176.0,
-    "y": -512.0,
-    "z": 256.0,
-    "minimapX": 94.0,
-    "minimapY": 120.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 640.0,
-    "y": -256.0,
-    "z": 256.0,
-    "minimapX": 138.0,
-    "minimapY": 124.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -256.0,
-    "y": 128.0,
-    "z": 256.0,
-    "minimapX": 124.0,
-    "minimapY": 130.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -1984.0,
-    "y": 1792.0,
-    "z": 256.0,
-    "minimapX": 97.0,
-    "minimapY": 156.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 2752.0,
-    "y": -2752.0,
-    "z": 256.0,
-    "minimapX": 171.0,
-    "minimapY": 85.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 2432.0,
-    "y": -1152.0,
-    "z": 256.0,
-    "minimapX": 166.0,
-    "minimapY": 110.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 2368.0,
-    "y": -2624.0,
-    "z": 256.0,
-    "minimapX": 165.0,
-    "minimapY": 87.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 1152.0,
-    "y": -2816.0,
-    "z": 256.0,
-    "minimapX": 146.0,
-    "minimapY": 84.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -1792.0,
-    "y": 512.0,
-    "z": 256.0,
-    "minimapX": 100.0,
-    "minimapY": 136.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -576.0,
-    "y": 1856.0,
-    "z": 256.0,
-    "minimapX": 119.0,
-    "minimapY": 157.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -640.0,
-    "y": -2176.0,
-    "z": 256.0,
-    "minimapX": 118.0,
-    "minimapY": 94.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -2752.0,
-    "y": -1600.0,
-    "z": 256.0,
-    "minimapX": 85.0,
-    "minimapY": 103.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 2048.0,
-    "y": -2944.0,
-    "z": 256.0,
-    "minimapX": 160.0,
-    "minimapY": 82.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 1856.0,
-    "y": -320.0,
-    "z": 256.0,
-    "minimapX": 157.0,
-    "minimapY": 123.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 2304.0,
-    "y": 384.0,
-    "z": 256.0,
-    "minimapX": 164.0,
-    "minimapY": 134.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 1984.0,
-    "y": -1920.0,
-    "z": 256.0,
-    "minimapX": 159.0,
-    "minimapY": 98.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -3136.0,
-    "y": 2432.0,
-    "z": 256.0,
-    "minimapX": 79.0,
-    "minimapY": 166.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -2240.0,
-    "y": 2304.0,
-    "z": 256.0,
-    "minimapX": 93.0,
-    "minimapY": 164.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -768.0,
-    "y": 3840.0,
-    "z": 256.0,
-    "minimapX": 116.0,
-    "minimapY": 188.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 128.0,
-    "y": -832.0,
-    "z": 256.0,
-    "minimapX": 130.0,
-    "minimapY": 115.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -2240.0,
-    "y": -2496.0,
-    "z": 256.0,
-    "minimapX": 93.0,
-    "minimapY": 89.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 64.0,
-    "y": -1920.0,
-    "z": 256.0,
-    "minimapX": 129.0,
-    "minimapY": 98.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -1280.0,
-    "y": 960.0,
-    "z": 256.0,
-    "minimapX": 108.0,
-    "minimapY": 143.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 1408.0,
-    "y": -768.0,
-    "z": 256.0,
-    "minimapX": 150.0,
-    "minimapY": 116.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -1280.0,
-    "y": -2048.0,
-    "z": 256.0,
-    "minimapX": 108.0,
-    "minimapY": 96.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -1280.0,
-    "y": -384.0,
-    "z": 256.0,
-    "minimapX": 108.0,
-    "minimapY": 122.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -4032.0,
-    "y": 1664.0,
-    "z": 256.0,
-    "minimapX": 65.0,
-    "minimapY": 154.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -1792.0,
-    "y": -3200.0,
-    "z": 256.0,
-    "minimapX": 100.0,
-    "minimapY": 78.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -832.0,
-    "y": 0.0,
-    "z": 256.0,
-    "minimapX": 115.0,
-    "minimapY": 128.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 640.0,
-    "y": -2304.0,
-    "z": 256.0,
-    "minimapX": 138.0,
-    "minimapY": 92.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -3520.0,
-    "y": 1664.0,
-    "z": 256.0,
-    "minimapX": 73.0,
-    "minimapY": 154.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -1600.0,
-    "y": -192.0,
-    "z": 256.0,
-    "minimapX": 103.0,
-    "minimapY": 125.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -960.0,
-    "y": -1472.0,
-    "z": 256.0,
-    "minimapX": 113.0,
-    "minimapY": 105.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 320.0,
-    "y": -192.0,
-    "z": 256.0,
-    "minimapX": 133.0,
-    "minimapY": 125.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -3008.0,
-    "y": 1920.0,
-    "z": 256.0,
-    "minimapX": 81.0,
-    "minimapY": 158.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 1088.0,
-    "y": -2368.0,
-    "z": 256.0,
-    "minimapX": 145.0,
-    "minimapY": 91.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": -128.0,
-    "y": -1280.0,
-    "z": 256.0,
-    "minimapX": 126.0,
-    "minimapY": 108.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Observer",
-    "x": 1536.0,
-    "y": -2048.0,
+    "x": 354.7716535433071,
+    "y": 382.99212598425197,
     "z": 256.0,
     "minimapX": 152.0,
-    "minimapY": 96.0
+    "minimapY": 96.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 423.3070866141732,
+    "y": 399.11811023622045,
+    "z": 256.0,
+    "minimapX": 169.0,
+    "minimapY": 92.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 266.0787401574803,
+    "y": 326.5511811023622,
+    "z": 256.0,
+    "minimapX": 130.0,
+    "minimapY": 110.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 221.73228346456693,
+    "y": 270.1102362204724,
+    "z": 256.0,
+    "minimapX": 119.0,
+    "minimapY": 124.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 286.23622047244095,
+    "y": 205.60629921259843,
+    "z": 256.0,
+    "minimapX": 135.0,
+    "minimapY": 140.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 483.7795275590551,
+    "y": 395.0866141732283,
+    "z": 256.0,
+    "minimapX": 184.0,
+    "minimapY": 93.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 0.0,
+    "y": 60.47244094488189,
+    "z": 256.0,
+    "minimapX": 64.0,
+    "minimapY": 176.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 12.094488188976378,
+    "y": 108.85039370078741,
+    "z": 256.0,
+    "minimapX": 67.0,
+    "minimapY": 164.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 153.1968503937008,
+    "y": 124.97637795275591,
+    "z": 256.0,
+    "minimapX": 102.0,
+    "minimapY": 160.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 298.3307086614173,
+    "y": 354.7716535433071,
+    "z": 256.0,
+    "minimapX": 138.0,
+    "minimapY": 103.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 129.00787401574803,
+    "y": 149.16535433070865,
+    "z": 256.0,
+    "minimapX": 96.0,
+    "minimapY": 154.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 262.0472440944882,
+    "y": 262.0472440944882,
+    "z": 256.0,
+    "minimapX": 129.0,
+    "minimapY": 126.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 213.66929133858267,
+    "y": 258.01574803149606,
+    "z": 256.0,
+    "minimapX": 117.0,
+    "minimapY": 127.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 241.88976377952756,
+    "y": 245.92125984251967,
+    "z": 256.0,
+    "minimapX": 124.0,
+    "minimapY": 130.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 120.94488188976378,
+    "y": 112.88188976377953,
+    "z": 256.0,
+    "minimapX": 94.0,
+    "minimapY": 163.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 153.1968503937008,
+    "y": 120.94488188976378,
+    "z": 256.0,
+    "minimapX": 102.0,
+    "minimapY": 161.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 354.7716535433071,
+    "y": 382.99212598425197,
+    "z": 256.0,
+    "minimapX": 152.0,
+    "minimapY": 96.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 266.0787401574803,
+    "y": 262.0472440944882,
+    "z": 256.0,
+    "minimapX": 130.0,
+    "minimapY": 126.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 294.2992125984252,
+    "y": 266.0787401574803,
+    "z": 256.0,
+    "minimapX": 137.0,
+    "minimapY": 125.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 40.31496062992126,
+    "y": 44.346456692913385,
+    "z": 256.0,
+    "minimapX": 74.0,
+    "minimapY": 180.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 197.54330708661416,
+    "y": 245.92125984251967,
+    "z": 256.0,
+    "minimapX": 113.0,
+    "minimapY": 130.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 479.748031496063,
+    "y": 407.18110236220474,
+    "z": 256.0,
+    "minimapX": 183.0,
+    "minimapY": 90.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 330.5826771653543,
+    "y": 330.5826771653543,
+    "z": 256.0,
+    "minimapX": 146.0,
+    "minimapY": 109.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 28.22047244094488,
+    "y": 149.16535433070865,
+    "z": 256.0,
+    "minimapX": 71.0,
+    "minimapY": 154.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 282.20472440944883,
+    "y": 310.4251968503937,
+    "z": 256.0,
+    "minimapX": 134.0,
+    "minimapY": 114.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 161.25984251968504,
+    "y": 237.85826771653544,
+    "z": 256.0,
+    "minimapX": 104.0,
+    "minimapY": 132.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 104.81889763779527,
+    "y": 229.79527559055117,
+    "z": 256.0,
+    "minimapX": 90.0,
+    "minimapY": 134.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 314.45669291338584,
+    "y": 278.1732283464567,
+    "z": 256.0,
+    "minimapX": 142.0,
+    "minimapY": 122.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 370.8976377952756,
+    "y": 411.21259842519686,
+    "z": 256.0,
+    "minimapX": 156.0,
+    "minimapY": 89.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 124.97637795275591,
+    "y": 108.85039370078741,
+    "z": 256.0,
+    "minimapX": 95.0,
+    "minimapY": 164.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 141.10236220472441,
+    "y": 108.85039370078741,
+    "z": 256.0,
+    "minimapX": 99.0,
+    "minimapY": 164.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 395.0866141732283,
+    "y": 387.0236220472441,
+    "z": 256.0,
+    "minimapX": 162.0,
+    "minimapY": 95.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 403.14960629921256,
+    "y": 366.86614173228344,
+    "z": 256.0,
+    "minimapX": 164.0,
+    "minimapY": 100.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 20.15748031496063,
+    "y": 44.346456692913385,
+    "z": 256.0,
+    "minimapX": 69.0,
+    "minimapY": 180.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 382.99212598425197,
+    "y": 427.33858267716533,
+    "z": 256.0,
+    "minimapX": 159.0,
+    "minimapY": 85.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 415.244094488189,
+    "y": 387.0236220472441,
+    "z": 256.0,
+    "minimapX": 167.0,
+    "minimapY": 95.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 84.66141732283464,
+    "y": 157.22834645669292,
+    "z": 256.0,
+    "minimapX": 85.0,
+    "minimapY": 152.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 419.2755905511811,
+    "y": 374.92913385826773,
+    "z": 256.0,
+    "minimapX": 168.0,
+    "minimapY": 98.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 258.01574803149606,
+    "y": 278.1732283464567,
+    "z": 256.0,
+    "minimapX": 128.0,
+    "minimapY": 122.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 241.88976377952756,
+    "y": 266.0787401574803,
+    "z": 256.0,
+    "minimapX": 124.0,
+    "minimapY": 125.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 439.43307086614175,
+    "y": 374.92913385826773,
+    "z": 256.0,
+    "minimapX": 173.0,
+    "minimapY": 98.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 370.8976377952756,
+    "y": 423.3070866141732,
+    "z": 256.0,
+    "minimapX": 156.0,
+    "minimapY": 86.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 225.76377952755905,
+    "y": 233.8267716535433,
+    "z": 256.0,
+    "minimapX": 120.0,
+    "minimapY": 133.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 108.85039370078741,
+    "y": 112.88188976377953,
+    "z": 256.0,
+    "minimapX": 91.0,
+    "minimapY": 163.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 262.0472440944882,
+    "y": 326.5511811023622,
+    "z": 256.0,
+    "minimapX": 129.0,
+    "minimapY": 110.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 387.0236220472441,
+    "y": 399.11811023622045,
+    "z": 256.0,
+    "minimapX": 160.0,
+    "minimapY": 92.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 241.88976377952756,
+    "y": 241.88976377952756,
+    "z": 256.0,
+    "minimapX": 124.0,
+    "minimapY": 131.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 278.1732283464567,
+    "y": 278.1732283464567,
+    "z": 256.0,
+    "minimapX": 133.0,
+    "minimapY": 122.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 229.79527559055117,
+    "y": 245.92125984251967,
+    "z": 256.0,
+    "minimapX": 121.0,
+    "minimapY": 130.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 249.95275590551182,
+    "y": 334.61417322834643,
+    "z": 256.0,
+    "minimapX": 126.0,
+    "minimapY": 108.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 463.62204724409446,
+    "y": 403.14960629921256,
+    "z": 256.0,
+    "minimapX": 179.0,
+    "minimapY": 91.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 237.85826771653544,
+    "y": 225.76377952755905,
+    "z": 256.0,
+    "minimapX": 123.0,
+    "minimapY": 135.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 399.11811023622045,
+    "y": 399.11811023622045,
+    "z": 256.0,
+    "minimapX": 163.0,
+    "minimapY": 92.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 96.75590551181102,
+    "y": 141.10236220472441,
+    "z": 256.0,
+    "minimapX": 88.0,
+    "minimapY": 156.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 443.46456692913387,
+    "y": 439.43307086614175,
+    "z": 256.0,
+    "minimapX": 174.0,
+    "minimapY": 82.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 92.7244094488189,
+    "y": 124.97637795275591,
+    "z": 256.0,
+    "minimapX": 87.0,
+    "minimapY": 160.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 435.40157480314963,
+    "y": 391.0551181102362,
+    "z": 256.0,
+    "minimapX": 172.0,
+    "minimapY": 94.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 378.96062992125985,
+    "y": 403.14960629921256,
+    "z": 256.0,
+    "minimapX": 158.0,
+    "minimapY": 91.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 137.07086614173227,
+    "y": 84.66141732283464,
+    "z": 256.0,
+    "minimapX": 98.0,
+    "minimapY": 170.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 403.14960629921256,
+    "y": 395.0866141732283,
+    "z": 256.0,
+    "minimapX": 164.0,
+    "minimapY": 93.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 116.91338582677164,
+    "y": 137.07086614173227,
+    "z": 256.0,
+    "minimapX": 93.0,
+    "minimapY": 157.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 419.2755905511811,
+    "y": 370.8976377952756,
+    "z": 256.0,
+    "minimapX": 168.0,
+    "minimapY": 99.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 221.73228346456693,
+    "y": 241.88976377952756,
+    "z": 256.0,
+    "minimapX": 119.0,
+    "minimapY": 131.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 141.10236220472441,
+    "y": 112.88188976377953,
+    "z": 256.0,
+    "minimapX": 99.0,
+    "minimapY": 163.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 100.78740157480314,
+    "y": 133.03937007874015,
+    "z": 256.0,
+    "minimapX": 89.0,
+    "minimapY": 158.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 407.18110236220474,
+    "y": 362.8346456692913,
+    "z": 256.0,
+    "minimapX": 165.0,
+    "minimapY": 101.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 435.40157480314963,
+    "y": 366.86614173228344,
+    "z": 256.0,
+    "minimapX": 172.0,
+    "minimapY": 100.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 266.0787401574803,
+    "y": 286.23622047244095,
+    "z": 256.0,
+    "minimapX": 130.0,
+    "minimapY": 120.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 157.22834645669292,
+    "y": 100.78740157480314,
+    "z": 256.0,
+    "minimapX": 103.0,
+    "minimapY": 166.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 92.7244094488189,
+    "y": 116.91338582677164,
+    "z": 256.0,
+    "minimapX": 87.0,
+    "minimapY": 162.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 374.92913385826773,
+    "y": 415.244094488189,
+    "z": 256.0,
+    "minimapX": 157.0,
+    "minimapY": 88.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 141.10236220472441,
+    "y": 217.70078740157481,
+    "z": 256.0,
+    "minimapX": 99.0,
+    "minimapY": 137.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 185.4488188976378,
+    "y": 108.85039370078741,
+    "z": 256.0,
+    "minimapX": 110.0,
+    "minimapY": 164.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 120.94488188976378,
+    "y": 112.88188976377953,
+    "z": 256.0,
+    "minimapX": 94.0,
+    "minimapY": 163.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 205.60629921259843,
+    "y": 169.32283464566927,
+    "z": 256.0,
+    "minimapX": 115.0,
+    "minimapY": 149.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 258.01574803149606,
+    "y": 274.14173228346453,
+    "z": 256.0,
+    "minimapX": 128.0,
+    "minimapY": 123.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 338.64566929133855,
+    "y": 407.18110236220474,
+    "z": 256.0,
+    "minimapX": 148.0,
+    "minimapY": 90.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 225.76377952755905,
+    "y": 274.14173228346453,
+    "z": 256.0,
+    "minimapX": 120.0,
+    "minimapY": 123.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 137.07086614173227,
+    "y": 141.10236220472441,
+    "z": 256.0,
+    "minimapX": 98.0,
+    "minimapY": 156.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 120.94488188976378,
+    "y": 88.69291338582677,
+    "z": 256.0,
+    "minimapX": 94.0,
+    "minimapY": 169.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 391.0551181102362,
+    "y": 403.14960629921256,
+    "z": 256.0,
+    "minimapX": 161.0,
+    "minimapY": 91.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 483.7795275590551,
+    "y": 479.748031496063,
+    "z": 256.0,
+    "minimapX": 184.0,
+    "minimapY": 72.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 245.92125984251967,
+    "y": 241.88976377952756,
+    "z": 256.0,
+    "minimapX": 125.0,
+    "minimapY": 131.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 116.91338582677164,
+    "y": 124.97637795275591,
+    "z": 256.0,
+    "minimapX": 93.0,
+    "minimapY": 160.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 60.47244094488189,
+    "y": 84.66141732283464,
+    "z": 256.0,
+    "minimapX": 79.0,
+    "minimapY": 170.0,
+    "description": "0-12 min, top by all matches",
+    "timeBucket": "0-12"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 217.70078740157481,
+    "y": 391.0551181102362,
+    "z": 256.0,
+    "minimapX": 118.0,
+    "minimapY": 94.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 403.14960629921256,
+    "y": 229.79527559055117,
+    "z": 256.0,
+    "minimapX": 164.0,
+    "minimapY": 134.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 120.94488188976378,
+    "y": 286.23622047244095,
+    "z": 256.0,
+    "minimapX": 94.0,
+    "minimapY": 120.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 290.26771653543307,
+    "y": 141.10236220472441,
+    "z": 256.0,
+    "minimapX": 136.0,
+    "minimapY": 156.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 153.1968503937008,
+    "y": 229.79527559055117,
+    "z": 256.0,
+    "minimapX": 102.0,
+    "minimapY": 134.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 314.45669291338584,
+    "y": 358.8031496062992,
+    "z": 256.0,
+    "minimapX": 142.0,
+    "minimapY": 102.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 322.5196850393701,
+    "y": 520.0629921259842,
+    "z": 256.0,
+    "minimapX": 144.0,
+    "minimapY": 62.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 366.86614173228344,
+    "y": 221.73228346456693,
+    "z": 256.0,
+    "minimapX": 155.0,
+    "minimapY": 136.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 415.244094488189,
+    "y": 165.29133858267716,
+    "z": 256.0,
+    "minimapX": 167.0,
+    "minimapY": 150.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 282.20472440944883,
+    "y": 318.48818897637796,
+    "z": 256.0,
+    "minimapX": 134.0,
+    "minimapY": 112.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 310.4251968503937,
+    "y": 407.18110236220474,
+    "z": 256.0,
+    "minimapX": 141.0,
+    "minimapY": 90.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 209.63779527559055,
+    "y": 189.48031496062993,
+    "z": 256.0,
+    "minimapX": 116.0,
+    "minimapY": 144.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 520.0629921259842,
+    "y": 439.43307086614175,
+    "z": 256.0,
+    "minimapX": 193.0,
+    "minimapY": 82.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 189.48031496062993,
+    "y": 120.94488188976378,
+    "z": 256.0,
+    "minimapX": 111.0,
+    "minimapY": 161.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 294.2992125984252,
+    "y": 270.1102362204724,
+    "z": 256.0,
+    "minimapX": 137.0,
+    "minimapY": 124.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 286.23622047244095,
+    "y": 366.86614173228344,
+    "z": 256.0,
+    "minimapX": 135.0,
+    "minimapY": 100.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 378.96062992125985,
+    "y": 270.1102362204724,
+    "z": 256.0,
+    "minimapX": 158.0,
+    "minimapY": 124.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 520.0629921259842,
+    "y": 262.0472440944882,
+    "z": 256.0,
+    "minimapX": 193.0,
+    "minimapY": 126.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 205.60629921259843,
+    "y": 169.32283464566927,
+    "z": 256.0,
+    "minimapX": 115.0,
+    "minimapY": 149.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 249.95275590551182,
+    "y": 407.18110236220474,
+    "z": 256.0,
+    "minimapX": 126.0,
+    "minimapY": 90.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 193.51181102362204,
+    "y": 245.92125984251967,
+    "z": 256.0,
+    "minimapX": 112.0,
+    "minimapY": 130.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 193.51181102362204,
+    "y": 108.85039370078741,
+    "z": 256.0,
+    "minimapX": 112.0,
+    "minimapY": 164.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 129.00787401574803,
+    "y": 28.22047244094488,
+    "z": 256.0,
+    "minimapX": 96.0,
+    "minimapY": 184.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 249.95275590551182,
+    "y": 133.03937007874015,
+    "z": 256.0,
+    "minimapX": 126.0,
+    "minimapY": 158.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 249.95275590551182,
+    "y": 334.61417322834643,
+    "z": 256.0,
+    "minimapX": 126.0,
+    "minimapY": 108.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 237.85826771653544,
+    "y": 181.41732283464566,
+    "z": 256.0,
+    "minimapX": 123.0,
+    "minimapY": 146.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 173.35433070866142,
+    "y": 84.66141732283464,
+    "z": 256.0,
+    "minimapX": 107.0,
+    "minimapY": 170.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 221.73228346456693,
+    "y": 153.1968503937008,
+    "z": 256.0,
+    "minimapX": 119.0,
+    "minimapY": 153.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 290.26771653543307,
+    "y": 141.10236220472441,
+    "z": 256.0,
+    "minimapX": 136.0,
+    "minimapY": 156.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 217.70078740157481,
+    "y": 391.0551181102362,
+    "z": 256.0,
+    "minimapX": 118.0,
+    "minimapY": 94.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 403.14960629921256,
+    "y": 229.79527559055117,
+    "z": 256.0,
+    "minimapX": 164.0,
+    "minimapY": 134.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 120.94488188976378,
+    "y": 286.23622047244095,
+    "z": 256.0,
+    "minimapX": 94.0,
+    "minimapY": 120.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 338.64566929133855,
+    "y": 294.2992125984252,
+    "z": 256.0,
+    "minimapX": 148.0,
+    "minimapY": 118.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 137.07086614173227,
+    "y": 141.10236220472441,
+    "z": 256.0,
+    "minimapX": 98.0,
+    "minimapY": 156.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 205.60629921259843,
+    "y": 169.32283464566927,
+    "z": 256.0,
+    "minimapX": 115.0,
+    "minimapY": 149.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 262.0472440944882,
+    "y": 378.96062992125985,
+    "z": 256.0,
+    "minimapX": 129.0,
+    "minimapY": 97.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 249.95275590551182,
+    "y": 334.61417322834643,
+    "z": 256.0,
+    "minimapX": 126.0,
+    "minimapY": 108.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 225.76377952755905,
+    "y": 213.66929133858267,
+    "z": 256.0,
+    "minimapX": 120.0,
+    "minimapY": 138.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 262.0472440944882,
+    "y": 326.5511811023622,
+    "z": 256.0,
+    "minimapX": 129.0,
+    "minimapY": 110.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 88.69291338582677,
+    "y": 358.8031496062992,
+    "z": 256.0,
+    "minimapX": 86.0,
+    "minimapY": 102.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 338.64566929133855,
+    "y": 479.748031496063,
+    "z": 256.0,
+    "minimapX": 148.0,
+    "minimapY": 72.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 197.54330708661416,
+    "y": 116.91338582677164,
+    "z": 256.0,
+    "minimapX": 113.0,
+    "minimapY": 162.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 354.7716535433071,
+    "y": 407.18110236220474,
+    "z": 256.0,
+    "minimapX": 152.0,
+    "minimapY": 90.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 225.76377952755905,
+    "y": 149.16535433070865,
+    "z": 256.0,
+    "minimapX": 120.0,
+    "minimapY": 154.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 169.32283464566927,
+    "y": 84.66141732283464,
+    "z": 256.0,
+    "minimapX": 106.0,
+    "minimapY": 170.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 112.88188976377953,
+    "y": 189.48031496062993,
+    "z": 256.0,
+    "minimapX": 92.0,
+    "minimapY": 144.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 24.188976377952756,
+    "y": 197.54330708661416,
+    "z": 256.0,
+    "minimapX": 70.0,
+    "minimapY": 142.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 322.5196850393701,
+    "y": 479.748031496063,
+    "z": 256.0,
+    "minimapX": 144.0,
+    "minimapY": 72.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 302.3622047244094,
+    "y": 350.74015748031496,
+    "z": 256.0,
+    "minimapX": 139.0,
+    "minimapY": 104.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 177.38582677165354,
+    "y": 185.4488188976378,
+    "z": 256.0,
+    "minimapX": 108.0,
+    "minimapY": 145.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
@@ -863,900 +1838,1207 @@
     ],
     "type": "Observer",
     "x": 0.0,
-    "y": -64.0,
+    "y": 60.47244094488189,
     "z": 256.0,
-    "minimapX": 128.0,
-    "minimapY": 127.0
+    "minimapX": 64.0,
+    "minimapY": 176.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
       "Dire"
     ],
     "type": "Observer",
-    "x": -384.0,
-    "y": 576.0,
+    "x": 322.5196850393701,
+    "y": 520.0629921259842,
     "z": 256.0,
-    "minimapX": 122.0,
-    "minimapY": 137.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 2304.0,
-    "y": 384.0,
-    "z": 256.0,
-    "minimapX": 164.0,
-    "minimapY": 134.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 512.0,
-    "y": 1792.0,
-    "z": 256.0,
-    "minimapX": 136.0,
-    "minimapY": 156.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -768.0,
-    "y": 1024.0,
-    "z": 256.0,
-    "minimapX": 116.0,
-    "minimapY": 144.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -640.0,
-    "y": 320.0,
-    "z": 256.0,
-    "minimapX": 118.0,
-    "minimapY": 133.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -2112.0,
-    "y": 2304.0,
-    "z": 256.0,
-    "minimapX": 95.0,
-    "minimapY": 164.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -1984.0,
-    "y": 128.0,
-    "z": 256.0,
-    "minimapX": 97.0,
-    "minimapY": 130.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 1984.0,
-    "y": -2176.0,
-    "z": 256.0,
-    "minimapX": 159.0,
-    "minimapY": 94.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 1600.0,
-    "y": -384.0,
-    "z": 256.0,
-    "minimapX": 153.0,
-    "minimapY": 122.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 3136.0,
-    "y": 1024.0,
-    "z": 256.0,
-    "minimapX": 177.0,
-    "minimapY": 144.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -1920.0,
-    "y": 2688.0,
-    "z": 256.0,
-    "minimapX": 98.0,
-    "minimapY": 170.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 1792.0,
-    "y": -2560.0,
-    "z": 256.0,
-    "minimapX": 156.0,
-    "minimapY": 88.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -1280.0,
-    "y": 2304.0,
-    "z": 256.0,
-    "minimapX": 108.0,
-    "minimapY": 164.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -576.0,
-    "y": 1600.0,
-    "z": 256.0,
-    "minimapX": 119.0,
-    "minimapY": 153.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 384.0,
-    "y": -384.0,
-    "z": 256.0,
-    "minimapX": 134.0,
-    "minimapY": 122.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -2880.0,
-    "y": 1792.0,
-    "z": 256.0,
-    "minimapX": 83.0,
-    "minimapY": 156.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 256.0,
-    "y": -128.0,
-    "z": 256.0,
-    "minimapX": 132.0,
-    "minimapY": 126.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 3072.0,
-    "y": 320.0,
-    "z": 256.0,
-    "minimapX": 176.0,
-    "minimapY": 133.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 2880.0,
-    "y": 1408.0,
-    "z": 256.0,
-    "minimapX": 173.0,
-    "minimapY": 150.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -768.0,
-    "y": 1408.0,
-    "z": 256.0,
-    "minimapX": 116.0,
-    "minimapY": 150.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -3072.0,
-    "y": 384.0,
-    "z": 256.0,
-    "minimapX": 80.0,
-    "minimapY": 134.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 2240.0,
-    "y": -1792.0,
-    "z": 256.0,
-    "minimapX": 163.0,
-    "minimapY": 100.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 1984.0,
-    "y": -2752.0,
-    "z": 256.0,
-    "minimapX": 159.0,
-    "minimapY": 85.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 2240.0,
-    "y": -2560.0,
-    "z": 256.0,
-    "minimapX": 163.0,
-    "minimapY": 88.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -1984.0,
-    "y": 2048.0,
-    "z": 256.0,
-    "minimapX": 97.0,
-    "minimapY": 160.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 1344.0,
-    "y": -64.0,
-    "z": 256.0,
-    "minimapX": 149.0,
-    "minimapY": 127.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -3648.0,
-    "y": 3392.0,
-    "z": 256.0,
-    "minimapX": 71.0,
-    "minimapY": 181.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 3648.0,
-    "y": -3392.0,
-    "z": 256.0,
-    "minimapX": 185.0,
-    "minimapY": 75.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -512.0,
-    "y": -64.0,
-    "z": 256.0,
-    "minimapX": 120.0,
-    "minimapY": 127.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 2432.0,
-    "y": -1088.0,
-    "z": 256.0,
-    "minimapX": 166.0,
-    "minimapY": 111.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 3904.0,
-    "y": 320.0,
-    "z": 256.0,
-    "minimapX": 189.0,
-    "minimapY": 133.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 256.0,
-    "y": 1984.0,
-    "z": 256.0,
-    "minimapX": 132.0,
-    "minimapY": 159.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 2176.0,
-    "y": 1792.0,
-    "z": 256.0,
-    "minimapX": 162.0,
-    "minimapY": 156.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 192.0,
-    "y": -1664.0,
-    "z": 256.0,
-    "minimapX": 131.0,
-    "minimapY": 102.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -2560.0,
-    "y": 1152.0,
-    "z": 256.0,
-    "minimapX": 88.0,
-    "minimapY": 146.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 320.0,
-    "y": -640.0,
-    "z": 256.0,
-    "minimapX": 133.0,
-    "minimapY": 118.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -256.0,
-    "y": -256.0,
-    "z": 256.0,
-    "minimapX": 124.0,
-    "minimapY": 124.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -2368.0,
-    "y": 3456.0,
-    "z": 256.0,
-    "minimapX": 91.0,
-    "minimapY": 182.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -384.0,
-    "y": 576.0,
-    "z": 256.0,
-    "minimapX": 122.0,
-    "minimapY": 137.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": -832.0,
-    "y": -896.0,
-    "z": 256.0,
-    "minimapX": 115.0,
-    "minimapY": 114.0
-  },
-  {
-    "teams": [
-      "Radiant"
-    ],
-    "type": "Sentry",
-    "x": 1536.0,
-    "y": 1600.0,
-    "z": 256.0,
-    "minimapX": 152.0,
-    "minimapY": 153.0
+    "minimapX": 144.0,
+    "minimapY": 62.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
       "Dire"
     ],
-    "type": "Sentry",
-    "x": 1536.0,
-    "y": -384.0,
+    "type": "Observer",
+    "x": 374.92913385826773,
+    "y": 274.14173228346453,
     "z": 256.0,
-    "minimapX": 152.0,
-    "minimapY": 122.0
+    "minimapX": 157.0,
+    "minimapY": 123.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
       "Dire"
     ],
-    "type": "Sentry",
-    "x": -2048.0,
-    "y": 2240.0,
-    "z": 256.0,
-    "minimapX": 96.0,
-    "minimapY": 163.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": -2560.0,
-    "y": 2304.0,
-    "z": 256.0,
-    "minimapX": 88.0,
-    "minimapY": 164.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": 576.0,
-    "y": -192.0,
-    "z": 256.0,
-    "minimapX": 137.0,
-    "minimapY": 125.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": -640.0,
-    "y": -2176.0,
-    "z": 256.0,
-    "minimapX": 118.0,
-    "minimapY": 94.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": -2176.0,
-    "y": -512.0,
+    "type": "Observer",
+    "x": 120.94488188976378,
+    "y": 374.92913385826773,
     "z": 256.0,
     "minimapX": 94.0,
-    "minimapY": 120.0
+    "minimapY": 98.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
       "Dire"
     ],
-    "type": "Sentry",
-    "x": 2368.0,
-    "y": -2176.0,
+    "type": "Observer",
+    "x": 161.25984251968504,
+    "y": 258.01574803149606,
     "z": 256.0,
-    "minimapX": 165.0,
-    "minimapY": 94.0
+    "minimapX": 104.0,
+    "minimapY": 127.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
       "Dire"
     ],
-    "type": "Sentry",
-    "x": 1856.0,
-    "y": -2496.0,
+    "type": "Observer",
+    "x": 258.01574803149606,
+    "y": 366.86614173228344,
     "z": 256.0,
-    "minimapX": 157.0,
-    "minimapY": 89.0
+    "minimapX": 128.0,
+    "minimapY": 100.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
       "Dire"
     ],
-    "type": "Sentry",
-    "x": 2624.0,
-    "y": -1600.0,
-    "z": 256.0,
-    "minimapX": 169.0,
-    "minimapY": 103.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": 2304.0,
-    "y": -960.0,
-    "z": 256.0,
-    "minimapX": 164.0,
-    "minimapY": 113.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": -960.0,
-    "y": 1152.0,
-    "z": 256.0,
-    "minimapX": 113.0,
-    "minimapY": 146.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": 640.0,
-    "y": -1536.0,
-    "z": 256.0,
-    "minimapX": 138.0,
-    "minimapY": 104.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": -3136.0,
-    "y": 640.0,
-    "z": 256.0,
-    "minimapX": 79.0,
-    "minimapY": 138.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": 512.0,
-    "y": 384.0,
-    "z": 256.0,
-    "minimapX": 136.0,
-    "minimapY": 134.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": -1280.0,
-    "y": -768.0,
-    "z": 256.0,
-    "minimapX": 108.0,
-    "minimapY": 116.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": -2048.0,
-    "y": -2880.0,
-    "z": 256.0,
-    "minimapX": 96.0,
-    "minimapY": 83.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": -2880.0,
-    "y": 2432.0,
-    "z": 256.0,
-    "minimapX": 83.0,
-    "minimapY": 166.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": 128.0,
-    "y": -320.0,
-    "z": 256.0,
-    "minimapX": 130.0,
-    "minimapY": 123.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": 2624.0,
-    "y": -2112.0,
-    "z": 256.0,
-    "minimapX": 169.0,
-    "minimapY": 95.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": 1472.0,
-    "y": 0.0,
-    "z": 256.0,
-    "minimapX": 151.0,
-    "minimapY": 128.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": -256.0,
-    "y": 320.0,
-    "z": 256.0,
-    "minimapX": 124.0,
-    "minimapY": 133.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": -832.0,
-    "y": -384.0,
-    "z": 256.0,
-    "minimapX": 115.0,
-    "minimapY": 122.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": 512.0,
-    "y": 1792.0,
-    "z": 256.0,
-    "minimapX": 136.0,
-    "minimapY": 156.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": -640.0,
-    "y": -1280.0,
+    "type": "Observer",
+    "x": 217.70078740157481,
+    "y": 60.47244094488189,
     "z": 256.0,
     "minimapX": 118.0,
-    "minimapY": 108.0
+    "minimapY": 176.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
       "Dire"
     ],
-    "type": "Sentry",
-    "x": 2304.0,
-    "y": 384.0,
+    "type": "Observer",
+    "x": 229.79527559055117,
+    "y": 278.1732283464567,
     "z": 256.0,
-    "minimapX": 164.0,
-    "minimapY": 134.0
+    "minimapX": 121.0,
+    "minimapY": 122.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
       "Dire"
     ],
-    "type": "Sentry",
-    "x": -2112.0,
-    "y": -832.0,
+    "type": "Observer",
+    "x": 382.99212598425197,
+    "y": 479.748031496063,
     "z": 256.0,
-    "minimapX": 95.0,
-    "minimapY": 115.0
+    "minimapX": 159.0,
+    "minimapY": 72.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
-      "Dire"
+      "Radiant"
     ],
     "type": "Sentry",
-    "x": -2112.0,
-    "y": 2880.0,
+    "x": 290.26771653543307,
+    "y": 141.10236220472441,
     "z": 256.0,
-    "minimapX": 95.0,
-    "minimapY": 173.0
+    "minimapX": 136.0,
+    "minimapY": 156.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
-      "Dire"
+      "Radiant"
     ],
     "type": "Sentry",
-    "x": -1600.0,
-    "y": 2496.0,
+    "x": 217.70078740157481,
+    "y": 391.0551181102362,
     "z": 256.0,
-    "minimapX": 103.0,
-    "minimapY": 167.0
+    "minimapX": 118.0,
+    "minimapY": 94.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
-      "Dire"
+      "Radiant"
     ],
     "type": "Sentry",
-    "x": -256.0,
-    "y": 3520.0,
+    "x": 120.94488188976378,
+    "y": 286.23622047244095,
     "z": 256.0,
-    "minimapX": 124.0,
-    "minimapY": 183.0
+    "minimapX": 94.0,
+    "minimapY": 120.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
-      "Dire"
+      "Radiant"
     ],
     "type": "Sentry",
-    "x": 960.0,
-    "y": 576.0,
+    "x": 173.35433070866142,
+    "y": 112.88188976377953,
     "z": 256.0,
-    "minimapX": 143.0,
-    "minimapY": 137.0
+    "minimapX": 107.0,
+    "minimapY": 163.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
-      "Dire"
+      "Radiant"
     ],
     "type": "Sentry",
-    "x": -192.0,
-    "y": -192.0,
-    "z": 256.0,
-    "minimapX": 125.0,
-    "minimapY": 125.0
-  },
-  {
-    "teams": [
-      "Dire"
-    ],
-    "type": "Sentry",
-    "x": 384.0,
-    "y": -1728.0,
+    "x": 282.20472440944883,
+    "y": 362.8346456692913,
     "z": 256.0,
     "minimapX": 134.0,
-    "minimapY": 101.0
+    "minimapY": 101.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
-      "Dire"
+      "Radiant"
     ],
     "type": "Sentry",
-    "x": 128.0,
-    "y": -640.0,
+    "x": 133.03937007874015,
+    "y": 245.92125984251967,
     "z": 256.0,
-    "minimapX": 130.0,
-    "minimapY": 118.0
+    "minimapX": 97.0,
+    "minimapY": 130.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
-      "Dire"
+      "Radiant"
     ],
     "type": "Sentry",
-    "x": 128.0,
-    "y": -1856.0,
+    "x": 209.63779527559055,
+    "y": 189.48031496062993,
     "z": 256.0,
-    "minimapX": 130.0,
-    "minimapY": 99.0
+    "minimapX": 116.0,
+    "minimapY": 144.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
-      "Dire"
+      "Radiant"
     ],
     "type": "Sentry",
-    "x": -896.0,
-    "y": -2048.0,
+    "x": 225.76377952755905,
+    "y": 153.1968503937008,
     "z": 256.0,
-    "minimapX": 114.0,
-    "minimapY": 96.0
+    "minimapX": 120.0,
+    "minimapY": 153.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
-      "Dire"
+      "Radiant"
     ],
     "type": "Sentry",
-    "x": -3072.0,
-    "y": 1600.0,
+    "x": 124.97637795275591,
+    "y": 124.97637795275591,
     "z": 256.0,
-    "minimapX": 80.0,
-    "minimapY": 153.0
+    "minimapX": 95.0,
+    "minimapY": 160.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
-      "Dire"
+      "Radiant"
     ],
     "type": "Sentry",
-    "x": -3072.0,
-    "y": 2752.0,
+    "x": 322.5196850393701,
+    "y": 520.0629921259842,
     "z": 256.0,
-    "minimapX": 80.0,
-    "minimapY": 171.0
+    "minimapX": 144.0,
+    "minimapY": 62.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
-      "Dire"
+      "Radiant"
     ],
     "type": "Sentry",
-    "x": -3328.0,
-    "y": 256.0,
+    "x": 104.81889763779527,
+    "y": 181.41732283464566,
     "z": 256.0,
-    "minimapX": 76.0,
-    "minimapY": 132.0
+    "minimapX": 90.0,
+    "minimapY": 146.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
-      "Dire"
+      "Radiant"
     ],
     "type": "Sentry",
-    "x": 320.0,
-    "y": -896.0,
+    "x": 245.92125984251967,
+    "y": 378.96062992125985,
+    "z": 256.0,
+    "minimapX": 125.0,
+    "minimapY": 97.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 278.1732283464567,
+    "y": 378.96062992125985,
     "z": 256.0,
     "minimapX": 133.0,
-    "minimapY": 114.0
+    "minimapY": 97.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 326.5511811023622,
+    "y": 302.3622047244094,
+    "z": 256.0,
+    "minimapX": 145.0,
+    "minimapY": 116.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 266.0787401574803,
+    "y": 141.10236220472441,
+    "z": 256.0,
+    "minimapX": 130.0,
+    "minimapY": 156.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 149.16535433070865,
+    "y": 229.79527559055117,
+    "z": 256.0,
+    "minimapX": 101.0,
+    "minimapY": 134.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 229.79527559055117,
+    "y": 258.01574803149606,
+    "z": 256.0,
+    "minimapX": 121.0,
+    "minimapY": 127.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 213.66929133858267,
+    "y": 229.79527559055117,
+    "z": 256.0,
+    "minimapX": 117.0,
+    "minimapY": 134.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 153.1968503937008,
+    "y": 346.70866141732284,
+    "z": 256.0,
+    "minimapX": 102.0,
+    "minimapY": 105.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 189.48031496062993,
+    "y": 455.5590551181102,
+    "z": 256.0,
+    "minimapX": 111.0,
+    "minimapY": 78.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 354.7716535433071,
+    "y": 278.1732283464567,
+    "z": 256.0,
+    "minimapX": 152.0,
+    "minimapY": 122.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 282.20472440944883,
+    "y": 350.74015748031496,
+    "z": 256.0,
+    "minimapX": 134.0,
+    "minimapY": 104.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 262.0472440944882,
+    "y": 366.86614173228344,
+    "z": 256.0,
+    "minimapX": 129.0,
+    "minimapY": 100.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 253.98425196850394,
+    "y": 310.4251968503937,
+    "z": 256.0,
+    "minimapX": 127.0,
+    "minimapY": 114.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 298.3307086614173,
+    "y": 213.66929133858267,
+    "z": 256.0,
+    "minimapX": 138.0,
+    "minimapY": 138.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 294.2992125984252,
+    "y": 266.0787401574803,
+    "z": 256.0,
+    "minimapX": 137.0,
+    "minimapY": 125.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 241.88976377952756,
+    "y": 201.57480314960628,
+    "z": 256.0,
+    "minimapX": 124.0,
+    "minimapY": 141.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 266.0787401574803,
+    "y": 302.3622047244094,
+    "z": 256.0,
+    "minimapX": 130.0,
+    "minimapY": 116.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 487.81102362204723,
+    "y": 483.7795275590551,
+    "z": 256.0,
+    "minimapX": 185.0,
+    "minimapY": 71.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 245.92125984251967,
+    "y": 395.0866141732283,
+    "z": 256.0,
+    "minimapX": 125.0,
+    "minimapY": 93.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 80.62992125984252,
+    "y": 100.78740157480314,
+    "z": 256.0,
+    "minimapX": 84.0,
+    "minimapY": 166.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 382.99212598425197,
+    "y": 233.8267716535433,
+    "z": 256.0,
+    "minimapX": 159.0,
+    "minimapY": 133.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 197.54330708661416,
+    "y": 302.3622047244094,
+    "z": 256.0,
+    "minimapX": 113.0,
+    "minimapY": 116.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 145.13385826771653,
+    "y": 294.2992125984252,
+    "z": 256.0,
+    "minimapX": 100.0,
+    "minimapY": 118.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 503.93700787401576,
+    "y": 463.62204724409446,
+    "z": 256.0,
+    "minimapX": 189.0,
+    "minimapY": 76.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 185.4488188976378,
+    "y": 314.45669291338584,
+    "z": 256.0,
+    "minimapX": 110.0,
+    "minimapY": 113.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 326.5511811023622,
+    "y": 411.21259842519686,
+    "z": 256.0,
+    "minimapX": 145.0,
+    "minimapY": 89.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
   },
   {
     "teams": [
       "Dire"
     ],
     "type": "Sentry",
-    "x": 1856.0,
-    "y": -2112.0,
+    "x": 290.26771653543307,
+    "y": 141.10236220472441,
     "z": 256.0,
-    "minimapX": 157.0,
-    "minimapY": 95.0
+    "minimapX": 136.0,
+    "minimapY": 156.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 217.70078740157481,
+    "y": 391.0551181102362,
+    "z": 256.0,
+    "minimapX": 118.0,
+    "minimapY": 94.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 403.14960629921256,
+    "y": 229.79527559055117,
+    "z": 256.0,
+    "minimapX": 164.0,
+    "minimapY": 134.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 120.94488188976378,
+    "y": 286.23622047244095,
+    "z": 256.0,
+    "minimapX": 94.0,
+    "minimapY": 120.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 338.64566929133855,
+    "y": 294.2992125984252,
+    "z": 256.0,
+    "minimapX": 148.0,
+    "minimapY": 118.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 362.8346456692913,
+    "y": 278.1732283464567,
+    "z": 256.0,
+    "minimapX": 154.0,
+    "minimapY": 122.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 225.76377952755905,
+    "y": 157.22834645669292,
+    "z": 256.0,
+    "minimapX": 120.0,
+    "minimapY": 152.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 129.00787401574803,
+    "y": 241.88976377952756,
+    "z": 256.0,
+    "minimapX": 96.0,
+    "minimapY": 131.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 173.35433070866142,
+    "y": 112.88188976377953,
+    "z": 256.0,
+    "minimapX": 107.0,
+    "minimapY": 163.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 326.5511811023622,
+    "y": 411.21259842519686,
+    "z": 256.0,
+    "minimapX": 145.0,
+    "minimapY": 89.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 241.88976377952756,
+    "y": 262.0472440944882,
+    "z": 256.0,
+    "minimapX": 124.0,
+    "minimapY": 126.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 403.14960629921256,
+    "y": 173.35433070866142,
+    "z": 256.0,
+    "minimapX": 164.0,
+    "minimapY": 148.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 286.23622047244095,
+    "y": 362.8346456692913,
+    "z": 256.0,
+    "minimapX": 135.0,
+    "minimapY": 101.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 314.45669291338584,
+    "y": 141.10236220472441,
+    "z": 256.0,
+    "minimapX": 142.0,
+    "minimapY": 156.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 112.88188976377953,
+    "y": 237.85826771653544,
+    "z": 256.0,
+    "minimapX": 92.0,
+    "minimapY": 132.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 262.0472440944882,
+    "y": 326.5511811023622,
+    "z": 256.0,
+    "minimapX": 129.0,
+    "minimapY": 110.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 229.79527559055117,
+    "y": 262.0472440944882,
+    "z": 256.0,
+    "minimapX": 121.0,
+    "minimapY": 126.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 262.0472440944882,
+    "y": 314.45669291338584,
+    "z": 256.0,
+    "minimapX": 129.0,
+    "minimapY": 113.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 382.99212598425197,
+    "y": 225.76377952755905,
+    "z": 256.0,
+    "minimapX": 159.0,
+    "minimapY": 135.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 137.07086614173227,
+    "y": 129.00787401574803,
+    "z": 256.0,
+    "minimapX": 98.0,
+    "minimapY": 159.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 282.20472440944883,
+    "y": 318.48818897637796,
+    "z": 256.0,
+    "minimapX": 134.0,
+    "minimapY": 112.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 124.97637795275591,
+    "y": 270.1102362204724,
+    "z": 256.0,
+    "minimapX": 95.0,
+    "minimapY": 124.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 153.1968503937008,
+    "y": 286.23622047244095,
+    "z": 256.0,
+    "minimapX": 102.0,
+    "minimapY": 120.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 346.70866141732284,
+    "y": 282.20472440944883,
+    "z": 256.0,
+    "minimapX": 150.0,
+    "minimapY": 121.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 153.1968503937008,
+    "y": 229.79527559055117,
+    "z": 256.0,
+    "minimapX": 102.0,
+    "minimapY": 134.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 16.125984251968504,
+    "y": 36.28346456692913,
+    "z": 256.0,
+    "minimapX": 68.0,
+    "minimapY": 182.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 266.0787401574803,
+    "y": 141.10236220472441,
+    "z": 256.0,
+    "minimapX": 130.0,
+    "minimapY": 156.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 431.37007874015745,
+    "y": 149.16535433070865,
+    "z": 256.0,
+    "minimapX": 171.0,
+    "minimapY": 154.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 181.41732283464566,
+    "y": 193.51181102362204,
+    "z": 256.0,
+    "minimapX": 109.0,
+    "minimapY": 143.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 161.25984251968504,
+    "y": 116.91338582677164,
+    "z": 256.0,
+    "minimapX": 104.0,
+    "minimapY": 162.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 72.56692913385827,
+    "y": 149.16535433070865,
+    "z": 256.0,
+    "minimapX": 82.0,
+    "minimapY": 154.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 161.25984251968504,
+    "y": 213.66929133858267,
+    "z": 256.0,
+    "minimapX": 104.0,
+    "minimapY": 138.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 403.14960629921256,
+    "y": 274.14173228346453,
+    "z": 256.0,
+    "minimapX": 164.0,
+    "minimapY": 123.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 161.25984251968504,
+    "y": 44.346456692913385,
+    "z": 256.0,
+    "minimapX": 104.0,
+    "minimapY": 180.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 290.26771653543307,
+    "y": 229.79527559055117,
+    "z": 256.0,
+    "minimapX": 136.0,
+    "minimapY": 134.0,
+    "description": "12-32 min, top by all matches",
+    "timeBucket": "12-32"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 346.70866141732284,
+    "y": 302.3622047244094,
+    "z": 256.0,
+    "minimapX": 150.0,
+    "minimapY": 116.0,
+    "description": "32+ min, top by all matches",
+    "timeBucket": "32+"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Observer",
+    "x": 399.11811023622045,
+    "y": 133.03937007874015,
+    "z": 256.0,
+    "minimapX": 163.0,
+    "minimapY": 158.0,
+    "description": "32+ min, top by all matches",
+    "timeBucket": "32+"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Observer",
+    "x": 314.45669291338584,
+    "y": 358.8031496062992,
+    "z": 256.0,
+    "minimapX": 142.0,
+    "minimapY": 102.0,
+    "description": "32+ min, top by all matches",
+    "timeBucket": "32+"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 403.14960629921256,
+    "y": 229.79527559055117,
+    "z": 256.0,
+    "minimapX": 164.0,
+    "minimapY": 134.0,
+    "description": "32+ min, top by all matches",
+    "timeBucket": "32+"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 387.0236220472441,
+    "y": 221.73228346456693,
+    "z": 256.0,
+    "minimapX": 160.0,
+    "minimapY": 136.0,
+    "description": "32+ min, top by all matches",
+    "timeBucket": "32+"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 338.64566929133855,
+    "y": 294.2992125984252,
+    "z": 256.0,
+    "minimapX": 148.0,
+    "minimapY": 118.0,
+    "description": "32+ min, top by all matches",
+    "timeBucket": "32+"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 133.03937007874015,
+    "y": 443.46456692913387,
+    "z": 256.0,
+    "minimapX": 97.0,
+    "minimapY": 81.0,
+    "description": "32+ min, top by all matches",
+    "timeBucket": "32+"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 64.50393700787401,
+    "y": 366.86614173228344,
+    "z": 256.0,
+    "minimapX": 80.0,
+    "minimapY": 100.0,
+    "description": "32+ min, top by all matches",
+    "timeBucket": "32+"
+  },
+  {
+    "teams": [
+      "Radiant"
+    ],
+    "type": "Sentry",
+    "x": 48.37795275590551,
+    "y": 374.92913385826773,
+    "z": 256.0,
+    "minimapX": 76.0,
+    "minimapY": 98.0,
+    "description": "32+ min, top by all matches",
+    "timeBucket": "32+"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 512.0,
+    "y": 229.79527559055117,
+    "z": 256.0,
+    "minimapX": 191.0,
+    "minimapY": 134.0,
+    "description": "32+ min, top by all matches",
+    "timeBucket": "32+"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 370.8976377952756,
+    "y": 96.75590551181102,
+    "z": 256.0,
+    "minimapX": 156.0,
+    "minimapY": 167.0,
+    "description": "32+ min, top by all matches",
+    "timeBucket": "32+"
+  },
+  {
+    "teams": [
+      "Dire"
+    ],
+    "type": "Sentry",
+    "x": 294.2992125984252,
+    "y": 270.1102362204724,
+    "z": 256.0,
+    "minimapX": 137.0,
+    "minimapY": 124.0,
+    "description": "32+ min, top by all matches",
+    "timeBucket": "32+"
   }
 ]
