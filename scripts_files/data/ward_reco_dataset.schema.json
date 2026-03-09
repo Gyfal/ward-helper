@@ -118,7 +118,7 @@
           "world_avg",
           "stats",
           "flags",
-          "context_profile"
+          "context_profiles"
         ],
         "properties": {
           "spot_id": { "type": "string" },
@@ -196,31 +196,53 @@
               "observer_risky_quick_deward": { "type": "boolean" }
             }
           },
-          "context_profile": {
-            "type": "object",
-            "required": [
-              "avg_gold_adv_for_team",
-              "avg_kill_adv_for_team",
-              "avg_tower_diff_for_team",
-              "gold_adv_buckets",
-              "tower_destroyed_own_rate",
-              "tower_destroyed_enemy_rate"
-            ],
-            "properties": {
-              "avg_gold_adv_for_team": { "type": "number" },
-              "avg_kill_adv_for_team": { "type": "number" },
-              "avg_tower_diff_for_team": { "type": "number" },
-              "gold_adv_buckets": {
-                "type": "object",
-                "additionalProperties": { "type": "integer" }
-              },
-              "tower_destroyed_own_rate": {
-                "type": "object",
-                "additionalProperties": { "type": "number" }
-              },
-              "tower_destroyed_enemy_rate": {
-                "type": "object",
-                "additionalProperties": { "type": "number" }
+          "context_profiles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["key", "placements", "matches_seen", "score"],
+              "properties": {
+                "key": { "type": "string" },
+                "own_lane_stages": {
+                  "type": "object",
+                  "required": ["top", "mid", "bot"],
+                  "properties": {
+                    "top": { "type": "integer" },
+                    "mid": { "type": "integer" },
+                    "bot": { "type": "integer" }
+                  }
+                },
+                "enemy_lane_stages": {
+                  "type": "object",
+                  "required": ["top", "mid", "bot"],
+                  "properties": {
+                    "top": { "type": "integer" },
+                    "mid": { "type": "integer" },
+                    "bot": { "type": "integer" }
+                  }
+                },
+                "own_missing_towers": {
+                  "type": "array",
+                  "items": { "type": "string", "pattern": "^(top|mid|bot)_t[1-4]$" }
+                },
+                "enemy_missing_towers": {
+                  "type": "array",
+                  "items": { "type": "string", "pattern": "^(top|mid|bot)_t[1-4]$" }
+                },
+                "pressure_mode": {
+                  "type": "string",
+                  "enum": ["defensive", "neutral", "offensive"]
+                },
+                "avg_gold_adv_for_team": { "type": "number" },
+                "avg_kill_adv_for_team": { "type": "number" },
+                "gold_advantage_bucket": { "type": "string" },
+                "kill_advantage_bucket": { "type": "string" },
+                "placements": { "type": "integer" },
+                "matches_seen": { "type": "integer" },
+                "match_coverage": { "type": "number" },
+                "quick_deward_rate": { "type": "number" },
+                "success_rate": { "type": "number" },
+                "score": { "type": "number" }
               }
             }
           }

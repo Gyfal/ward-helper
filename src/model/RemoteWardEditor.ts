@@ -9,15 +9,15 @@ import { WardState } from "./WardState"
 import { WardPoint } from "./WardTypes"
 
 const REMOTE_PICK_DISTANCE_WORLD = 260
+// world -> minimap cell mapping, mirrors build_ward_reco_runtime.py.
+const WORLD_CELL_SIZE = 128
+const WORLD_ORIGIN_OFFSET = 16384
 
 export class RemoteWardEditor {
 	constructor(private readonly state: WardState) {}
 
 	public ResetDragState() {
-		this.state.draggedRemoteWardID = -1
-		this.state.draggedRemoteWard = undefined
-		this.state.draggedRemoteWardSnapshot = undefined
-		this.state.draggedRemoteWardPreview = undefined
+		this.state.remoteDrag = undefined
 	}
 
 	public PickHoveredRemoteWard() {
@@ -25,75 +25,70 @@ export class RemoteWardEditor {
 		if (targetID === undefined) {
 			return
 		}
-		this.state.draggedRemoteWardID = targetID
 		const ward = this.state.remoteWards[targetID]
-		this.state.draggedRemoteWard = ward
-		this.state.draggedRemoteWardSnapshot = this.CloneWard(ward)
-		this.state.draggedRemoteWardPreview = this.CloneWard(ward)
+		this.state.remoteDrag = {
+			ward,
+			snapshot: this.CloneWard(ward),
+			preview: this.CloneWard(ward)
+		}
 	}
 
 	public UpdateDraggedRemoteWardToCursor() {
-		const id = this.state.draggedRemoteWardID
-		if (id < 0 || id >= this.state.remoteWards.length) {
-			this.ResetDragState()
+		const drag = this.state.remoteDrag
+		if (drag === undefined) {
 			return
 		}
-		const cursorWorld = InputManager.CursorOnWorld
-		const preview = this.state.draggedRemoteWardPreview
-		if (preview === undefined) {
-			return
-		}
-		this.ApplyWorldToWard(preview, cursorWorld)
+		this.ApplyWorldToWard(drag.preview, InputManager.CursorOnWorld)
 	}
 
 	public FinishRemoteDrag(): boolean {
-		const id = this.state.draggedRemoteWardID
-		const preview = this.state.draggedRemoteWardPreview
-		if (id >= 0 && id < this.state.remoteWards.length && preview !== undefined) {
-			this.RestoreWard(this.state.remoteWards[id], preview)
-			this.ResetDragState()
-			return true
+		const drag = this.state.remoteDrag
+		this.state.remoteDrag = undefined
+		if (drag === undefined) {
+			return false
 		}
-		this.ResetDragState()
-		return false
+		Object.assign(drag.ward, this.CloneWard(drag.preview))
+		return true
 	}
 
 	public CancelRemoteDrag() {
-		const id = this.state.draggedRemoteWardID
-		const snapshot = this.state.draggedRemoteWardSnapshot
-		if (id >= 0 && id < this.state.remoteWards.length && snapshot !== undefined) {
-			this.RestoreWard(this.state.remoteWards[id], snapshot)
+		const drag = this.state.remoteDrag
+		this.state.remoteDrag = undefined
+		if (drag !== undefined) {
+			Object.assign(drag.ward, drag.snapshot)
 		}
-		this.ResetDragState()
 	}
 
 	public DeleteRemoteHoveredOrDraggedWard(): boolean {
-		let targetID = this.state.draggedRemoteWardID
-		if (targetID < 0) {
-			const hovered = this.FindRemoteWardUnderCursor()
-			targetID = hovered ?? -1
-		}
-		if (targetID < 0 || targetID >= this.state.remoteWards.length) {
+		const drag = this.state.remoteDrag
+		const targetID =
+			drag !== undefined
+				? this.IndexOfWard(drag.ward)
+				: this.FindRemoteWardUnderCursor()
+		if (targetID === undefined) {
 			return false
 		}
 		this.state.remoteWards.splice(targetID, 1)
-		this.ResetDragState()
+		this.state.remoteDrag = undefined
 		return true
+	}
+
+	private IndexOfWard(ward: WardPoint): number | undefined {
+		const index = this.state.remoteWards.indexOf(ward)
+		return index >= 0 ? index : undefined
 	}
 
 	private FindRemoteWardUnderCursor(): number | undefined {
 		const hoveredWard = this.state.hoveredWard
 		if (hoveredWard !== undefined) {
-			for (let i = 0; i < this.state.remoteWards.length; i++) {
-				if (this.state.remoteWards[i] === hoveredWard) {
-					return i
-				}
+			const hoveredID = this.IndexOfWard(hoveredWard)
+			if (hoveredID !== undefined) {
+				return hoveredID
 			}
 		}
 		const cursorWorld = InputManager.CursorOnWorld
-		const maxDistSq = REMOTE_PICK_DISTANCE_WORLD * REMOTE_PICK_DISTANCE_WORLD
-		let bestID = -1
-		let bestDistSq = maxDistSq
+		let bestID: number | undefined
+		let bestDistSq = REMOTE_PICK_DISTANCE_WORLD * REMOTE_PICK_DISTANCE_WORLD
 		for (let i = 0; i < this.state.remoteWards.length; i++) {
 			const ward = this.state.remoteWards[i]
 			const dx = ward.x - cursorWorld.x
@@ -104,16 +99,15 @@ export class RemoteWardEditor {
 				bestID = i
 			}
 		}
-		if (bestID >= 0) {
-			return bestID
-		}
-		return undefined
+		return bestID
 	}
 
 	private ApplyWorldToWard(ward: WardPoint, world: Vector3) {
 		ward.x = world.x
 		ward.y = world.y
 		ward.z = GetPositionHeight(new Vector2(world.x, world.y))
+		ward.cellX = (world.x + WORLD_ORIGIN_OFFSET) / WORLD_CELL_SIZE
+		ward.cellY = (world.y + WORLD_ORIGIN_OFFSET) / WORLD_CELL_SIZE
 	}
 
 	private CloneWard(ward: WardPoint): WardPoint {
@@ -121,26 +115,14 @@ export class RemoteWardEditor {
 			x: ward.x,
 			y: ward.y,
 			z: ward.z,
+			cellX: ward.cellX,
+			cellY: ward.cellY,
 			timeBucket: ward.timeBucket,
-			towerDiffAvg: ward.towerDiffAvg,
 			score: ward.score,
 			observerRiskyQuickDeward: ward.observerRiskyQuickDeward,
 			type: ward.type,
 			description: ward.description,
 			teams: ward.teams !== undefined ? [...ward.teams] : undefined
 		}
-	}
-
-	private RestoreWard(target: WardPoint, source: WardPoint) {
-		target.x = source.x
-		target.y = source.y
-		target.z = source.z
-		target.timeBucket = source.timeBucket
-		target.towerDiffAvg = source.towerDiffAvg
-		target.score = source.score
-		target.observerRiskyQuickDeward = source.observerRiskyQuickDeward
-		target.type = source.type
-		target.description = source.description
-		target.teams = source.teams !== undefined ? [...source.teams] : undefined
 	}
 }

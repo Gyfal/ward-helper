@@ -9,10 +9,6 @@ import {
 	Vector2
 } from "github.com/octarine-public/wrapper/index"
 
-import { clamp } from "./model/Utils"
-
-const MINIMAP_512_CENTER = 256
-const WORLD_UNITS_PER_MINIMAP_512 = 32
 const ICON_ANIMATION_FPS = 12
 
 interface IconAnimationMeta {
@@ -58,12 +54,6 @@ export class GUIHelper {
 			return new Vector2(x, y)
 		}
 		return GUIInfo.ScaleVector(x, y)
-	}
-
-	public WorldToMinimap512(worldCoordinate: number): number {
-		const minimapCoordinate =
-			worldCoordinate / WORLD_UNITS_PER_MINIMAP_512 + MINIMAP_512_CENTER
-		return clamp(minimapCoordinate, 0, 512)
 	}
 
 	public GetTextWidth(

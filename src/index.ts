@@ -17,34 +17,26 @@ new (class WardHelper {
 	}
 
 	protected onDraw() {
-		if (!GameState.IsConnected || !this.State || !this.gui.IsUIGame) {
+		if (this.isActive()) {
+			this.model.OnDraw()
+		} else {
 			this.model.ResetEffects()
-			return
 		}
-
-		if (!this.gui.IsReady || !this.gui.IsMatchActive) {
-			this.model.ResetEffects()
-			return
-		}
-
-		this.model.OnDraw()
-	}
-
-	private get State() {
-		return this.menu.State.value
 	}
 
 	protected onPostDataUpdate(_dt: number) {
-		if (!GameState.IsConnected || !this.State || !this.gui.IsUIGame) {
-			this.model.ResetEffects()
-			return
+		if (this.isActive()) {
+			this.model.OnTick()
 		}
+	}
 
-		if (!this.gui.IsReady || !this.gui.IsMatchActive) {
-			this.model.ResetEffects()
-			return
-		}
-
-		this.model.OnTick()
+	private isActive(): boolean {
+		return (
+			GameState.IsConnected &&
+			this.menu.State.value &&
+			this.gui.IsUIGame &&
+			this.gui.IsReady &&
+			this.gui.IsMatchActive
+		)
 	}
 })()

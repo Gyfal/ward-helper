@@ -1,11 +1,11 @@
-import { parseConfigRecord } from "./Utils"
+import { ConfigWriteQueue, parseConfigRecord } from "./Utils"
 import { WardDataLoader } from "./WardDataLoader"
 import { WardPoint } from "./WardTypes"
 
 const CUSTOM_WARDS_STORAGE_KEY = "ward-helper.custom-wards.v1"
 
 export class CustomWardStorage {
-	private saveQueue: Promise<void> = Promise.resolve()
+	private readonly writeQueue = new ConfigWriteQueue()
 
 	public async Load(): Promise<WardPoint[]> {
 		try {
@@ -21,28 +21,22 @@ export class CustomWardStorage {
 		return WardDataLoader.LoadStaticCustomWards()
 	}
 
-	public Save(wards: WardPoint[]) {
+	public Save(wards: WardPoint[]): Promise<void> {
 		const payload = wards.map(ward => ({
 			x: ward.x,
 			y: ward.y,
 			z: ward.z,
 			timeBucket: ward.timeBucket,
-			towerDiffAvg: ward.towerDiffAvg,
 			score: ward.score,
 			type: ward.type,
 			description: ward.description,
 			teams: ward.teams
 		}))
-
-		this.saveQueue = this.saveQueue
-			.then(async () => {
-				const raw = await readConfig()
-				const config = parseConfigRecord(raw)
+		return this.writeQueue.Enqueue(
+			"[ward-helper] failed save custom wards",
+			config => {
 				config[CUSTOM_WARDS_STORAGE_KEY] = payload
-				writeConfig(JSON.stringify(config))
-			})
-			.catch(error => {
-				console.error("[ward-helper] failed save custom wards", error)
-			})
+			}
+		)
 	}
 }

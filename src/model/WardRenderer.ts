@@ -24,14 +24,17 @@ import { WardPoint, WardType, WardTypes } from "./WardTypes"
 const OBSERVER_ICON = "panorama/images/emoticons/observer_ward_png.vtex_c"
 const SENTRY_ICON = "panorama/images/emoticons/sentry_ward_png.vtex_c"
 const TOOLTIP_TEXT_FALLBACK = "No description"
-const ICON_HEIGHT_SCALE = 1
 const WARD_PULSE_RADIUS_BASE = 30
 const WARD_PULSE_Z_OFFSET = 8
 const WARD_PARTICLE_ALPHA = 180
 const CIRCLE_PARTICLE_PATH = "particles/range_display/range_display_normal.vpcf"
-const PANEL_ROUND_DIAMETER = 11
-const PANEL_ACCENT_HEIGHT = 3
+const PANEL_BORDER_PADDING = 4
+const PANEL_BORDER_WIDTH = 2
 const WARD_UI_VERTICAL_OFFSET = 34
+const WARD_PANEL_RGB: Record<WardType, { r: number; g: number; b: number }> = {
+	[WardTypes.Observer]: { r: 255, g: 211, b: 88 },
+	[WardTypes.Sentry]: { r: 120, g: 205, b: 255 }
+}
 
 interface TooltipSizeCacheEntry {
 	text: string
@@ -39,20 +42,10 @@ interface TooltipSizeCacheEntry {
 	width: number
 }
 
-interface WardRenderEntry {
-	ward: WardPoint
-	drawWard: WardPoint
-	wardKey: string
-	particleKey: string
-	w2s: Nullable<Vector2>
-	isVisibleOnScreen: boolean
-}
-
 export class WardRenderer {
 	private readonly particleManager = new ParticlesSDK()
-	private renderedParticleKeys = new Set<string>()
-	private seenParticleKeys = new Set<string>()
-	private readonly particleVisibility = new Map<string, boolean>()
+	// key -> hidden flag of the last successfully applied particle state.
+	private readonly particleHidden = new Map<string, boolean>()
 	private readonly tooltipSizeCache = new Map<string, TooltipSizeCacheEntry>()
 
 	constructor(
@@ -69,74 +62,42 @@ export class WardRenderer {
 		this.state.alphaAnimation = approach(this.state.alphaAnimation, targetAlpha, 0.1)
 
 		if (this.state.alphaAnimation <= 0) {
-			this.state.hoveredWard = undefined
 			this.syncParticles(new Set<string>())
 			return
 		}
 
 		const cursor = InputManager.CursorOnScreen
-		const nextParticleKeys = new Set<string>()
-		const renderEntries: WardRenderEntry[] = []
-		for (let i = 0; i < wards.length; i++) {
-			const ward = wards[i]
-			const drawWard =
-				this.state.draggedRemoteWard === ward &&
-				this.state.draggedRemoteWardPreview !== undefined
-					? this.state.draggedRemoteWardPreview
-					: ward
-			const world = new Vector3(drawWard.x, drawWard.y, drawWard.z)
-			const w2s = RendererSDK.WorldToScreen(world)
-			const isVisibleOnScreen = w2s !== undefined && RendererSDK.IsInScreenArea(w2s)
-			renderEntries.push({
-				ward,
-				drawWard,
-				wardKey: `ward_${i}`,
-				particleKey: `ward_pulse_${i}`,
-				w2s,
-				isVisibleOnScreen
-			})
-		}
-
-		for (let i = 0; i < renderEntries.length; i++) {
-			const entry = renderEntries[i]
-			this.ensureWardParticleCreated(
-				entry.drawWard,
-				entry.particleKey,
-				nextParticleKeys
-			)
-		}
-
+		const activeKeys = new Set<string>()
+		const drag = this.state.remoteDrag
 		let hoveredWard: Nullable<WardPoint>
 		let hoveredDistanceSq = Number.MAX_VALUE
-		for (let i = 0; i < renderEntries.length; i++) {
-			const entry = renderEntries[i]
-			const isHidden = !(entry.isVisibleOnScreen && entry.w2s !== undefined)
-			if (entry.isVisibleOnScreen && entry.w2s !== undefined) {
-				const hoverScore = this.drawSingleWard(
-					entry.drawWard,
-					entry.wardKey,
-					cursor,
-					entry.w2s
-				)
+		for (let i = 0; i < wards.length; i++) {
+			const ward = wards[i]
+			const isDragged = drag !== undefined && drag.ward === ward
+			const drawWard = isDragged ? drag.preview : ward
+			const key = this.getWardKey(ward)
+			activeKeys.add(key)
+
+			const w2s = RendererSDK.WorldToScreen(
+				new Vector3(drawWard.x, drawWard.y, drawWard.z)
+			)
+			const isVisibleOnScreen = w2s !== undefined && RendererSDK.IsInScreenArea(w2s)
+			if (w2s !== undefined && isVisibleOnScreen) {
+				const hoverScore = this.drawSingleWard(drawWard, key, cursor, w2s)
 				if (hoverScore !== undefined && hoverScore < hoveredDistanceSq) {
 					hoveredDistanceSq = hoverScore
-					hoveredWard = entry.ward
+					hoveredWard = ward
 				}
-				this.setWardParticleHidden(entry.drawWard, entry.particleKey, false)
 			} else {
-				this.tooltipAnimator.Clear(entry.wardKey)
-				this.setWardParticleHidden(entry.drawWard, entry.particleKey, true)
+				this.tooltipAnimator.Clear(key)
 			}
-			if (this.state.draggedRemoteWard === entry.ward) {
-				// Keep particle center in sync while the ward is being dragged.
-				this.drawWardParticle(entry.drawWard, entry.particleKey, isHidden)
-			}
+			this.updateWardParticle(drawWard, key, !isVisibleOnScreen, isDragged)
 			if (this.menu.ShowOnMinimap.value) {
-				this.drawMinimapWard(entry.drawWard)
+				this.drawMinimapWard(drawWard)
 			}
 		}
 		this.state.hoveredWard = hoveredWard
-		this.syncParticles(nextParticleKeys)
+		this.syncParticles(activeKeys)
 	}
 
 	public ResetEffects() {
@@ -144,10 +105,12 @@ export class WardRenderer {
 		this.state.hoveredWard = undefined
 		this.tooltipAnimator.ClearAll()
 		this.particleManager.DestroyAll()
-		this.renderedParticleKeys.clear()
-		this.seenParticleKeys.clear()
-		this.particleVisibility.clear()
+		this.particleHidden.clear()
 		this.tooltipSizeCache.clear()
+	}
+
+	private getWardKey(ward: WardPoint): string {
+		return `${ward.type}:${ward.x}:${ward.y}`
 	}
 
 	private drawSingleWard(
@@ -158,13 +121,13 @@ export class WardRenderer {
 	): Nullable<number> {
 		const iconSize = this.menu.IconSize.value
 		const iconWidth = iconSize
-		const iconHeight = iconSize * ICON_HEIGHT_SCALE
+		const iconHeight = iconSize
 		const basePosition = new Vector2(w2s.x, w2s.y - WARD_UI_VERTICAL_OFFSET)
-		const iconPositionCenter = basePosition
 
-		const baseWidth = iconSize * 1.8
+		const baseWidth = iconWidth + PANEL_BORDER_PADDING * 2
+		const panelHeight = iconHeight + PANEL_BORDER_PADDING * 2
 		const baseHalfWidth = baseWidth / 2
-		const baseHalfHeight = iconSize / 1.5
+		const baseHalfHeight = panelHeight / 2
 		const hoverHalfSize = Math.max(iconWidth, iconHeight) * 0.65
 		const isHovered = this.gui.IsHovered(basePosition, cursor, hoverHalfSize)
 
@@ -195,43 +158,36 @@ export class WardRenderer {
 			basePosition.x - baseHalfWidth,
 			basePosition.y - baseHalfHeight
 		)
-		const panelSize = new Vector2(panelWidth, baseHalfHeight * 2)
+		const panelSize = new Vector2(panelWidth, panelHeight)
+		const panelRoundDiameter = panelHeight
 		const bgAlpha = Math.floor(170 * this.state.alphaAnimation)
 		const iconAlpha = Math.floor(255 * this.state.alphaAnimation)
-		const borderColor = new Color(
-			255,
-			255,
-			255,
-			Math.floor(55 * this.state.alphaAnimation)
+		const accent = WARD_PANEL_RGB[ward.type]
+		const accentColor = new Color(
+			accent.r,
+			accent.g,
+			accent.b,
+			Math.floor(230 * this.state.alphaAnimation)
 		)
-		const accentColor =
-			ward.type === WardTypes.Observer
-				? new Color(255, 211, 88, Math.floor(230 * this.state.alphaAnimation))
-				: new Color(120, 205, 255, Math.floor(230 * this.state.alphaAnimation))
+		const panelBackground = new Color(
+			accent.r,
+			accent.g,
+			accent.b,
+			Math.floor(48 * this.state.alphaAnimation)
+		)
 
 		RendererSDK.RectRounded(
 			panelPosition,
 			panelSize,
-			PANEL_ROUND_DIAMETER,
-			new Color(0, 0, 0, bgAlpha),
-			borderColor,
-			1
-		)
-
-		const accentPosition = new Vector2(panelPosition.x + 1, panelPosition.y + 1)
-		const accentSize = new Vector2(Math.max(panelSize.x - 2, 1), PANEL_ACCENT_HEIGHT)
-		RendererSDK.RectRounded(
-			accentPosition,
-			accentSize,
-			PANEL_ROUND_DIAMETER,
+			panelRoundDiameter,
+			isHovered ? new Color(0, 0, 0, bgAlpha) : panelBackground,
 			accentColor,
-			new Color(0, 0, 0, 0),
-			0
+			PANEL_BORDER_WIDTH
 		)
 
 		const iconPosition = new Vector2(
 			basePosition.x - iconWidth / 2,
-			iconPositionCenter.y - iconHeight / 2
+			basePosition.y - iconHeight / 2
 		)
 		const iconColor = new Color(iconAlpha, iconAlpha, iconAlpha, iconAlpha)
 		this.gui.DrawAnimatedImage(
@@ -255,8 +211,8 @@ export class WardRenderer {
 		RendererSDK.Text(
 			tooltipText,
 			new Vector2(
-				panelPosition.x + iconSize + 10,
-				basePosition.y - this.menu.TooltipSize.value / 1.8
+				panelPosition.x + baseWidth + 8,
+				basePosition.y - this.menu.TooltipSize.value / 2
 			),
 			textColor,
 			"MuseoSansEx",
@@ -274,53 +230,44 @@ export class WardRenderer {
 		if (GUIInfo?.Minimap === undefined) {
 			return
 		}
-		const minimapPos = MinimapSDK.WorldToMinimap(this.GetMinimapWorldPosition(ward))
+		const minimapPos = MinimapSDK.WorldToMinimap(new Vector3(ward.x, ward.y, ward.z))
 		const rawSize = Math.max(10, this.menu.IconSize.value * 0.6)
 		const size = this.gui.GetScaledVector(rawSize, rawSize)
 		const position = minimapPos.Subtract(size.DivideScalar(2))
 		const alpha = Math.floor(255 * this.state.alphaAnimation)
 		const iconColor = new Color(alpha, alpha, alpha, alpha)
-		this.gui.DrawAnimatedImage(this.GetWardIconPath(ward.type), position, size, iconColor)
+		this.gui.DrawAnimatedImage(
+			this.GetWardIconPath(ward.type),
+			position,
+			size,
+			iconColor
+		)
 	}
 
 	private GetWardIconPath(type: WardType) {
 		return type === WardTypes.Observer ? OBSERVER_ICON : SENTRY_ICON
 	}
 
-	private ensureWardParticleCreated(
+	private updateWardParticle(
 		ward: WardPoint,
 		key: string,
-		nextKeys: Set<string>
+		hidden: boolean,
+		forceUpdate: boolean
 	) {
-		const wasSeen = this.seenParticleKeys.has(key)
-		if (!wasSeen) {
-			this.drawWardParticle(ward, key, true)
-			this.seenParticleKeys.add(key)
-			this.particleVisibility.set(key, true)
-			nextKeys.add(key)
+		const prevHidden = this.particleHidden.get(key)
+		const isFading = !hidden && this.state.alphaAnimation < 1
+		if (prevHidden === hidden && !isFading && !forceUpdate) {
 			return
 		}
-		nextKeys.add(key)
-	}
-
-	private setWardParticleHidden(ward: WardPoint, key: string, hidden: boolean) {
-		const prevHidden = this.particleVisibility.get(key)
-		if (prevHidden === hidden) {
-			// Keys are index-based; after deletion the same key can refer to another ward.
-			// Keep visible particles updated even when hidden-state didn't change.
-			if (!hidden) {
-				this.drawWardParticle(ward, key, false)
-			}
-			return
+		if (this.drawWardParticle(ward, key, hidden)) {
+			this.particleHidden.set(key, hidden)
 		}
-		this.drawWardParticle(ward, key, hidden)
-		this.particleVisibility.set(key, hidden)
 	}
 
-	private drawWardParticle(ward: WardPoint, key: string, hidden: boolean) {
+	private drawWardParticle(ward: WardPoint, key: string, hidden: boolean): boolean {
 		const hero = LocalPlayer?.Hero
 		if (hero === undefined) {
-			return
+			return false
 		}
 		const center2D = new Vector2(ward.x, ward.y)
 		const center = new Vector3(
@@ -347,17 +294,18 @@ export class WardRenderer {
 			[3, 0],
 			[4, particleAlpha]
 		)
+		return true
 	}
 
-	private syncParticles(nextKeys: Set<string>) {
-		for (const key of this.renderedParticleKeys) {
-			if (!nextKeys.has(key)) {
+	private syncParticles(activeKeys: Set<string>) {
+		for (const key of this.particleHidden.keys()) {
+			if (!activeKeys.has(key)) {
 				this.particleManager.DestroyByKey(key)
-				this.seenParticleKeys.delete(key)
-				this.particleVisibility.delete(key)
+				this.particleHidden.delete(key)
+				this.tooltipAnimator.Clear(key)
+				this.tooltipSizeCache.delete(key)
 			}
 		}
-		this.renderedParticleKeys = nextKeys
 	}
 
 	private GetTooltipTargetWidth(
@@ -402,13 +350,5 @@ export class WardRenderer {
 			return `${bucket} min`
 		}
 		return description ?? TOOLTIP_TEXT_FALLBACK
-	}
-
-	private GetMinimapWorldPosition(ward: WardPoint): Vector3 {
-		if (Number.isFinite(ward.x) && Number.isFinite(ward.y)) {
-			return new Vector3(ward.x, ward.y, ward.z)
-		}
-		// For minimap rendering rely on world coordinates only.
-		return new Vector3(0, 0, ward.z)
 	}
 }

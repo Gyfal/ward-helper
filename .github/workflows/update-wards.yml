@@ -1,4 +1,4 @@
-name: Update Wards JSON
+name: Update Ward Datasets
 
 on:
   schedule:
@@ -11,6 +11,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,19 +22,59 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --upgrade pip aiohttp
+        run: python -m pip install --upgrade pip requests
 
-      - name: Generate wards JSON
-        run: python wards.py > scripts_files/data/ward_sources/wards.json
+      - name: Compute batch date
+        id: batch-date
+        run: echo "date=$(date -u +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+
+      - name: Generate runtime base + daily batch
+        env:
+          OPENDOTA_API_KEY: ${{ secrets.OPENDOTA_API_KEY }}
+        run: |
+          python build_ward_reco_runtime.py \
+            --matches 500 \
+            --workers 1 \
+            --request-delay-sec 5 \
+            --min-placements 2 \
+            --min-matches 2 \
+            --max-spots-per-group 80 \
+            --cluster-radius-world 192 \
+            --daily-cache-dir scripts_files/data/ward_reco_match_cache_daily \
+            --daily-cache-date "${{ steps.batch-date.outputs.date }}" \
+            --emit-daily-batch \
+            --skip-match-cache \
+            --skip-runtime-build \
+            --dedup-from-daily-cache \
+            --daily-dedup-retention 5 \
+            --daily-batch-retention 5 \
+            --output /tmp/ward_reco_dataset.runtime.fetch.json
+
+      - name: Build rolling 5-day runtime
+        run: |
+          python build_ward_reco_runtime.py \
+            --matches 0 \
+            --workers 1 \
+            --request-delay-sec 5 \
+            --min-placements 2 \
+            --min-matches 2 \
+            --max-spots-per-group 80 \
+            --cluster-radius-world 192 \
+            --build-from-daily-batches \
+            --daily-cache-dir scripts_files/data/ward_reco_match_cache_daily \
+            --daily-batches-for-runtime 5 \
+            --skip-match-cache \
+            --output scripts_files/data/ward_reco_dataset.runtime.json
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add scripts_files/data/ward_sources/wards.json
+          git add scripts_files/data/ward_reco_dataset.runtime.json
+          git add scripts_files/data/ward_reco_match_cache_daily
           if git diff --cached --quiet; then
             echo "No changes"
             exit 0
           fi
-          git commit -m "chore(data): update wards.json"
+          git commit -m "chore(data): refresh ward datasets"
           git push

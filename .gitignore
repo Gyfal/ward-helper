@@ -13,3 +13,6 @@ yarn-error.log*
 
 # Local secrets
 .env
+
+# Generated debug assets
+scripts_files/data/debug/

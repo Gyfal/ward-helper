@@ -14,7 +14,7 @@ export class WardListPresenter {
 		})
 	}
 
-	public static BuildStatsText(wards: WardPoint[]): string {
+	public static CountByType(wards: WardPoint[]): { observer: number; sentry: number } {
 		let observer = 0
 		let sentry = 0
 		for (let i = 0; i < wards.length; i++) {
@@ -24,6 +24,11 @@ export class WardListPresenter {
 				sentry++
 			}
 		}
+		return { observer, sentry }
+	}
+
+	public static BuildStatsText(wards: WardPoint[]): string {
+		const { observer, sentry } = WardListPresenter.CountByType(wards)
 		return `Total: ${wards.length} | Observer: ${observer} | Sentry: ${sentry}`
 	}
 

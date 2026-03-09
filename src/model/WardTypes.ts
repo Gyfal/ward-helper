@@ -25,22 +25,7 @@ export interface WardPoint {
 	cellX?: number
 	cellY?: number
 	timeBucket?: string
-	towerDiffAvg?: number
-	towerDestroyedOwnRate?: Record<string, number>
-	towerDestroyedEnemyRate?: Record<string, number>
-	matchesSeen?: number
-	placements?: number
-	radiusP50?: number
-	radiusP90?: number
 	score?: number
-	scoreBase?: number
-	scoreRuntime?: number
-	towerFit?: number
-	towerFitCoverage?: number
-	contextSupportPlacements?: number
-	contextSupportMatches?: number
-	contextConfidence?: number
-	contextLevel?: "base" | "direct" | "weak" | "fallback"
 	observerRiskyQuickDeward?: boolean
 	type: WardType
 	description?: string

@@ -8,10 +8,40 @@ import {
 } from "github.com/octarine-public/wrapper/index"
 
 import { GUIHelper } from "../gui"
-import { WardPoint, WardTypes } from "./WardTypes"
+import { WardPoint, WardType, WardTypes } from "./WardTypes"
+
+interface PendingDispenserPlacement {
+	position: Vector3
+	type: WardType
+}
 
 export class PlaceHelper {
+	private pendingDispenserPlacement: PendingDispenserPlacement | undefined = undefined
+
 	constructor(private readonly gui: GUIHelper) {}
+
+	public UpdatePendingPlacement(): boolean {
+		const pending = this.pendingDispenserPlacement
+		if (pending === undefined) {
+			return false
+		}
+		const hero = LocalPlayer?.Hero
+		const wardDispenser = hero?.GetItemByName("item_ward_dispenser", true)
+		if (hero === undefined || wardDispenser === undefined) {
+			this.pendingDispenserPlacement = undefined
+			return false
+		}
+		if (!wardDispenser.CanBeCasted()) {
+			return false
+		}
+		const wantsObserver = pending.type === WardTypes.Observer
+		if (wardDispenser.IsToggled !== wantsObserver) {
+			return false
+		}
+		hero.CastPosition(wardDispenser, pending.position)
+		this.pendingDispenserPlacement = undefined
+		return true
+	}
 
 	public TryPlaceWard(wards: WardPoint[], iconSize: number) {
 		const hero = LocalPlayer?.Hero
@@ -40,21 +70,26 @@ export class PlaceHelper {
 
 			const wardPosition = new Vector3(ward.x, ward.y, ward.z)
 			if (wardDispenser?.CanBeCasted()) {
-				const isObserverSelected = wardDispenser.IsToggled
-				if (ward.type === WardTypes.Observer && !isObserverSelected) {
+				const wantsObserver = ward.type === WardTypes.Observer
+				if (wardDispenser.IsToggled !== wantsObserver) {
 					hero.CastToggle(wardDispenser)
+					this.pendingDispenserPlacement = {
+						position: wardPosition,
+						type: ward.type
+					}
+					return true
 				}
-				if (ward.type === WardTypes.Sentry && isObserverSelected) {
-					hero.CastToggle(wardDispenser)
-				}
+				this.pendingDispenserPlacement = undefined
 				hero.CastPosition(wardDispenser, wardPosition)
 				return true
 			}
 
 			if (ward.type === WardTypes.Observer && observerWard?.CanBeCasted()) {
+				this.pendingDispenserPlacement = undefined
 				hero.CastPosition(observerWard, wardPosition)
 			}
 			if (ward.type === WardTypes.Sentry && sentryWard?.CanBeCasted()) {
+				this.pendingDispenserPlacement = undefined
 				hero.CastPosition(sentryWard, wardPosition)
 			}
 			return true

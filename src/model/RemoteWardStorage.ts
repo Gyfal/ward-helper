@@ -1,8 +1,10 @@
-import { parseConfigRecord } from "./Utils"
-import { RemoteWardSourceKey, WardDataLoader } from "./WardDataLoader"
+import { ConfigWriteQueue, isObjectRecord, parseConfigRecord } from "./Utils"
+import { WardDataLoader } from "./WardDataLoader"
 import { WardPoint } from "./WardTypes"
 
 const REMOTE_WARDS_STORAGE_KEY = "ward-helper.remote-wards.v1"
+// Sub-key left over from the multi-source era so existing saved edits keep working.
+const REMOTE_SOURCE_KEY = "ward_reco_dynamic"
 
 function serializeWard(ward: WardPoint) {
 	return {
@@ -12,22 +14,7 @@ function serializeWard(ward: WardPoint) {
 		cellX: ward.cellX,
 		cellY: ward.cellY,
 		timeBucket: ward.timeBucket,
-		towerDiffAvg: ward.towerDiffAvg,
-		towerDestroyedOwnRate: ward.towerDestroyedOwnRate,
-		towerDestroyedEnemyRate: ward.towerDestroyedEnemyRate,
-		matchesSeen: ward.matchesSeen,
-		placements: ward.placements,
-		radiusP50: ward.radiusP50,
-		radiusP90: ward.radiusP90,
 		score: ward.score,
-		scoreBase: ward.scoreBase,
-		scoreRuntime: ward.scoreRuntime,
-		towerFit: ward.towerFit,
-		towerFitCoverage: ward.towerFitCoverage,
-		contextSupportPlacements: ward.contextSupportPlacements,
-		contextSupportMatches: ward.contextSupportMatches,
-		contextConfidence: ward.contextConfidence,
-		contextLevel: ward.contextLevel,
 		observerRiskyQuickDeward: ward.observerRiskyQuickDeward,
 		type: ward.type,
 		description: ward.description,
@@ -36,44 +23,39 @@ function serializeWard(ward: WardPoint) {
 }
 
 export class RemoteWardStorage {
-	private saveQueue: Promise<void> = Promise.resolve()
+	private readonly writeQueue = new ConfigWriteQueue()
 
-	public async Load(source: RemoteWardSourceKey): Promise<WardPoint[] | undefined> {
+	public async Load(): Promise<WardPoint[] | undefined> {
 		try {
 			const raw = await readConfig()
 			const config = parseConfigRecord(raw)
 			const storage = config[REMOTE_WARDS_STORAGE_KEY]
-			if (typeof storage !== "object" || storage === null) {
+			if (!isObjectRecord(storage)) {
 				return undefined
 			}
-			const key = source as unknown as string
-			const payload = (storage as Record<string, unknown>)[key]
-			const parsed = WardDataLoader.Normalize(payload)
-			return parsed.length > 0 ? parsed : undefined
+			const payload = storage[REMOTE_SOURCE_KEY]
+			if (!Array.isArray(payload)) {
+				return undefined
+			}
+			// An empty array is a valid saved state (every ward deleted), so it
+			// must not fall back to the base dataset.
+			return WardDataLoader.Normalize(payload)
 		} catch (error) {
 			console.error("[ward-helper] failed load remote edits from config", error)
 			return undefined
 		}
 	}
 
-	public Save(source: RemoteWardSourceKey, wards: WardPoint[]) {
+	public Save(wards: WardPoint[]): Promise<void> {
 		const payload = wards.map(serializeWard)
-		this.saveQueue = this.saveQueue
-			.then(async () => {
-				const raw = await readConfig()
-				const config = parseConfigRecord(raw)
-				const key = source as unknown as string
+		return this.writeQueue.Enqueue(
+			"[ward-helper] failed save remote ward edits",
+			config => {
 				const current = config[REMOTE_WARDS_STORAGE_KEY]
-				const storage =
-					typeof current === "object" && current !== null
-						? (current as Record<string, unknown>)
-						: {}
-				storage[key] = payload
+				const storage = isObjectRecord(current) ? current : {}
+				storage[REMOTE_SOURCE_KEY] = payload
 				config[REMOTE_WARDS_STORAGE_KEY] = storage
-				writeConfig(JSON.stringify(config))
-			})
-			.catch(error => {
-				console.error("[ward-helper] failed save remote ward edits", error)
-			})
+			}
+		)
 	}
 }

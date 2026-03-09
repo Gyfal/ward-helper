@@ -20,12 +20,12 @@ export interface BuilderSectionControls {
 	DeleteWardButton: Menu.Button
 	DuplicateWardButton: Menu.Button
 	ExportButton: Menu.Button
-	wardStats: any
-	selectedWardDescription: any
+	wardStats: Menu.ShortDescription
+	selectedWardDescription: Menu.ShortDescription
 }
 
 export function createBuilderSection(
-	builderTree: any,
+	builderTree: Menu.Node,
 	descriptionPresets: readonly string[]
 ): BuilderSectionControls {
 	const wardStats = builderTree.AddShortDescription(
