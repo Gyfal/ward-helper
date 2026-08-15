@@ -15,6 +15,7 @@ import {
 } from "./WardTypes"
 
 const REMOTE_DATASET_PATH = "data/ward_reco_dataset.runtime.json"
+const STATIC_CUSTOM_WARDS_PATH = "data/custom_wards.json"
 
 function parseDatasetTeam(value: unknown): WardTeam[] {
 	if (value === "radiant") {
@@ -129,12 +130,12 @@ function normalizeWardArray(source: unknown): WardPoint[] {
 
 function parseWardRecoDataset(source: unknown): WardPoint[] {
 	if (!isObjectRecord(source)) {
-		return []
+		throw new Error(`dataset root is not an object: ${typeof source}`)
 	}
 
 	const spotsRaw = source.spots
 	if (!Array.isArray(spotsRaw)) {
-		return []
+		throw new Error('dataset has no "spots" array')
 	}
 
 	const wards: WardPoint[] = []
@@ -208,25 +209,31 @@ export class WardDataLoader {
 		return normalizeWardArray(source.wards)
 	}
 
+	/**
+	 * Throws when the runtime dataset is missing or malformed instead of
+	 * degrading to an empty ward list without any visible reason.
+	 */
 	public static LoadRemoteWards(): WardPoint[] {
 		try {
 			const raw = WrapperUtils.readJSON<unknown>(REMOTE_DATASET_PATH)
 			return parseWardRecoDataset(raw)
 		} catch (error) {
-			console.error(
-				`[ward-helper] failed load remote wards: ${REMOTE_DATASET_PATH}`,
-				error
+			throw new Error(
+				`failed load remote wards from ${REMOTE_DATASET_PATH}: ${String(error)}`
 			)
-			return []
 		}
 	}
 
 	public static LoadStaticCustomWards(): WardPoint[] {
 		try {
 			return WardDataLoader.Normalize(
-				WrapperUtils.readJSON<unknown>("data/custom_wards.json")
+				WrapperUtils.readJSON<unknown>(STATIC_CUSTOM_WARDS_PATH)
 			)
-		} catch {
+		} catch (error) {
+			console.error(
+				`[ward-helper] failed load static custom wards: ${STATIC_CUSTOM_WARDS_PATH}`,
+				error
+			)
 			return []
 		}
 	}

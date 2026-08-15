@@ -438,7 +438,7 @@ def _retry_delay(attempt_number: int, retry_after: str | None = None) -> float:
         try:
             return max(1.0, float(retry_after))
         except ValueError:
-            pass
+            log(f"unparsable Retry-After header {retry_after!r}, using backoff")
     return min(
         DEFAULT_RETRY_BASE_DELAY_SEC * attempt_number,
         DEFAULT_RETRY_MAX_DELAY_SEC
@@ -547,6 +547,7 @@ def fetch_recent_match_ids(
     )
     rows = payload.get("rows") if isinstance(payload, dict) else None
     if not isinstance(rows, list):
+        log(f"explorer response has no rows list (payload type={type(payload).__name__})")
         return []
     out: list[int] = []
     for row in rows:
@@ -604,11 +605,14 @@ def fetch_match_payload(
             timeout=timeout,
             retries=retries
         )
-    except requests.RequestException:
-        return match_id, None
-    except RuntimeError:
+    except (requests.RequestException, RuntimeError) as exc:
+        log(f"match {match_id} fetch failed: {type(exc).__name__}: {exc}")
         return match_id, None
     if not isinstance(payload, dict):
+        log(
+            f"match {match_id} fetch returned unexpected payload type: "
+            f"{type(payload).__name__}"
+        )
         return match_id, None
     return match_id, payload
 
@@ -1000,10 +1004,12 @@ def load_match_cache_dir(path: Path) -> dict[int, list[PlacementRecord]]:
             continue
         try:
             payload = json.loads(file_path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError):
+        except (OSError, json.JSONDecodeError) as exc:
+            log(f"skip unreadable cache file {file_path}: {type(exc).__name__}: {exc}")
             continue
         parsed = load_match_cache_entry(payload)
         if parsed is None:
+            log(f"skip cache file with unexpected shape: {file_path}")
             continue
         match_id, records = parsed
         out[match_id] = records
@@ -1078,8 +1084,8 @@ def _enforce_daily_cache_retention(cache_dir: Path, retention: int) -> None:
     for _, file_path in files[retention:]:
         try:
             file_path.unlink(missing_ok=True)
-        except OSError:
-            pass
+        except OSError as exc:
+            log(f"failed to prune daily cache file {file_path}: {type(exc).__name__}: {exc}")
 
 
 def _load_match_cache_batch(path: Path) -> dict[int, list[PlacementRecord]]:
@@ -1090,7 +1096,7 @@ def _load_match_cache_batch(path: Path) -> dict[int, list[PlacementRecord]]:
     elif isinstance(payload, list):
         raw_matches = payload
     else:
-        return {}
+        raise RuntimeError(f"unexpected daily batch payload shape in {path}")
     out: dict[int, list[PlacementRecord]] = {}
     if isinstance(raw_matches, list):
         for entry in raw_matches:
@@ -1112,7 +1118,12 @@ def load_match_cache_from_daily_files(
     out: dict[int, list[PlacementRecord]] = {}
     used: list[str] = []
     for _, file_path in selected:
-        entries = _load_match_cache_batch(file_path)
+        try:
+            entries = _load_match_cache_batch(file_path)
+        except (OSError, json.JSONDecodeError, RuntimeError) as exc:
+            raise RuntimeError(
+                f"failed to load daily batch {file_path}: {type(exc).__name__}: {exc}"
+            ) from exc
         for match_id in sorted(entries.keys(), reverse=True):
             if match_id in out:
                 continue
@@ -1403,6 +1414,11 @@ def main() -> int:
                             f"fetch progress: {completed_fetches}/{len(fresh_match_ids)} "
                             f"(ok={fetched_ok}, failed={completed_fetches - fetched_ok})"
                         )
+            if fetched_ok == 0:
+                raise RuntimeError(
+                    f"all {len(fresh_match_ids)} match fetches failed; "
+                    "refusing to build from an unchanged base"
+                )
         else:
             log("all requested matches already exist in cache, skipping network fetch")
 
@@ -1455,6 +1471,11 @@ def main() -> int:
             )
             if written_batch_path is not None:
                 log(f"wrote daily batch: {written_batch_path}")
+            else:
+                log(
+                    "no daily batch written: no new match samples for "
+                    f"{daily_date.isoformat()}"
+                )
             _enforce_daily_cache_retention(daily_cache_dir, args.daily_batch_retention)
         if args.skip_runtime_build:
             return 0

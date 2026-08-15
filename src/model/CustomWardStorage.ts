@@ -1,4 +1,4 @@
-import { ConfigWriteQueue, parseConfigRecord } from "./Utils"
+import { ConfigWriteQueue, parseConfigRecordStrict } from "./Utils"
 import { WardDataLoader } from "./WardDataLoader"
 import { WardPoint } from "./WardTypes"
 
@@ -9,8 +9,7 @@ export class CustomWardStorage {
 
 	public async Load(): Promise<WardPoint[]> {
 		try {
-			const raw = await readConfig()
-			const config = parseConfigRecord(raw)
+			const config = parseConfigRecordStrict(await readConfig())
 			const configWards = WardDataLoader.Normalize(config[CUSTOM_WARDS_STORAGE_KEY])
 			if (configWards.length !== 0) {
 				return configWards

@@ -1,4 +1,4 @@
-import { ConfigWriteQueue, isObjectRecord, parseConfigRecord } from "./Utils"
+import { ConfigWriteQueue, isObjectRecord, parseConfigRecordStrict } from "./Utils"
 import { WardDataLoader } from "./WardDataLoader"
 import { WardPoint } from "./WardTypes"
 
@@ -25,25 +25,24 @@ function serializeWard(ward: WardPoint) {
 export class RemoteWardStorage {
 	private readonly writeQueue = new ConfigWriteQueue()
 
+	/**
+	 * Resolves to undefined only when no edits are stored; a failed read or an
+	 * unparsable config rejects so the caller can report it instead of quietly
+	 * treating broken storage as "no edits".
+	 */
 	public async Load(): Promise<WardPoint[] | undefined> {
-		try {
-			const raw = await readConfig()
-			const config = parseConfigRecord(raw)
-			const storage = config[REMOTE_WARDS_STORAGE_KEY]
-			if (!isObjectRecord(storage)) {
-				return undefined
-			}
-			const payload = storage[REMOTE_SOURCE_KEY]
-			if (!Array.isArray(payload)) {
-				return undefined
-			}
-			// An empty array is a valid saved state (every ward deleted), so it
-			// must not fall back to the base dataset.
-			return WardDataLoader.Normalize(payload)
-		} catch (error) {
-			console.error("[ward-helper] failed load remote edits from config", error)
+		const config = parseConfigRecordStrict(await readConfig())
+		const storage = config[REMOTE_WARDS_STORAGE_KEY]
+		if (!isObjectRecord(storage)) {
 			return undefined
 		}
+		const payload = storage[REMOTE_SOURCE_KEY]
+		if (!Array.isArray(payload)) {
+			return undefined
+		}
+		// An empty array is a valid saved state (every ward deleted), so it
+		// must not fall back to the base dataset.
+		return WardDataLoader.Normalize(payload)
 	}
 
 	public Save(wards: WardPoint[]): Promise<void> {

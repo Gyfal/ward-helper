@@ -109,17 +109,38 @@ export class WardSpawnerModel {
 		if (this.state.isRemoteLoaded) {
 			return
 		}
-		const baseRemote = WardDataLoader.LoadRemoteWards()
+		let baseRemote: WardPoint[] = []
+		let baseFailed = false
+		try {
+			baseRemote = WardDataLoader.LoadRemoteWards()
+		} catch (error) {
+			// Marked as loaded anyway (below) so the failure is reported once
+			// instead of retried and logged on every tick.
+			console.error("[ward-helper] failed load remote wards", error)
+			baseFailed = true
+		}
 		this.state.remoteWards = baseRemote
 		this.state.isRemoteLoaded = true
-		this.menu.SetRemoteWardStats(`Loaded remote wards: ${baseRemote.length}`)
-		void this.remoteStorage.Load().then(edited => {
-			if (edited === undefined) {
-				return
-			}
-			this.state.remoteWards = edited
-			this.menu.SetRemoteWardStats(`Loaded remote wards: ${edited.length} (edited)`)
-		})
+		this.menu.SetRemoteWardStats(
+			baseFailed
+				? "Remote wards unavailable, see console"
+				: `Loaded remote wards: ${baseRemote.length}`
+		)
+		void this.remoteStorage
+			.Load()
+			.then(edited => {
+				if (edited === undefined) {
+					return
+				}
+				this.state.remoteWards = edited
+				this.menu.SetRemoteWardStats(
+					`Loaded remote wards: ${edited.length} (edited)`
+				)
+			})
+			.catch(error => {
+				console.error("[ward-helper] failed load remote ward edits", error)
+				this.menu.SetRemoteWardStats("Remote ward edits load failed, see console")
+			})
 	}
 
 	private ensureCustomWardsLoaded() {
@@ -330,10 +351,18 @@ export class WardSpawnerModel {
 	}
 
 	private SaveRemoteWards() {
-		void this.remoteStorage.Save(this.state.remoteWards).catch(() => undefined)
-		this.menu.SetRemoteWardStats(
-			`Loaded remote wards: ${this.state.remoteWards.length} (edited)`
-		)
+		const count = this.state.remoteWards.length
+		void this.remoteStorage
+			.Save(this.state.remoteWards)
+			.then(() => {
+				this.menu.SetRemoteWardStats(`Loaded remote wards: ${count} (edited)`)
+			})
+			.catch(error => {
+				console.error("[ward-helper] failed save remote ward edits", error)
+				this.menu.SetRemoteWardStats(
+					`Loaded remote wards: ${count} (save failed, see console)`
+				)
+			})
 	}
 
 	private AddWardAtCursor() {
@@ -420,7 +449,10 @@ export class WardSpawnerModel {
 	}
 
 	private SaveCustomWards() {
-		void this.storage.Save(this.state.customWards).catch(() => undefined)
+		void this.storage.Save(this.state.customWards).catch(error => {
+			console.error("[ward-helper] failed save custom wards", error)
+			this.menu.SetWardStats("Custom wards save failed, see console")
+		})
 	}
 
 	private PrintWardsInfo() {

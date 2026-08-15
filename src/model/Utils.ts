@@ -16,16 +16,28 @@ export function isObjectRecord(value: unknown): value is Record<string, unknown>
 	return typeof value === "object" && value !== null
 }
 
+/**
+ * Throws when the config exists but cannot be used as a record, so callers that
+ * rewrite the shared config never overwrite unparsable data with a fresh object.
+ */
+export function parseConfigRecordStrict(rawConfig: string): Record<string, unknown> {
+	if (rawConfig.trim().length === 0) {
+		return {}
+	}
+	const parsed = JSON.parse(rawConfig) as unknown
+	if (!isObjectRecord(parsed)) {
+		throw new Error(`config json is not an object: ${typeof parsed}`)
+	}
+	return parsed
+}
+
 export function parseConfigRecord(rawConfig: string): Record<string, unknown> {
 	try {
-		const parsed = JSON.parse(rawConfig) as unknown
-		if (isObjectRecord(parsed)) {
-			return parsed
-		}
+		return parseConfigRecordStrict(rawConfig)
 	} catch (error) {
 		console.error("[ward-helper] invalid config json", error)
+		return {}
 	}
-	return {}
 }
 
 /**
@@ -42,7 +54,7 @@ export class ConfigWriteQueue {
 		const next = this.queue
 			.catch(() => undefined)
 			.then(async () => {
-				const config = parseConfigRecord(await readConfig())
+				const config = parseConfigRecordStrict(await readConfig())
 				mutate(config)
 				writeConfig(JSON.stringify(config))
 			})
