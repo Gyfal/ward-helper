@@ -1,0 +1,9 @@
+[run]
+branch = True
+source =
+	build_ward_reco_runtime
+	render_ward_reco_map
+
+[report]
+show_missing = True
+skip_covered = False
