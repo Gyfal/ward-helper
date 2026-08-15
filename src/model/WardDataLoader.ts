@@ -15,6 +15,22 @@ import {
 } from "./WardTypes"
 
 const REMOTE_DATASET_PATH = "data/ward_reco_dataset.runtime.json"
+// Dota world coordinates never leave this envelope; anything outside comes from
+// corrupted or tampered data and must not reach the renderer.
+const WORLD_COORD_LIMIT = 16384
+const MAX_WARDS = 20000
+const MAX_TEXT_LENGTH = 256
+
+function isWorldCoord(value: number): boolean {
+	return Number.isFinite(value) && Math.abs(value) <= WORLD_COORD_LIMIT
+}
+
+function parseText(value: unknown): Nullable<string> {
+	if (typeof value !== "string" || value.length === 0) {
+		return undefined
+	}
+	return value.slice(0, MAX_TEXT_LENGTH)
+}
 
 function parseDatasetTeam(value: unknown): WardTeam[] {
 	if (value === "radiant") {
@@ -60,7 +76,7 @@ function parseTeams(value: unknown): WardTeam[] {
 
 function resolveWardZ(x: number, y: number, rawZ: unknown): number {
 	const parsedZ = Number(rawZ)
-	if (Number.isFinite(parsedZ) && parsedZ !== 0) {
+	if (isWorldCoord(parsedZ) && parsedZ !== 0) {
 		return parsedZ
 	}
 	const autoZ = GetPositionHeight(new Vector2(x, y))
@@ -77,21 +93,15 @@ function parseWardPoint(value: unknown): Nullable<WardPoint> {
 	const x = Number(value.x)
 	const y = Number(value.y)
 	const type = parseWardType(value.type)
-	if (!Number.isFinite(x) || !Number.isFinite(y)) {
+	if (!isWorldCoord(x) || !isWorldCoord(y)) {
 		return undefined
 	}
 	if (type === undefined) {
 		return undefined
 	}
 	const z = resolveWardZ(x, y, value.z)
-	const description =
-		typeof value.description === "string" && value.description.length > 0
-			? value.description
-			: undefined
-	const timeBucket =
-		typeof value.timeBucket === "string" && value.timeBucket.length > 0
-			? value.timeBucket
-			: undefined
+	const description = parseText(value.description)
+	const timeBucket = parseText(value.timeBucket)
 	const cellX = Number(value.cellX)
 	const cellY = Number(value.cellY)
 	const hasCell = Number.isFinite(cellX) && Number.isFinite(cellY)
@@ -118,7 +128,8 @@ function normalizeWardArray(source: unknown): WardPoint[] {
 		return []
 	}
 	const wards: WardPoint[] = []
-	for (let i = 0; i < source.length; i++) {
+	const count = Math.min(source.length, MAX_WARDS)
+	for (let i = 0; i < count; i++) {
 		const ward = parseWardPoint(source[i])
 		if (ward !== undefined) {
 			wards.push(ward)
@@ -139,13 +150,14 @@ function parseWardRecoDataset(source: unknown): WardPoint[] {
 
 	const wards: WardPoint[] = []
 	const seen = new Set<string>()
-	for (let i = 0; i < spotsRaw.length; i++) {
+	const spotCount = Math.min(spotsRaw.length, MAX_WARDS)
+	for (let i = 0; i < spotCount; i++) {
 		const spot = spotsRaw[i]
 		if (!isObjectRecord(spot)) {
 			continue
 		}
-		const spotID = spot.spot_id
-		if (typeof spotID !== "string" || spotID.length === 0) {
+		const spotID = parseText(spot.spot_id)
+		if (spotID === undefined) {
 			continue
 		}
 		const type = parseWardType(spot.type)
@@ -159,7 +171,7 @@ function parseWardRecoDataset(source: unknown): WardPoint[] {
 		const cell = isObjectRecord(spot.cell) ? spot.cell : {}
 		const x = Number(world.x)
 		const y = Number(world.y)
-		if (!Number.isFinite(x) || !Number.isFinite(y)) {
+		if (!isWorldCoord(x) || !isWorldCoord(y)) {
 			continue
 		}
 		const key = `${type}:${spotID}`
@@ -171,10 +183,7 @@ function parseWardRecoDataset(source: unknown): WardPoint[] {
 		const cellX = Number(cell.x)
 		const cellY = Number(cell.y)
 		const score = Number(stats.score)
-		const timeBucket =
-			typeof spot.time_bucket === "string" && spot.time_bucket.length > 0
-				? spot.time_bucket
-				: undefined
+		const timeBucket = parseText(spot.time_bucket)
 		const observerRiskyQuickDeward = Boolean(flags.observer_risky_quick_deward)
 
 		wards.push({

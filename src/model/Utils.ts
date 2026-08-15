@@ -13,7 +13,7 @@ export function approach(current: number, target: number, speed: number): number
 }
 
 export function isObjectRecord(value: unknown): value is Record<string, unknown> {
-	return typeof value === "object" && value !== null
+	return typeof value === "object" && value !== null && !Array.isArray(value)
 }
 
 export function parseConfigRecord(rawConfig: string): Record<string, unknown> {
