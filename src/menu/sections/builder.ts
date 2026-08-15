@@ -1,6 +1,11 @@
 import { Menu } from "github.com/octarine-public/wrapper/index"
 
-import { DEFAULT_WARD_DESCRIPTION, WARD_TEAM_OPTION_VALUES } from "../../model/WardTypes"
+import { WardListPresenter } from "../../model/WardListPresenter"
+import {
+	DEFAULT_WARD_DESCRIPTION,
+	WARD_TEAM_OPTION_VALUES,
+	WARD_TYPE_VALUES
+} from "../../model/WardTypes"
 
 export interface BuilderSectionControls {
 	BuilderMode: Menu.Toggle
@@ -29,7 +34,7 @@ export function createBuilderSection(
 	descriptionPresets: readonly string[]
 ): BuilderSectionControls {
 	const wardStats = builderTree.AddShortDescription(
-		"Total: 0 | Observer: 0 | Sentry: 0"
+		WardListPresenter.BuildStatsText([])
 	)
 	const selectedWardDescription = builderTree.AddShortDescription(
 		`Selected: ${DEFAULT_WARD_DESCRIPTION}`
@@ -42,14 +47,20 @@ export function createBuilderSection(
 			"Left mouse"
 		),
 		SaveRemoteButton: builderTree.AddButton("Save remote pool edits"),
-		WardType: builderTree.AddDropdown("Ward type", ["Observer Ward", "Sentry Ward"]),
+		// Option order must stay aligned with WARD_TYPE_VALUES.
+		WardType: builderTree.AddDropdown(
+			"Ward type",
+			WARD_TYPE_VALUES.map(type => `${type} Ward`)
+		),
 		TeamType: builderTree.AddDropdown("Team", [...WARD_TEAM_OPTION_VALUES], 2),
 		ShowCustomWards: builderTree.AddToggle("Show custom wards", true),
 		AddWardBind: builderTree.AddKeybind("Add ward at cursor", "F5"),
 		ClearAllButton: builderTree.AddButton("Clear all custom wards"),
 		SaveCustomButton: builderTree.AddButton("Save custom wards"),
 		ShowInfoButton: builderTree.AddButton("Show wards info"),
-		WardList: builderTree.AddDropdown("Select ward", ["No wards available"]),
+		WardList: builderTree.AddDropdown("Select ward", [
+			WardListPresenter.EmptyWardText
+		]),
 		DescriptionPreset: builderTree.AddDropdown("Description preset", [
 			...descriptionPresets
 		]),

@@ -1,28 +1,36 @@
 import { Vector3 } from "github.com/octarine-public/wrapper/index"
 
 import { clamp } from "./Utils"
-import { DEFAULT_WARD_TEAMS, WardPoint, WardTeam, WardTypes } from "./WardTypes"
+import {
+	getWardCellCoords,
+	getWardCellDistance,
+	getWardDistance3D,
+	getWardWorldDistanceInCells,
+	isWithinRadius2D
+} from "./WardGeometry"
+import { getWardTeams } from "./WardSerialization"
+import { TimeBucketID, TimeBuckets } from "./WardTimeBuckets"
+import { WardPoint, WardTeam, WardTypes } from "./WardTypes"
 
 const PLACED_WARD_SKIP_RADIUS = 260
-// Keyed directly by time bucket id (matches build_ward_reco_runtime.py TIME_BUCKETS).
 const ADAPTIVE_SPACING_BY_BUCKET: Record<
-	string,
+	TimeBucketID,
 	{ minCellDistance: number; minMinimapDistance: number }
 > = {
-	"0_12": { minCellDistance: 2.5, minMinimapDistance: 5.0 },
-	"12_25": { minCellDistance: 2.0, minMinimapDistance: 4.2 },
-	"25_50": { minCellDistance: 1.8, minMinimapDistance: 3.6 },
-	"50_plus": { minCellDistance: 1.5, minMinimapDistance: 3.0 }
+	[TimeBuckets.Start]: { minCellDistance: 2.5, minMinimapDistance: 5.0 },
+	[TimeBuckets.Mid]: { minCellDistance: 2.0, minMinimapDistance: 4.2 },
+	[TimeBuckets.Late]: { minCellDistance: 1.8, minMinimapDistance: 3.6 },
+	[TimeBuckets.VeryLate]: { minCellDistance: 1.5, minMinimapDistance: 3.0 }
 }
 const DEFAULT_ADAPTIVE_SPACING = {
 	minCellDistance: 1.5,
 	minMinimapDistance: 2.5
 }
-const ADAPTIVE_REGION_PHASE_BY_BUCKET: Record<string, number> = {
-	"0_12": 1.2,
-	"12_25": 1.1,
-	"25_50": 1.0,
-	"50_plus": 0.9
+const ADAPTIVE_REGION_PHASE_BY_BUCKET: Record<TimeBucketID, number> = {
+	[TimeBuckets.Start]: 1.2,
+	[TimeBuckets.Mid]: 1.1,
+	[TimeBuckets.Late]: 1.0,
+	[TimeBuckets.VeryLate]: 0.9
 }
 const DEFAULT_ADAPTIVE_REGION_PHASE_SCALE = 1.0
 const AUTO_REGION_SIZE_BOUNDS = {
@@ -36,7 +44,7 @@ export interface VisibleWardSelectorContext {
 	remoteWards: WardPoint[]
 	customWards: WardPoint[]
 	localTeam: WardTeam | undefined
-	currentBucket: string
+	currentBucket: TimeBucketID
 	placedObserver: Vector3[]
 	placedSentry: Vector3[]
 	showCustomWards: boolean
@@ -85,7 +93,7 @@ export class VisibleWardSelector {
 			for (let j = 0; j < out.length; j++) {
 				if (
 					out[j].type === ward.type &&
-					this.getWardDistance3D(out[j], ward) < radius
+					getWardDistance3D(out[j], ward) < radius
 				) {
 					hasBetterNearby = true
 					break
@@ -235,12 +243,9 @@ export class VisibleWardSelector {
 			ward.type === WardTypes.Observer
 				? context.placedObserver
 				: context.placedSentry
-		const maxDistSq = PLACED_WARD_SKIP_RADIUS * PLACED_WARD_SKIP_RADIUS
 		for (let i = 0; i < source.length; i++) {
 			const p = source[i]
-			const dx = ward.x - p.x
-			const dy = ward.y - p.y
-			if (dx * dx + dy * dy <= maxDistSq) {
+			if (isWithinRadius2D(ward.x, ward.y, p.x, p.y, PLACED_WARD_SKIP_RADIUS)) {
 				return true
 			}
 		}
@@ -263,28 +268,7 @@ export class VisibleWardSelector {
 	}
 
 	private hasWardTeam(ward: WardPoint, team: WardTeam): boolean {
-		const teams = ward.teams ?? DEFAULT_WARD_TEAMS
-		return teams.includes(team)
-	}
-
-	private getWardCellDistance(a: WardPoint, b: WardPoint): number {
-		if (
-			a.cellX === undefined ||
-			a.cellY === undefined ||
-			b.cellX === undefined ||
-			b.cellY === undefined
-		) {
-			return Number.POSITIVE_INFINITY
-		}
-		return Math.hypot(a.cellX - b.cellX, a.cellY - b.cellY)
-	}
-
-	private getWardWorldDistance(a: WardPoint, b: WardPoint): number {
-		return Math.hypot(a.x - b.x, a.y - b.y) / 128
-	}
-
-	private getWardDistance3D(a: WardPoint, b: WardPoint): number {
-		return Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z)
+		return getWardTeams(ward).includes(team)
 	}
 
 	private isWardBlockedByDedupeRules(
@@ -297,13 +281,13 @@ export class VisibleWardSelector {
 			const current = selected[j]
 			if (
 				minCellDistance > 0 &&
-				this.getWardCellDistance(ward, current) < minCellDistance
+				getWardCellDistance(ward, current) < minCellDistance
 			) {
 				return true
 			}
 			if (
 				minMinimapDistance > 0 &&
-				this.getWardWorldDistance(ward, current) < minMinimapDistance
+				getWardWorldDistanceInCells(ward, current) < minMinimapDistance
 			) {
 				return true
 			}
@@ -312,7 +296,7 @@ export class VisibleWardSelector {
 	}
 
 	private getAdaptiveRegionSize(
-		bucket: string,
+		bucket: TimeBucketID,
 		baseRegionSize: number,
 		topN: number,
 		regionQuota: number
@@ -351,18 +335,7 @@ export class VisibleWardSelector {
 
 	private getWardRegionKey(ward: WardPoint, regionSize: number): string {
 		const size = Math.max(1, regionSize)
-		const m = this.getWardMapCoords(ward)
+		const m = getWardCellCoords(ward)
 		return `${Math.floor(m.x / size)}:${Math.floor(m.y / size)}`
-	}
-
-	private getWardMapCoords(ward: WardPoint): { x: number; y: number } {
-		if (ward.cellX !== undefined && ward.cellY !== undefined) {
-			return { x: ward.cellX, y: ward.cellY }
-		}
-		// World fallback, mapped into 0..256 minimap-like space.
-		return {
-			x: (ward.x + 16384) / 128,
-			y: (ward.y + 16384) / 128
-		}
 	}
 }

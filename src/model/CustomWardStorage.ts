@@ -1,5 +1,6 @@
-import { ConfigWriteQueue, parseConfigRecord } from "./Utils"
+import { ConfigWriteQueue, readConfigRecord } from "./Utils"
 import { WardDataLoader } from "./WardDataLoader"
+import { serializeWards } from "./WardSerialization"
 import { WardPoint } from "./WardTypes"
 
 const CUSTOM_WARDS_STORAGE_KEY = "ward-helper.custom-wards.v1"
@@ -9,8 +10,7 @@ export class CustomWardStorage {
 
 	public async Load(): Promise<WardPoint[]> {
 		try {
-			const raw = await readConfig()
-			const config = parseConfigRecord(raw)
+			const config = await readConfigRecord()
 			const configWards = WardDataLoader.Normalize(config[CUSTOM_WARDS_STORAGE_KEY])
 			if (configWards.length !== 0) {
 				return configWards
@@ -22,16 +22,7 @@ export class CustomWardStorage {
 	}
 
 	public Save(wards: WardPoint[]): Promise<void> {
-		const payload = wards.map(ward => ({
-			x: ward.x,
-			y: ward.y,
-			z: ward.z,
-			timeBucket: ward.timeBucket,
-			score: ward.score,
-			type: ward.type,
-			description: ward.description,
-			teams: ward.teams
-		}))
+		const payload = serializeWards(wards)
 		return this.writeQueue.Enqueue(
 			"[ward-helper] failed save custom wards",
 			config => {

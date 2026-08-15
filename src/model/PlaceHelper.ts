@@ -8,6 +8,7 @@ import {
 } from "github.com/octarine-public/wrapper/index"
 
 import { GUIHelper } from "../gui"
+import { getWardPosition } from "./WardGeometry"
 import { WardPoint, WardType, WardTypes } from "./WardTypes"
 
 interface PendingDispenserPlacement {
@@ -68,7 +69,7 @@ export class PlaceHelper {
 				continue
 			}
 
-			const wardPosition = new Vector3(ward.x, ward.y, ward.z)
+			const wardPosition = getWardPosition(ward)
 			if (wardDispenser?.CanBeCasted()) {
 				const wantsObserver = ward.type === WardTypes.Observer
 				if (wardDispenser.IsToggled !== wantsObserver) {
@@ -99,9 +100,7 @@ export class PlaceHelper {
 	}
 
 	private IsCursorOnWard(ward: WardPoint, cursor: Vector2, iconSize: number) {
-		const screenPosition = RendererSDK.WorldToScreen(
-			new Vector3(ward.x, ward.y, ward.z)
-		)
+		const screenPosition = RendererSDK.WorldToScreen(getWardPosition(ward))
 		if (screenPosition === undefined) {
 			return false
 		}

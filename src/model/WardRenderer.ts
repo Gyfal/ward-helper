@@ -16,8 +16,10 @@ import {
 
 import { GUIHelper } from "../gui"
 import { MenuManager } from "../menu"
+import { grayscaleColor, RGB, scaledAlphaColor } from "./ColorUtils"
 import { TooltipAnimator } from "./TooltipAnimator"
 import { approach } from "./Utils"
+import { distanceSq2D, getWardPosition } from "./WardGeometry"
 import { WardState } from "./WardState"
 import { WardPoint, WardType, WardTypes } from "./WardTypes"
 
@@ -31,9 +33,13 @@ const CIRCLE_PARTICLE_PATH = "particles/range_display/range_display_normal.vpcf"
 const PANEL_BORDER_PADDING = 4
 const PANEL_BORDER_WIDTH = 2
 const WARD_UI_VERTICAL_OFFSET = 34
-const WARD_PANEL_RGB: Record<WardType, { r: number; g: number; b: number }> = {
+const WARD_PANEL_RGB: Record<WardType, RGB> = {
 	[WardTypes.Observer]: { r: 255, g: 211, b: 88 },
 	[WardTypes.Sentry]: { r: 120, g: 205, b: 255 }
+}
+const WARD_PARTICLE_RGB: Record<WardType, RGB> = {
+	[WardTypes.Observer]: { r: 255, g: 219, b: 96 },
+	[WardTypes.Sentry]: { r: 139, g: 225, b: 255 }
 }
 
 interface TooltipSizeCacheEntry {
@@ -78,9 +84,7 @@ export class WardRenderer {
 			const key = this.getWardKey(ward)
 			activeKeys.add(key)
 
-			const w2s = RendererSDK.WorldToScreen(
-				new Vector3(drawWard.x, drawWard.y, drawWard.z)
-			)
+			const w2s = RendererSDK.WorldToScreen(getWardPosition(drawWard))
 			const isVisibleOnScreen = w2s !== undefined && RendererSDK.IsInScreenArea(w2s)
 			if (w2s !== undefined && isVisibleOnScreen) {
 				const hoverScore = this.drawSingleWard(drawWard, key, cursor, w2s)
@@ -161,20 +165,9 @@ export class WardRenderer {
 		const panelSize = new Vector2(panelWidth, panelHeight)
 		const panelRoundDiameter = panelHeight
 		const bgAlpha = Math.floor(170 * this.state.alphaAnimation)
-		const iconAlpha = Math.floor(255 * this.state.alphaAnimation)
 		const accent = WARD_PANEL_RGB[ward.type]
-		const accentColor = new Color(
-			accent.r,
-			accent.g,
-			accent.b,
-			Math.floor(230 * this.state.alphaAnimation)
-		)
-		const panelBackground = new Color(
-			accent.r,
-			accent.g,
-			accent.b,
-			Math.floor(48 * this.state.alphaAnimation)
-		)
+		const accentColor = scaledAlphaColor(accent, 230, this.state.alphaAnimation)
+		const panelBackground = scaledAlphaColor(accent, 48, this.state.alphaAnimation)
 
 		RendererSDK.RectRounded(
 			panelPosition,
@@ -189,7 +182,7 @@ export class WardRenderer {
 			basePosition.x - iconWidth / 2,
 			basePosition.y - iconHeight / 2
 		)
-		const iconColor = new Color(iconAlpha, iconAlpha, iconAlpha, iconAlpha)
+		const iconColor = grayscaleColor(this.state.alphaAnimation)
 		this.gui.DrawAnimatedImage(
 			this.GetWardIconPath(ward.type),
 			iconPosition,
@@ -202,11 +195,10 @@ export class WardRenderer {
 		}
 
 		const tooltipText = this.GetWardTooltipText(ward)
-		const textColor = new Color(
+		const textColor = scaledAlphaColor(
+			{ r: 255, g: 255, b: 255 },
 			255,
-			255,
-			255,
-			Math.floor(255 * this.state.alphaAnimation * textProgress)
+			this.state.alphaAnimation * textProgress
 		)
 		RendererSDK.Text(
 			tooltipText,
@@ -221,21 +213,18 @@ export class WardRenderer {
 			false,
 			false
 		)
-		const dx = basePosition.x - cursor.x
-		const dy = basePosition.y - cursor.y
-		return dx * dx + dy * dy
+		return distanceSq2D(basePosition.x, basePosition.y, cursor.x, cursor.y)
 	}
 
 	private drawMinimapWard(ward: WardPoint) {
 		if (GUIInfo?.Minimap === undefined) {
 			return
 		}
-		const minimapPos = MinimapSDK.WorldToMinimap(new Vector3(ward.x, ward.y, ward.z))
+		const minimapPos = MinimapSDK.WorldToMinimap(getWardPosition(ward))
 		const rawSize = Math.max(10, this.menu.IconSize.value * 0.6)
 		const size = this.gui.GetScaledVector(rawSize, rawSize)
 		const position = minimapPos.Subtract(size.DivideScalar(2))
-		const alpha = Math.floor(255 * this.state.alphaAnimation)
-		const iconColor = new Color(alpha, alpha, alpha, alpha)
+		const iconColor = grayscaleColor(this.state.alphaAnimation)
 		this.gui.DrawAnimatedImage(
 			this.GetWardIconPath(ward.type),
 			position,
@@ -275,14 +264,13 @@ export class WardRenderer {
 			ward.y,
 			GetPositionHeight(center2D) + WARD_PULSE_Z_OFFSET
 		)
-		const particleAlpha = hidden
-			? 0
-			: Math.floor(WARD_PARTICLE_ALPHA * this.state.alphaAnimation)
-		const base =
-			ward.type === WardTypes.Observer
-				? { r: 255, g: 219, b: 96 }
-				: { r: 139, g: 225, b: 255 }
-		const color = new Color(base.r, base.g, base.b, particleAlpha)
+		const alphaScale = hidden ? 0 : this.state.alphaAnimation
+		const particleAlpha = Math.floor(WARD_PARTICLE_ALPHA * alphaScale)
+		const color = scaledAlphaColor(
+			WARD_PARTICLE_RGB[ward.type],
+			WARD_PARTICLE_ALPHA,
+			alphaScale
+		)
 		this.particleManager.AddOrUpdate(
 			key,
 			CIRCLE_PARTICLE_PATH,

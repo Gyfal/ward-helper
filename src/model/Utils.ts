@@ -28,6 +28,11 @@ export function parseConfigRecord(rawConfig: string): Record<string, unknown> {
 	return {}
 }
 
+/** Reads the shared config and parses it into a mutable record. */
+export async function readConfigRecord(): Promise<Record<string, unknown>> {
+	return parseConfigRecord(await readConfig())
+}
+
 /**
  * Serializes read-modify-write cycles of the shared config so concurrent
  * saves cannot interleave and drop each other's keys.
@@ -42,7 +47,7 @@ export class ConfigWriteQueue {
 		const next = this.queue
 			.catch(() => undefined)
 			.then(async () => {
-				const config = parseConfigRecord(await readConfig())
+				const config = await readConfigRecord()
 				mutate(config)
 				writeConfig(JSON.stringify(config))
 			})

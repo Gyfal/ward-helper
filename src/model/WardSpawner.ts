@@ -27,24 +27,19 @@ import { VisibleWardSelector } from "./VisibleWardSelector"
 import { WardDataLoader } from "./WardDataLoader"
 import { WardListPresenter } from "./WardListPresenter"
 import { WardRenderer } from "./WardRenderer"
+import { copyWardTeamsOrDefault, getWardTeams } from "./WardSerialization"
 import { WardState } from "./WardState"
+import { getTimeBucketByGameTime, TimeBucketID } from "./WardTimeBuckets"
 import {
 	DEFAULT_WARD_DESCRIPTION,
-	DEFAULT_WARD_TEAMS,
+	gameTeamToWardTeam,
 	WardPoint,
-	WardTeam,
-	WardTeams
+	wardTeamToGameTeam
 } from "./WardTypes"
 
 const VK_ESCAPE = 0x1b
 const VK_BACKSPACE = 0x08
 const VK_DELETE = 0x2e
-const TIME_BUCKETS = {
-	start: "0_12",
-	mid: "12_25",
-	late: "25_50",
-	veryLate: "50_plus"
-} as const
 
 interface PlacedWardPositions {
 	observer: Vector3[]
@@ -250,7 +245,7 @@ export class WardSpawnerModel {
 		return this.visibleWardSelector.Select({
 			remoteWards: this.state.remoteWards,
 			customWards: this.state.customWards,
-			localTeam: this.TeamToWardTeam(localGameTeam),
+			localTeam: gameTeamToWardTeam(localGameTeam),
 			currentBucket: this.GetCurrentTimeBucket(),
 			placedObserver: placed.observer,
 			placedSentry: placed.sentry,
@@ -270,41 +265,17 @@ export class WardSpawnerModel {
 
 	private GetEffectiveLocalGameTeam(): Team {
 		const forced = this.menu.TestForcedLocalTeam
-		if (forced === WardTeams.Radiant) {
-			return Team.Radiant
-		}
-		if (forced === WardTeams.Dire) {
-			return Team.Dire
+		if (forced !== undefined) {
+			return wardTeamToGameTeam(forced)
 		}
 		return LocalPlayer?.Hero?.Team ?? GameState.LocalTeam
 	}
 
-	private TeamToWardTeam(team: Team): WardTeam | undefined {
-		if (team === Team.Radiant) {
-			return WardTeams.Radiant
-		}
-		if (team === Team.Dire) {
-			return WardTeams.Dire
-		}
-		return undefined
-	}
-
-	private GetCurrentTimeBucket() {
-		const forced = this.menu.TestForcedTimeBucket
-		if (forced !== undefined) {
-			return forced
-		}
-		const timeSec = Math.max(0, GameState.RawGameTime)
-		if (timeSec < 12 * 60) {
-			return TIME_BUCKETS.start
-		}
-		if (timeSec < 25 * 60) {
-			return TIME_BUCKETS.mid
-		}
-		if (timeSec < 50 * 60) {
-			return TIME_BUCKETS.late
-		}
-		return TIME_BUCKETS.veryLate
+	private GetCurrentTimeBucket(): TimeBucketID {
+		return (
+			this.menu.TestForcedTimeBucket ??
+			getTimeBucketByGameTime(GameState.RawGameTime)
+		)
 	}
 
 	private GetPlacedWardPositions(localTeam: Team): PlacedWardPositions {
@@ -366,7 +337,7 @@ export class WardSpawnerModel {
 
 	private DeleteSelectedWard() {
 		const selectedID = this.menu.SelectedWardID
-		if (selectedID < 0 || selectedID >= this.state.customWards.length) {
+		if (this.GetSelectedWard() === undefined) {
 			return
 		}
 		this.state.customWards.splice(selectedID, 1)
@@ -386,7 +357,7 @@ export class WardSpawnerModel {
 			timeBucket: selected.timeBucket,
 			type: selected.type,
 			description: `${selected.description ?? DEFAULT_WARD_DESCRIPTION} (Copy)`,
-			teams: [...(selected.teams ?? DEFAULT_WARD_TEAMS)]
+			teams: copyWardTeamsOrDefault(selected)
 		}
 		this.state.customWards.push(copy)
 		this.SaveCustomWards()
@@ -429,7 +400,7 @@ export class WardSpawnerModel {
 		for (let i = 0; i < wards.length; i++) {
 			const ward = wards[i]
 			const description = ward.description ?? DEFAULT_WARD_DESCRIPTION
-			const teams = (ward.teams ?? DEFAULT_WARD_TEAMS).join(", ")
+			const teams = getWardTeams(ward).join(", ")
 			console.log(
 				`[ward-helper] #${i + 1}: ${ward.type} (${ward.x.toFixed(2)}, ${ward.y.toFixed(2)}, ${ward.z.toFixed(2)}) [${teams}] - ${description}`
 			)

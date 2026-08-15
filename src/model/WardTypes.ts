@@ -1,3 +1,5 @@
+import { Team } from "github.com/octarine-public/wrapper/index"
+
 export const WardTypes = {
 	Observer: "Observer",
 	Sentry: "Sentry"
@@ -41,3 +43,17 @@ export const WARD_TEAM_OPTION_VALUES: WardTeamOption[] = [
 ]
 export const DEFAULT_WARD_TEAMS: WardTeam[] = [...WARD_TEAM_VALUES]
 export const WARD_TYPE_VALUES: WardType[] = [WardTypes.Observer, WardTypes.Sentry]
+
+export function gameTeamToWardTeam(team: Team): WardTeam | undefined {
+	if (team === Team.Radiant) {
+		return WardTeams.Radiant
+	}
+	if (team === Team.Dire) {
+		return WardTeams.Dire
+	}
+	return undefined
+}
+
+export function wardTeamToGameTeam(team: WardTeam): Team {
+	return team === WardTeams.Radiant ? Team.Radiant : Team.Dire
+}
