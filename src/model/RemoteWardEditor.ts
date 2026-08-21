@@ -5,13 +5,12 @@ import {
 	Vector3
 } from "github.com/octarine-public/wrapper/index"
 
+import { distanceSq2D, worldToCell } from "./WardGeometry"
+import { cloneWard } from "./WardSerialization"
 import { WardState } from "./WardState"
 import { WardPoint } from "./WardTypes"
 
 const REMOTE_PICK_DISTANCE_WORLD = 260
-// world -> minimap cell mapping, mirrors build_ward_reco_runtime.py.
-const WORLD_CELL_SIZE = 128
-const WORLD_ORIGIN_OFFSET = 16384
 
 export class RemoteWardEditor {
 	constructor(private readonly state: WardState) {}
@@ -28,8 +27,8 @@ export class RemoteWardEditor {
 		const ward = this.state.remoteWards[targetID]
 		this.state.remoteDrag = {
 			ward,
-			snapshot: this.CloneWard(ward),
-			preview: this.CloneWard(ward)
+			snapshot: cloneWard(ward),
+			preview: cloneWard(ward)
 		}
 	}
 
@@ -47,7 +46,7 @@ export class RemoteWardEditor {
 		if (drag === undefined) {
 			return false
 		}
-		Object.assign(drag.ward, this.CloneWard(drag.preview))
+		Object.assign(drag.ward, cloneWard(drag.preview))
 		return true
 	}
 
@@ -91,9 +90,7 @@ export class RemoteWardEditor {
 		let bestDistSq = REMOTE_PICK_DISTANCE_WORLD * REMOTE_PICK_DISTANCE_WORLD
 		for (let i = 0; i < this.state.remoteWards.length; i++) {
 			const ward = this.state.remoteWards[i]
-			const dx = ward.x - cursorWorld.x
-			const dy = ward.y - cursorWorld.y
-			const distSq = dx * dx + dy * dy
+			const distSq = distanceSq2D(ward.x, ward.y, cursorWorld.x, cursorWorld.y)
 			if (distSq <= bestDistSq) {
 				bestDistSq = distSq
 				bestID = i
@@ -106,23 +103,7 @@ export class RemoteWardEditor {
 		ward.x = world.x
 		ward.y = world.y
 		ward.z = GetPositionHeight(new Vector2(world.x, world.y))
-		ward.cellX = (world.x + WORLD_ORIGIN_OFFSET) / WORLD_CELL_SIZE
-		ward.cellY = (world.y + WORLD_ORIGIN_OFFSET) / WORLD_CELL_SIZE
-	}
-
-	private CloneWard(ward: WardPoint): WardPoint {
-		return {
-			x: ward.x,
-			y: ward.y,
-			z: ward.z,
-			cellX: ward.cellX,
-			cellY: ward.cellY,
-			timeBucket: ward.timeBucket,
-			score: ward.score,
-			observerRiskyQuickDeward: ward.observerRiskyQuickDeward,
-			type: ward.type,
-			description: ward.description,
-			teams: ward.teams !== undefined ? [...ward.teams] : undefined
-		}
+		ward.cellX = worldToCell(world.x)
+		ward.cellY = worldToCell(world.y)
 	}
 }

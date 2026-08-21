@@ -1,6 +1,11 @@
 import { ImageData, Menu } from "github.com/octarine-public/wrapper/index"
 
 import {
+	getTimeBucketByID,
+	TIME_BUCKET_LABELS,
+	TimeBucketID
+} from "../model/WardTimeBuckets"
+import {
 	DEFAULT_WARD_DESCRIPTION,
 	WARD_TEAM_OPTION_VALUES,
 	WARD_TEAM_VALUES,
@@ -8,11 +13,13 @@ import {
 	WardTeam,
 	WardTeamOption,
 	WardTeamOptions,
+	WardTeams,
 	WardType
 } from "../model/WardTypes"
 import { createBuilderSection } from "./sections/builder"
 import { createMainSection } from "./sections/main"
 import { createSettingsSection } from "./sections/settings"
+import { setHidden } from "./utils"
 
 const DESCRIPTION_PRESETS = [
 	DEFAULT_WARD_DESCRIPTION,
@@ -21,19 +28,17 @@ const DESCRIPTION_PRESETS = [
 	"Roshan control",
 	"Smoke break"
 ]
-interface TestPresetDefinition {
-	label: string
-	timeBucket: string
-}
-// Debug override: force a time bucket so late-game recommendations can be
-// inspected in-game without waiting. Buckets match build_ward_reco_runtime.py.
-const TEST_PRESETS: readonly TestPresetDefinition[] = [
-	{ label: "0-12 min", timeBucket: "0_12" },
-	{ label: "12-25 min", timeBucket: "12_25" },
-	{ label: "25-50 min", timeBucket: "25_50" },
-	{ label: "50+ min", timeBucket: "50_plus" }
+// Debug override: force the local team so both sides can be inspected in-game.
+const FORCED_LOCAL_TEAM_VALUES: readonly (WardTeam | undefined)[] = [
+	undefined,
+	WardTeams.Radiant,
+	WardTeams.Dire
 ]
-const TEST_PRESET_LABELS: readonly string[] = TEST_PRESETS.map(preset => preset.label)
+const FORCED_LOCAL_TEAM_LABELS: readonly string[] = [
+	"Auto",
+	WardTeams.Radiant,
+	WardTeams.Dire
+]
 
 export type MenuRequest =
 	| "addWard"
@@ -110,15 +115,23 @@ export class MenuManager {
 	private readonly selectedWardDescription: Menu.ShortDescription
 
 	constructor() {
-		this.tree.SortNodes = false
-		this.mainTree.SortNodes = false
-		this.builderTree.SortNodes = false
-		this.settingsTree.SortNodes = false
+		for (const node of [
+			this.tree,
+			this.mainTree,
+			this.builderTree,
+			this.settingsTree
+		]) {
+			node.SortNodes = false
+		}
 		this.State = this.tree.AddToggle("State", true)
 
 		const main = createMainSection(this.mainTree)
 		const builder = createBuilderSection(this.builderTree, DESCRIPTION_PRESETS)
-		const settings = createSettingsSection(this.settingsTree, TEST_PRESET_LABELS)
+		const settings = createSettingsSection(
+			this.settingsTree,
+			TIME_BUCKET_LABELS,
+			FORCED_LOCAL_TEAM_LABELS
+		)
 
 		this.IconSize = main.IconSize
 		this.TooltipSize = main.TooltipSize
@@ -238,20 +251,14 @@ export class MenuManager {
 		if (!this.hasTestPresetOverrides) {
 			return undefined
 		}
-		if (this.TestLocalTeam.SelectedID === 1) {
-			return WardTeamOptions.Radiant
-		}
-		if (this.TestLocalTeam.SelectedID === 2) {
-			return WardTeamOptions.Dire
-		}
-		return undefined
+		return FORCED_LOCAL_TEAM_VALUES[this.TestLocalTeam.SelectedID]
 	}
 
-	public get TestForcedTimeBucket(): string | undefined {
+	public get TestForcedTimeBucket(): TimeBucketID | undefined {
 		if (!this.hasTestPresetOverrides) {
 			return undefined
 		}
-		return TEST_PRESETS[this.TestPreset.SelectedID]?.timeBucket
+		return getTimeBucketByID(this.TestPreset.SelectedID)
 	}
 
 	public get TeamsForNewWard(): WardTeam[] {
@@ -289,32 +296,40 @@ export class MenuManager {
 
 	private setMainVisibility(enabled: boolean) {
 		const hidden = !enabled
-		this.IconSize.IsHidden = hidden
-		this.TooltipSize.IsHidden = hidden
-		this.TeamFilter.IsHidden = hidden
-		this.HidePlacedWards.IsHidden = hidden
-		this.OnlyAlt.IsHidden = hidden
-		this.PlaceHelper.IsHidden = hidden
-		this.PlaceBind.IsHidden = hidden || !this.PlaceHelper.value
-		this.EditRemoteMode.IsHidden = hidden
-		this.EditRemotePlaceBind.IsHidden = hidden || !this.EditRemoteMode.value
-		this.SaveRemoteButton.IsHidden = hidden || !this.EditRemoteMode.value
+		setHidden(hidden, [
+			this.IconSize,
+			this.TooltipSize,
+			this.TeamFilter,
+			this.HidePlacedWards,
+			this.OnlyAlt,
+			this.PlaceHelper,
+			this.EditRemoteMode
+		])
+		setHidden(hidden || !this.PlaceHelper.value, [this.PlaceBind])
+		setHidden(hidden || !this.EditRemoteMode.value, [
+			this.EditRemotePlaceBind,
+			this.SaveRemoteButton
+		])
 		this.setSettingsVisibility(hidden)
 	}
 
 	private setSettingsVisibility(hidden: boolean) {
-		this.ShowOnMinimap.IsHidden = hidden
-		this.TestPresetEnabled.IsHidden = hidden
-		this.TestPreset.IsHidden = hidden || !this.TestPresetEnabled.value
-		this.TestLocalTeam.IsHidden = hidden || !this.TestPresetEnabled.value
-		this.DynamicAdaptiveSpacing.IsHidden = hidden
-		this.DynamicTopPerType.IsHidden = hidden
-		this.DynamicExcludeRiskyObserver.IsHidden = hidden
-		this.DynamicMinCellDistanceTenths.IsHidden = hidden
-		this.DynamicMinMinimapDistanceTenths.IsHidden = hidden
-		this.DynamicRegionQuota.IsHidden = hidden
-		this.DynamicAutoRegionSize.IsHidden = hidden
-		this.DynamicRegionSize.IsHidden = hidden
-		this.DynamicDedupeRadius3D.IsHidden = hidden
+		setHidden(hidden, [
+			this.ShowOnMinimap,
+			this.TestPresetEnabled,
+			this.DynamicAdaptiveSpacing,
+			this.DynamicTopPerType,
+			this.DynamicExcludeRiskyObserver,
+			this.DynamicMinCellDistanceTenths,
+			this.DynamicMinMinimapDistanceTenths,
+			this.DynamicRegionQuota,
+			this.DynamicAutoRegionSize,
+			this.DynamicRegionSize,
+			this.DynamicDedupeRadius3D
+		])
+		setHidden(hidden || !this.TestPresetEnabled.value, [
+			this.TestPreset,
+			this.TestLocalTeam
+		])
 	}
 }

@@ -1,34 +1,18 @@
-import { ConfigWriteQueue, isObjectRecord, parseConfigRecord } from "./Utils"
+import { ConfigWriteQueue, isObjectRecord, readConfigRecord } from "./Utils"
 import { WardDataLoader } from "./WardDataLoader"
+import { serializeWards } from "./WardSerialization"
 import { WardPoint } from "./WardTypes"
 
 const REMOTE_WARDS_STORAGE_KEY = "ward-helper.remote-wards.v1"
 // Sub-key left over from the multi-source era so existing saved edits keep working.
 const REMOTE_SOURCE_KEY = "ward_reco_dynamic"
 
-function serializeWard(ward: WardPoint) {
-	return {
-		x: ward.x,
-		y: ward.y,
-		z: ward.z,
-		cellX: ward.cellX,
-		cellY: ward.cellY,
-		timeBucket: ward.timeBucket,
-		score: ward.score,
-		observerRiskyQuickDeward: ward.observerRiskyQuickDeward,
-		type: ward.type,
-		description: ward.description,
-		teams: ward.teams
-	}
-}
-
 export class RemoteWardStorage {
 	private readonly writeQueue = new ConfigWriteQueue()
 
 	public async Load(): Promise<WardPoint[] | undefined> {
 		try {
-			const raw = await readConfig()
-			const config = parseConfigRecord(raw)
+			const config = await readConfigRecord()
 			const storage = config[REMOTE_WARDS_STORAGE_KEY]
 			if (!isObjectRecord(storage)) {
 				return undefined
@@ -47,7 +31,7 @@ export class RemoteWardStorage {
 	}
 
 	public Save(wards: WardPoint[]): Promise<void> {
-		const payload = wards.map(serializeWard)
+		const payload = serializeWards(wards)
 		return this.writeQueue.Enqueue(
 			"[ward-helper] failed save remote ward edits",
 			config => {

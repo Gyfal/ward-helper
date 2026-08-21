@@ -18,16 +18,15 @@ export interface SettingsSectionControls {
 
 export function createSettingsSection(
 	settingsTree: Menu.Node,
-	testPresetOptions: readonly string[]
+	testPresetOptions: readonly string[],
+	forcedLocalTeamOptions: readonly string[]
 ): SettingsSectionControls {
 	return {
 		ShowOnMinimap: settingsTree.AddToggle("Minimap marks", true),
 		TestPresetEnabled: settingsTree.AddToggle("Force time bucket", false),
 		TestPreset: settingsTree.AddDropdown("Time bucket", [...testPresetOptions]),
 		TestLocalTeam: settingsTree.AddDropdown("Forced local team", [
-			"Auto",
-			"Radiant",
-			"Dire"
+			...forcedLocalTeamOptions
 		]),
 		DynamicAdaptiveSpacing: settingsTree.AddToggle("Adaptive spacing", true),
 		DynamicTopPerType: settingsTree.AddSlider("Top spots per type", 10, 1, 30),
